@@ -15,6 +15,10 @@
         "ext-pdo": "*",
         "symfony/var-dumper": "6.4.x-dev"
     },
+    "repositories" : [
+        {"type" :  "path",
+        "url" :  "https://github.com/delyn112/bigeweb-framework.git"}
+    ],
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -24,9 +28,6 @@
             "config\\": "config",
             "app\\database\\" : "database"
         },
-        "repositories" : [
-            {"url" :  "https://github.com/delyn112/bigeweb-framework.git"}
-        ],
         "files" : [
             "config/constant.php",
             "config/storage.php",
