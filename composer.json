@@ -24,6 +24,9 @@
             "config\\": "config",
             "app\\database\\" : "database"
         },
+        "repositories" : [
+            {"url" :  "https://github.com/delyn112/bigeweb-framework.git"}
+        ],
         "files" : [
             "config/constant.php",
             "config/storage.php",
