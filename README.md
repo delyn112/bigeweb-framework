@@ -18,7 +18,8 @@ In this MVC, the most important feature includes
 
 
 ## How to install this project.
-The first step to take in installing this project is to run `composer install bigeweb\frameworm`
+The first step to take in installing this project is to 
+run `composer install bigeweb\framework`
 This will download the full project in your working directory.
 
 To open your first url, open your terminal and type `php -S localhost:8000 -t public`
