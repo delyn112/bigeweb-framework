@@ -16,7 +16,7 @@
         "symfony/var-dumper": "6.4.x-dev"
     },
     "repositories" : [
-        {"type" :  "path",
+        {"type" :  "vcs",
         "url" :  "https://github.com/delyn112/bigeweb-framework"}
     ],
     "license": "MIT",

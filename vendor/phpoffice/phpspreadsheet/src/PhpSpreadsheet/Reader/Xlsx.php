@@ -5,6 +5,7 @@ namespace PhpOffice\PhpSpreadsheet\Reader;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Cell\Hyperlink;
+use PhpOffice\PhpSpreadsheet\Comment;
 use PhpOffice\PhpSpreadsheet\DefinedName;
 use PhpOffice\PhpSpreadsheet\Reader\Security\XmlScanner;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\AutoFilter;
@@ -700,6 +701,8 @@ class Xlsx extends BaseReader
                                     $sharedStrings[] = StringHelper::controlCharacterOOXML2PHP((string) $val->t);
                                 } elseif (isset($val->r)) {
                                     $sharedStrings[] = $this->parseRichText($val);
+                                } else {
+                                    $sharedStrings[] = '';
                                 }
                             }
                         }
@@ -709,12 +712,14 @@ class Xlsx extends BaseReader
                     $xmlWorkbookNS = $this->loadZip($relTarget, $mainNS);
 
                     // Set base date
+                    $excel->setExcelCalendar(Date::CALENDAR_WINDOWS_1900);
                     if ($xmlWorkbookNS->workbookPr) {
                         Date::setExcelCalendar(Date::CALENDAR_WINDOWS_1900);
                         $attrs1904 = self::getAttributes($xmlWorkbookNS->workbookPr);
                         if (isset($attrs1904['date1904'])) {
                             if (self::boolean((string) $attrs1904['date1904'])) {
                                 Date::setExcelCalendar(Date::CALENDAR_MAC_1904);
+                                $excel->setExcelCalendar(Date::CALENDAR_MAC_1904);
                             }
                         }
                     }
@@ -796,10 +801,10 @@ class Xlsx extends BaseReader
                                 }
 
                                 $sheetViewOptions = new SheetViewOptions($docSheet, $xmlSheetNS);
-                                $sheetViewOptions->load($this->getReadDataOnly(), $this->styleReader);
+                                $sheetViewOptions->load($this->readDataOnly, $this->styleReader);
 
                                 (new ColumnAndRowAttributes($docSheet, $xmlSheetNS))
-                                    ->load($this->getReadFilter(), $this->getReadDataOnly());
+                                    ->load($this->getReadFilter(), $this->readDataOnly, $this->ignoreRowsWithNoCells);
                             }
 
                             $holdSelectedCells = $docSheet->getSelectedCells();
@@ -1132,10 +1137,19 @@ class Xlsx extends BaseReader
                                             $fillColor = strtoupper(substr((string) $shape['fillcolor'], 1));
                                             $column = null;
                                             $row = null;
+                                            $textHAlign = null;
                                             $fillImageRelId = null;
                                             $fillImageTitle = '';
 
                                             $clientData = $shape->xpath('.//x:ClientData');
+                                            $textboxDirection = '';
+                                            $textboxPath = $shape->xpath('.//v:textbox');
+                                            $textbox = (string) ($textboxPath[0]['style'] ?? '');
+                                            if (preg_match('/rtl/i', $textbox) === 1) {
+                                                $textboxDirection = Comment::TEXTBOX_DIRECTION_RTL;
+                                            } elseif (preg_match('/ltr/i', $textbox) === 1) {
+                                                $textboxDirection = Comment::TEXTBOX_DIRECTION_LTR;
+                                            }
                                             if (is_array($clientData) && !empty($clientData)) {
                                                 $clientData = $clientData[0];
 
@@ -1149,7 +1163,19 @@ class Xlsx extends BaseReader
                                                     if (is_array($temp)) {
                                                         $column = $temp[0];
                                                     }
+                                                    $temp = $clientData->xpath('.//x:TextHAlign');
+                                                    if (!empty($temp)) {
+                                                        $textHAlign = strtolower($temp[0]);
+                                                    }
                                                 }
+                                            }
+                                            $rowx = (string) $row;
+                                            $colx = (string) $column;
+                                            if (is_numeric($rowx) && is_numeric($colx) && $textHAlign !== null) {
+                                                $docSheet->getComment([1 + (int) $colx, 1 + (int) $rowx], false)->setAlignment((string) $textHAlign);
+                                            }
+                                            if (is_numeric($rowx) && is_numeric($colx) && $textboxDirection !== '') {
+                                                $docSheet->getComment([1 + (int) $colx, 1 + (int) $rowx], false)->setTextboxDirection($textboxDirection);
                                             }
 
                                             $fillImageRelNode = $shape->xpath('.//v:fill/@o:relid');
