@@ -113,7 +113,7 @@ public function appliedMigration()
     $result = [];
     foreach($statement as $stmt)
     {
-        $result[] = $stmt['migration'];
+        $result[] = $stmt->migration;
     }
     return ($result);
 }

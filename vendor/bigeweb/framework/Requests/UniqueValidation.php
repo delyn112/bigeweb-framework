@@ -51,7 +51,7 @@ class UniqueValidation
                                     ->get();
                                 if(count($modelData) > 0)
                                 {
-                                    $error[$key] =  str_replace('{key}', $value, $errorMessage );
+                                    $error[$key] =  str_replace('{key}', $inputName, $errorMessage );
                                 }
                             }
 
@@ -64,9 +64,10 @@ class UniqueValidation
                             $modelData = (new model())
                                 ->query("select * from $table where $table_column = '$inputName'")
                                 ->get();
+
                             if(count($modelData) > 0)
                             {
-                                $error[$key] =  str_replace('{key}', $value, $errorMessage );
+                                $error[$key] =  str_replace('{key}', $inputName, $errorMessage );
                             }
                         }
                     }

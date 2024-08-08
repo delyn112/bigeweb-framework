@@ -3,7 +3,7 @@
 namespace illuminate\Support\Supports;
 
 
-use bigeweb\app\models\Email_Setting;
+use Base\Project\Configurations\Email\src\models\Email_Setting;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -33,16 +33,16 @@ class Email
         //Server settings
         $mail = $this->mailer;
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = $this->emailConfig['host'];                     //Set the SMTP server to send through
+        $mail->Host       = $this->emailConfig->host;                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = $this->emailConfig['username'];                     //SMTP username
-        $mail->Password   = $this->emailConfig['password'];                               //SMTP password
-        $mail->Port       = $this->emailConfig['port'];
-        $mail->SMTPSecure = $this->emailConfig['encryption'];
+        $mail->Username   = $this->emailConfig->username;                     //SMTP username
+        $mail->Password   = $this->emailConfig->password;                               //SMTP password
+        $mail->Port       = $this->emailConfig->port;
+        $mail->SMTPSecure = $this->emailConfig->encryption;
         $mail->SMTPKeepAlive = true;
         $mail->isSMTP();
         $mail->SMTPOptions = array(
-            $this->emailConfig['encryption'] => array(
+            $this->emailConfig->encryption => array(
                 'verify_peer' => false,
                 'verify_peer_name' => false,
                 'allow_self_signed' => true
@@ -55,10 +55,16 @@ class Email
 
     public function recepient(mixed $address)
     {
+        if(is_string($address))
+        {
+            $addressArray = [];
+            $addressArray[] = $address;
+            $address = $addressArray;
+        }
         $address = array($address);
         $mail = $this->mailer;
-        $mail->setFrom($this->emailConfig['email_from'], $this->emailConfig['sender_name']);
-        $mail->addReplyTo($this->emailConfig['reply_to'], $this->emailConfig['sender_name']);
+        $mail->setFrom($this->emailConfig->email_from, $this->emailConfig->sender_name);
+        $mail->addReplyTo($this->emailConfig->reply_to, $this->emailConfig->sender_name);
         foreach($address as $email)
         {
             $email_address = isset($email[0]) ? $email[0] : null;
@@ -70,36 +76,68 @@ class Email
 
     public function cc(mixed $address)
     {
-        $address = array($address);
-        $mail = $this->mailer;
-        foreach($address as $email)
+        if(!empty($address))
         {
-            $email_address = isset($email[0]) ? $email[0] : null;
-            $name = isset($email[1]) ? $email[1] : null;
-            $mail->addCC($email_address, $name);
+            if(is_string($address))
+            {
+                $addressArray = [];
+                $addressArray[] = $address;
+                $address = $addressArray;
+            }
+            $address = array($address);
+            $mail = $this->mailer;
+            foreach($address as $email)
+            {
+                $email_address = isset($email[0]) ? $email[0] : null;
+                $name = isset($email[1]) ? $email[1] : null;
+                $mail->addCC($email_address, $name);
+            }
         }
         return $this;
     }
 
     public function bcc(mixed $address)
     {
-        $address = array($address);
-        $mail = $this->mailer;
-        foreach($address as $email)
+       if(!empty($address))
+       {
+           if(is_string($address))
+           {
+               $addressArray = [];
+               $addressArray[] = $address;
+               $address = $addressArray;
+           }
+           $address = array($address);
+           $mail = $this->mailer;
+           foreach($address as $email)
+           {
+               $email_address = isset($email[0]) ? $email[0] : null;
+               $name = isset($email[1]) ? $email[1] : null;
+               $mail->addBCC($email_address, $name);
+           }
+       }
+        return $this;
+    }
+
+    public function attachmentAsString(string $path, string $name = null)
+    {
+        $mail =  $this->mailer;
+        $mail->addStringAttachment($path, $name);
+        if($name)
         {
-            $email_address = isset($email[0]) ? $email[0] : null;
-            $name = isset($email[1]) ? $email[1] : null;
-            $mail->addBCC($email_address, $name);
+            $mail->addStringAttachment($path, $name);
         }
         return $this;
     }
 
-    public function attachment()
+    public function attachment(string $path, string $name = null)
     {
-//        $mail = $this->mailer;
-//        $mail->addAttachment('http://127.0.0.1:8000/storage/framework/app/appearances/unnamed.png');
-//        $mail->addAttachment('http://127.0.0.1:8000/storage/framework/app/appearances/unnamed.png', 'new.jpg');
-//        return $this;
+        $mail =  $this->mailer;
+        $mail->addAttachment($path, $name);
+        if($name)
+        {
+            $mail->addAttachment($path, $name);
+        }
+        return $this;
     }
 
     public function message($subject = null, $message = null, $altmessage = null)

@@ -29,21 +29,22 @@ class Route{
         $ArrayUri = explode('?', $uri);
         $stringUri = $ArrayUri[array_key_first($ArrayUri)];
 
-        //Globale url
-        $gloabaluri = parse_url($_SERVER["REQUEST_URI"]);
-
-        $queries = $_GET;
-        unset($queries['url']);
-
-        if(count($queries) > 0)
+        if(substr($stringUri,  -1) == "/" || $stringUri)
         {
-            if(trim($gloabaluri["path"], '/').'/' == $stringUri || trim($gloabaluri["path"], '/') == $stringUri )
+            //Globale url
+            $gloabaluri = parse_url($_SERVER["REQUEST_URI"]);
+
+            $queries = $_GET;
+            unset($queries['url']);
+
+            if(count($queries) > 0)
             {
-                $uri = $stringUri.'?'.$gloabaluri["query"];
+                if(trim($gloabaluri["path"], '/').'/' == $stringUri || trim($gloabaluri["path"], '/') == $stringUri )
+                {
+                    $uri = $stringUri.'?'.$gloabaluri["query"];
+                }
             }
         }
-
-
 
         $body = new self();
         $body->routes['get'] = [

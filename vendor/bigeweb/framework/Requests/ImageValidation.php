@@ -2,7 +2,7 @@
 
 namespace illuminate\Support\Requests;
 
-use acl\app\Facades\SystemOptionFacade;
+use Base\Project\Admin\Acl\App\Facades\SystemOptionFacade;
 
 class ImageValidation
 {
@@ -16,7 +16,7 @@ class ImageValidation
     {
         if(SystemOptionFacade::getData() !== false)
         {
-            $this->systemMemory = SystemOptionFacade::getData()->size;
+            $this->systemMemory = SystemOptionFacade::getData();
         }
 
         $this->request = new Request();

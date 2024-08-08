@@ -53,14 +53,14 @@ class Validation
                    //validate required
                    if($ruleName == 'required' || $ruleName == 'require')
                    {
-                       if(empty($inputName))
+                       if(strlen($inputName) <= 0)
                        {
                            $this->error[$key] = $errorMessage;
                        }elseif(is_array($inputName))
                        {
                            foreach($inputName as $i => $inputValue)
                            {
-                               if(empty($inputValue))
+                               if(strlen($inputValue) <= 0)
                                {
                                    $this->error[str_replace('.*', '_'.$i+1, $key)] =
                                        str_replace('.*', ' '.$i+1, $errorMessage);
@@ -86,7 +86,7 @@ class Validation
                                    }
                                 }
                             }else{
-                                if($rule["match"] !== $this->request->input(rtrim($key, '.*')))
+                                if($this->request->input($rule["match"]) !== $this->request->input($key))
                                 {
                                     $this->error[$key] = str_replace('previous', $rule['match'], $errorMessage);
                                 }

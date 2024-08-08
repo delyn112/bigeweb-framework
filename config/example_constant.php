@@ -1,13 +1,16 @@
 <?php
 if(!defined('APP_NAME'))
 {
-define('APP_NAME', 'Delyn Org');
+define('APP_NAME', 'Bigeweb Solution');
 }
 
-if(!defined('APP_URL'))
-{
-define('APP_URL', 'http://127.0.0.1:8000');
+if (!defined('APP_URL')) {
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+    $domain = $_SERVER['HTTP_HOST'];
+    define('APP_URL',  $protocol . $domain);
 }
+
+
 
 if(!defined('DB_CONNECTION'))
 {

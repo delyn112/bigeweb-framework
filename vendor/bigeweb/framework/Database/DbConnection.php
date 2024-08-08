@@ -13,6 +13,7 @@ trait DbConnection
 
     protected $connection;
     protected $table;
+    protected $defaultQueryString;
 
     public function __construct()
     {
@@ -31,6 +32,8 @@ trait DbConnection
                 $this->table = strtolower($myclass).'s';
             }
         }
+
+        $this->defaultQueryString = "SELECT * from $this->table";
     }
 
 
