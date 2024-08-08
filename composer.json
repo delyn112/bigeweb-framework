@@ -17,7 +17,7 @@
     },
     "repositories" : [
         {"type" :  "path",
-        "url" :  "https://github.com/delyn112/bigeweb-framework.git"}
+        "url" :  "https://github.com/delyn112/bigeweb-framework"}
     ],
     "license": "MIT",
     "autoload": {
