@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+$primary-body-color : #ffffff;
+$primary-text-color : #1c1c1c;
+$secondary-text-color : #ffffff;
+$primary-bg-color : #252020;
+$primary-font :  "Montserrat", serif;
+$secondary-font :  "Lato", serif;
+$small-font-size : 12px;
+$normal-font-size : 14px;
+$medium-font-size : 16px;
+$large-font-size : 18px;
+$xlarge-font-size : 20px;
+$xxlarge-font-size : 22px;
+$first-box-shadow:rgba(149, 157, 165, 0.2) 0px 8px 24px;
+$second-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+$border-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;;
+
+
+*{
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+body{
+  background: $primary-body-color;
+  color: $primary-text-color;
+  font-family: $primary-font;
+  font-size: $normal-font-size;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#app{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app #header{
+  background-color: $primary-bg-color;
+  color: $secondary-text-color;
+}
+
+#app #header .top-bar .top-bar-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#app #header .top-bar .top-bar-content .nav-brand{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#app #header .top-bar .top-bar-content .nav-brand .btn.toggle-media-btn{
+  color: inherit;
+  display: none;
+}
+
+#app #header .top-bar .top-bar-content .mybrand{
+  font-weight: bolder;
+  text-decoration: none;
+  color: $primary-text-color;
+  font-size: $large-font-size;
+  text-transform: uppercase;
+  background-color: $secondary-text-color;
+  padding: 10px;
+}
+
+#app #header .top-bar .top-bar-content .menu-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+#app #header .top-bar .top-bar-content .menu-wrapper{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item{
+  display: inline-block;
+  padding: 5px;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link{
+  color: inherit;
+  text-transform: capitalize;
+  font-weight: normal;
+  font-size: $medium-font-size;
+  text-decoration: none;
+  padding: 10px 5px;
+  position: relative;
+}
+
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  border-bottom: 3px solid $secondary-text-color;
+  transition: all 1s ease;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link:hover::after
+{
+  width: 100%;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link.active{
+  font-weight: bold;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link .icon{
+  margin-right: 5px;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper+.menu-wrapper .item+.item::before{
+  content: '|\00a0';
+  padding: 5px;
+  color: inherit;
+}
+
+#app #main{
+  flex: 1;
+}
+
+#app #main .container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+#app #main .container .img-wrapper{
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+#app #main .container .img-wrapper .img-fluid{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#app #main .container .title{
+  font-size: $xxlarge-font-size;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+
+#app #main .container .content .custom-title
+{
+  font-size: $large-font-size;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  padding: 10px 5px;
+}
+
+#app #main .container .content .text{
+  font-size: $medium-font-size;
+  margin-bottom: 5px;
+}
+
+#app #footer{
+background: $primary-bg-color;
+  color: $secondary-text-color;
+  padding: 10px;
+}
+
+#app #footer .container .text{
+  text-align: center;
+  font-size: $small-font-size;
+  margin-bottom: 0;
+}

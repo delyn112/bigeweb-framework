@@ -1,0 +1,1 @@
+function open_menu_header(e,t){e.preventDefault();let l=t.closest(".top-bar-content");if(l){let e=l.querySelector(".menu-container");e&&(e.classList.toggle("show"),e.style.maxHeight?e.style.maxHeight=null:e.style.maxHeight=e.scrollHeight+"px")}}
