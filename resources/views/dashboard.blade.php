@@ -1,12 +1,12 @@
 @extends('Layouts/master')
-@section('title', <?= 'Welcome to '.APP_NAME ?>)
+@section('title', <?= 'Welcome to '.\illuminate\Support\Facades\Config::get('app.name') ?>)
 @section('description', 'Framework from bigeweb')
 <section id="header">
     <div class="top-bar">
         <div class="container">
             <div class="top-bar-content">
                <div class="nav-brand">
-                   <a href="#" class="link mybrand"><?= APP_NAME ?></a>
+                   <a href="#" class="link mybrand"><?= \illuminate\Support\Facades\Config::get('app.name') ?></a>
                    <button class="btn toggle-media-btn" onclick="open_menu_header(event, this)">
                        <span class="icon"><i class="fa-solid fa-bars"></i></span>
                    </button>
@@ -44,12 +44,12 @@
 <section id="main">
     <div class="container">
         <div class="img-wrapper">
-            <img src="<?= image('images/New Logo Black.png') ?>" alt="logo" class="img-fluid">
+            <img src="<?= assets('images/New Logo Black.png') ?>" alt="logo" class="img-fluid">
         </div>
-        <h1 class="title">Welcome to <?= APP_NAME ?></h1>
+        <h1 class="title">Welcome to <?= \illuminate\Support\Facades\Config::get('app.name') ?></h1>
         <div class="content">
             <h3 class="custom-title">
-                Model, View And Controller (MVC) by <?= APP_NAME ?>.
+                Model, View And Controller (MVC) by <?= \illuminate\Support\Facades\Config::get('app.name') ?>.
             </h3>
             <p class="text">A full php project developed from scratch.
                 This is similar with other mvc project. of course,
@@ -63,6 +63,6 @@
 </section>
 <section id="footer">
     <div class="container">
-        <p class="text">Copyright &copy; of <?= APP_NAME ?> <?= date("Y") ?>.</p>
+        <p class="text">Copyright &copy; of <?= \illuminate\Support\Facades\Config::get('app.name') ?> <?= date("Y") ?>.</p>
     </div>
 </section>

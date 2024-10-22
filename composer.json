@@ -13,8 +13,7 @@
         "php-http/guzzle7-adapter": "1.x-dev",
         "ext-curl": "*",
         "ext-pdo": "*",
-        "symfony/var-dumper": "6.4.x-dev",
-        "vlucas/phpdotenv": "^5.6@dev"
+        "symfony/var-dumper": "6.4.x-dev"
     },
     "repositories" : [
         {"type" :  "vcs",
@@ -29,10 +28,7 @@
             "app\\database\\" : "database"
         },
         "files" : [
-            "config/constant.php",
-            "config/storage.php",
-            "config/system.php",
-            "config/app.php"
+            "config/Constant_Func.php"
         ]
     },
     "authors": [

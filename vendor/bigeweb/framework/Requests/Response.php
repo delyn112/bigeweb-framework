@@ -2,8 +2,12 @@
 
 namespace illuminate\Support\Requests;
 
+use illuminate\Support\Facades\Config;
+
 class Response
 {
+
+    protected $url;
     public function __construct(
         private string $content = '',
         private int    $statusCode = 200,
@@ -25,6 +29,54 @@ class Response
     {
         http_response_code($this->statusCode);
         return $this->content;
+    }
+
+    /**
+     * @param string|null $url
+     * @param int $status
+     * @return void
+     */
+    public static function redirect(?string $url, int $status = 302)
+    {
+        if (empty($url)) {
+            throw new InvalidArgumentException("A valid URL must be provided for redirection.");
+            file_put_contents('error.log', "A valid URL must be provided for redirection.", FILE_APPEND);
+        }
+
+        if(strpos($url, Config::get('app.url')) === 0){
+            throw new \InvalidArgumentException("url is invalid.Use redirectRoute instead");
+            file_put_contents('error.log', "url is invalid.Use redirectRoute instead", FILE_APPEND);
+        }
+
+        $url = rtrim(Config::get('app.url'), '/').'/'.ltrim($url, '/');
+
+        header('Location: ' . $url, true, $status);
+        exit();
+    }
+
+
+    public static function redirectRoute(?string $route, int $status = 302)
+    {
+        if (empty($route)) {
+            throw new InvalidArgumentException("A valid URL must be provided for redirection.");
+            file_put_contents('error.log', "A valid URL must be provided for redirection.", FILE_APPEND);
+        }
+
+        if(strpos($route, Config::get('app.url')) === false){
+            throw new \InvalidArgumentException("route is invalid.Use redirect instead");
+            file_put_contents('error.log', "url is invalid.Use redirect instead", FILE_APPEND);
+        }
+
+        header('Location: ' . $route, true, $status);
+        exit();
+    }
+
+
+    public static function redirectBack()
+    {
+        $previousUrl  = $_SERVER['HTTP_REFERER'] ?? '';
+
+        Response::redirect($previousUrl);
     }
 
 }

@@ -11,4 +11,5 @@ mix.scripts([
 ], 'public/js/app.js');
 
 mix.sass('resources/assets/sass/main.scss', 'public/css/app.css');
+mix.sass('resources/assets/sass/error.scss', 'public/css/app.css');
 mix.sass('resources/assets/sass/media.scss', 'public/css/app.css');

@@ -11,7 +11,7 @@ class MethodMissingException
     {
         $message;
         ob_start();
-        require (asset('/resources/views/errors/missing_method.blade.php'));
+        require (file_path('/resources/views/errors/missing_method.blade.php'));
         $page = ob_get_clean();
         $response = new Kennel();
         return $response->handle($page, 404)->send();

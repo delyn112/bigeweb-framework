@@ -1,5 +1,5 @@
-<?= makeView('Layouts/ec_header') ?>
+<?php makeView('Layouts/ec_header') ?>
 <section id="app">
     @yield('content')
 </section>
-<?= makeView('Layouts/ec_footer') ?>
+<?php makeView('Layouts/ec_footer') ?>

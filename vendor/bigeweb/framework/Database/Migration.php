@@ -51,7 +51,7 @@ public function processMigration()
 
 
    // $migration_file = scandir(asset('database/migrations'));
-    $migration_source = Config::get('app')['migrationsFrom'];
+    $migration_source = Config::get('database.migrations');
     $migrationArray = [];
     $directory = [];
     foreach ($migration_source as $Directory)

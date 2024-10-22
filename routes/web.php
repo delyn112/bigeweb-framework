@@ -6,11 +6,7 @@ use Bigeweb\App\Http\Controllers\DashboardController;
 
 Route::get('/', [
     DashboardController::class, 'index'
-])->name('dashboard');
+])->name('home');
 
-
-Route::get('/post', [
-    DashboardController::class, 'store'
-])->name('dashboard.store');
 
 

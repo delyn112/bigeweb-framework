@@ -11,7 +11,7 @@ class httpPageNotFoundException extends Controller
     {
         $title = "404 - not found";
         ob_start();
-        require (asset('/resources/views/errors/404.blade.php'));
+        require (file_path('/resources/views/errors/404.blade.php'));
         $page = ob_get_clean();
         $response = new Kennel();
        return $response->handle($page, 404)->send();

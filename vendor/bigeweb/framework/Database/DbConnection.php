@@ -2,14 +2,16 @@
 namespace illuminate\Support\Database;
 
 
+use illuminate\Support\Facades\Config;
+
 trait DbConnection
 {
 
-    protected $host= DB_HOST;
-    protected $dbname= DB_NAME;
-    protected $username= DB_USERNAME;
-    protected $password= DB_PASSWORD;
-    protected $db_port = DB_PORT;
+    protected $db_host;
+    protected $db_name;
+    protected $db_username;
+    protected $db_password;
+    protected $db_port;
 
     protected $connection;
     protected $table;
@@ -17,6 +19,21 @@ trait DbConnection
 
     public function __construct()
     {
+        $variable = Config::get('database.connections');
+        foreach($variable as $key => $variableConnection)
+        {
+           if($key === Config::get('database.default'))
+           {
+               foreach($variableConnection as $key => $connParam)
+               {
+                   if($connParam)
+                   {
+                      $keyParam = strtolower($key);
+                       $this->$keyParam = $connParam;
+                   }
+               }
+           }
+        }
         $class = get_class($this);
 
         $split_class = explode("\\", $class);
@@ -39,15 +56,15 @@ trait DbConnection
 
     public function tryConnection()
     {
-        $sqlData = "mysql:host=$this->host";
+        $sqlData = "mysql:host=$this->db_host";
        try{
-           $conn = new \PDO($sqlData, $this->username , $this->password);
+           $conn = new \PDO($sqlData, $this->db_username , $this->db_password);
            //  set the PDO error mode to exception
            $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
            return $conn;
        }catch (\Exception $e)
        {
-           return false;
+           file_put_contents('error.log', $e->getMessage(), FILE_APPEND);
        }
     }
 
@@ -55,21 +72,21 @@ trait DbConnection
     {
         if(DB_NAME == null)
         {
-            $sqlData = "mysql:host=$this->host";
+            $sqlData = "mysql:host=$this->db_host";
             try{
 
-                $this->connection = new \PDO($sqlData, $this->username, $this->password);
+                $this->connection = new \PDO($sqlData, $this->db_username, $this->db_password);
                 //  set the PDO error mode to exception
                 $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             }catch (\Exception $e){}
         }else{
-            $sqlData = "mysql:host=$this->host;dbname=$this->dbname";
+            $sqlData = "mysql:host=$this->db_host;dbname=$this->db_name";
             try{
-                $this->connection = new \PDO($sqlData, $this->username, $this->password);
+                $this->connection = new \PDO($sqlData, $this->db_username, $this->db_password);
                 //  set the PDO error mode to exception
                 $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             }catch (\Exception $e){
-                // dd($e->getMessage());
+                file_put_contents('error.log', $e->getMessage(), FILE_APPEND);
             }
         }
 
@@ -89,8 +106,8 @@ trait DbConnection
                     $query = "CREATE DATABASE IF NOT EXISTS $name";
                     $this->tryConnection()->exec($query);
             }else{
-                if ($this->dbname != '') {
-                    $query = "CREATE DATABASE IF NOT EXISTS $this->dbname";
+                if ($this->db_name != '') {
+                    $query = "CREATE DATABASE IF NOT EXISTS $this->db_name";
                     $this->tryConnection()->exec($query);
                 }
             }
@@ -99,7 +116,7 @@ trait DbConnection
 
     public function dropDatabase()
 {
-    $query = "DROP DATABASE $this->dbname";
+    $query = "DROP DATABASE $this->db_name";
     $this->tryConnection()->exec($query);
 }
 

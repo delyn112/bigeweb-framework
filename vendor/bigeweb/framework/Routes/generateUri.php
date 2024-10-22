@@ -11,7 +11,7 @@ class generateUri
 {
     public function __construct()
     {
-        $routeGroup = Config::get('app')['routesFrom'];
+        $routeGroup = Config::get('app.routes');
 
            foreach($routeGroup as $routeFolder)
            {
@@ -28,23 +28,8 @@ class generateUri
            }
 
 
-
-        Config::get('ini');
-
-        $_SESSION['timeout'] = BaseControllerFacades::session_time();
-
-        if (isset($_SESSION['timeout']) && time() > $_SESSION['timeout']) {
-            // Session has timed out, destroy the session and redirect to login page
-            session_unset();
-            session_destroy();
-            header("Location: /");
-            exit();
-        }
-
-        $session = new \config\Session();
         //Handle all the website url;
         (new Dispatcher())->dispatch();
-
 
     }
 }

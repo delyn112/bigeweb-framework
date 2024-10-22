@@ -2,8 +2,6 @@
 
 namespace Bigeweb\App\Http\Controllers;
 
-use illuminate\Support\Requests\Request;
-
 class DashboardController extends Controller
 {
 

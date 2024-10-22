@@ -18,17 +18,6 @@ class BaseControllerFacades
     }
 
 
-    public static function cookies_time()
-    {
-        return (time() + (86400 * 30));
-    }
-
-
-    public static function session_time()
-    {
-        return (time() + (86400 * 30));
-    }
-
 
     public  static  function advance_model()
     {
