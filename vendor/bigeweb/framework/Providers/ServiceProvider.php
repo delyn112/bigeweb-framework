@@ -2,29 +2,80 @@
 
 namespace illuminate\Support\Providers;
 
+use illuminate\Support\Facades\Config;
+
 class ServiceProvider
 {
-    protected $bindings = [];
-    protected $app;
+   public $loadUrlFrom;
+   public $loadConfigFrom;
+   public $viewDirectory;
 
-    public function __construct()
-    {
-        $this->app = $this;
-    }
 
-    // Bind a class or interface to a concrete implementation
-    public function bind($abstract, $concrete) {
-        $this->bindings[$abstract] = $concrete;
-        return $this->make($abstract);
-    }
+   public function loadUrlFrom(mixed $fileDirectory)
+   {
+       if(is_array($fileDirectory))
+       {
+           $arrayFiles = $fileDirectory;
+       }else{
+           $arrayFiles = array($fileDirectory);
+       }
 
-    // Resolve an instance from the container
-    public function make($abstract) {
-        if (isset($this->bindings[$abstract])) {
-            $concrete = $this->bindings[$abstract];
-            return new $concrete();
-        }
+       if(count($arrayFiles) > 0)
+       {
+           foreach($arrayFiles as $file)
+           {
+               if(file_exists($file)){
+                   require $file;
+               }else{
+                  log_Error("Route file not found: $file");
+                   throw new \Exception("Route file not found: $file", 404);
+               }
+           }
+       }
+   }
 
-        throw new \Exception("Binding not found for {$abstract}");
-    }
+
+   public function loadconfigFrom(mixed $fileDirectory)
+   {
+       if(is_array($fileDirectory))
+       {
+           $arrayFiles = $fileDirectory;
+       }else{
+           $arrayFiles = array($fileDirectory);
+       }
+
+       if(count($arrayFiles) > 0)
+       {
+           foreach($arrayFiles as $file)
+           {
+               if(file_exists($file)){
+                 Config::load($file);
+               }else{
+                   log_Error("Configuration file not found: $file");
+                   throw new \Exception("Configuration file not found: $file", 404);
+               }
+           }
+       }
+   }
+
+   public function loadViewsFrom(string $fileDirectory, ?string $viewName = null)
+   {
+       if(!is_dir($fileDirectory))
+       {
+           error_log("Views folder does not exists: $fileDirectory");
+       }
+
+       if($viewName == null)
+       {
+           $this->viewDirectory = $fileDirectory;
+       }else{
+           $this->viewDirectory = $fileDirectory.'::'.$viewName;
+       }
+
+   }
+
+       public function viewPath()
+       {
+          return $this->viewDirectory;
+       }
 }

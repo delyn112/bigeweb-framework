@@ -97,6 +97,7 @@ class ComposerStaticInitabbedcbe251cb1f0496090814e40ca18
         ),
         'B' => 
         array (
+            'Bigeweb\\Email\\' => 14,
             'Bigeweb\\App\\' => 12,
         ),
     );
@@ -254,6 +255,10 @@ class ComposerStaticInitabbedcbe251cb1f0496090814e40ca18
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
+        'Bigeweb\\Email\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bigeweb/email/src',
         ),
         'Bigeweb\\App\\' => 
         array (

@@ -124,6 +124,11 @@ return [
 
     'routes' => [
         file_path('routes'),
+    ],
+
+    'providers' => [
+        \Bigeweb\App\Providers\AppServiceProvider::class,
+        \Bigeweb\Email\Providers\EmailServiceProvider::class
     ]
 ];
 ?>

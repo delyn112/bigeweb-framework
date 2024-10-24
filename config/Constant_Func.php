@@ -19,6 +19,7 @@ function getPath()
  *
  * Make the storage path
  */
+
 function storage_path(?string $path = 'storage')
 {
     $path = rtrim($path, '/');
@@ -31,7 +32,6 @@ function storage_path(?string $path = 'storage')
     }
     return $storagePath;
 }
-
 
 /**
  * @param string|null $file
@@ -50,6 +50,19 @@ function assets(?string $file = null)
 
     $file = ltrim($file, '/'); // Remove leading slash from the file path
     return $url . '/' . $file;
+}
+
+function log_Error(?string $errorMessage): void
+{
+    $logPath = getPath().'/'.env('LOG_FOLDER').'/Logs';
+    if(!is_dir($logPath))
+    {
+        mkdir($logPath, '0755', true);
+    }
+   $path = $logPath.'/error.log';
+    $errorMessage = date('D, d M Y H:i:s').' - '.$errorMessage;
+     File_put_contents($path, $errorMessage.PHP_EOL, FILE_APPEND);
+
 }
 
 /**

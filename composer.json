@@ -13,11 +13,16 @@
         "php-http/guzzle7-adapter": "1.x-dev",
         "ext-curl": "*",
         "ext-pdo": "*",
-        "symfony/var-dumper": "6.4.x-dev"
+        "symfony/var-dumper": "6.4.x-dev",
+        "bigeweb/email" : "*"
     },
     "repositories" : [
         {"type" :  "vcs",
-        "url" :  "https://github.com/delyn112/bigeweb-framework"}
+        "url" :  "https://github.com/delyn112/bigeweb-framework"},
+        {
+            "type": "path",
+            "url": "Webroot/Admin/Email"
+        }
     ],
     "license": "MIT",
     "autoload": {

@@ -9,7 +9,8 @@ class httpPageNotFoundException extends Controller
 
     public static function errorMessage()
     {
-        $title = "404 - not found";
+        $title = "404 - Page not found";
+        log_Error("Request view is not found");
         ob_start();
         require (file_path('/resources/views/errors/404.blade.php'));
         $page = ob_get_clean();

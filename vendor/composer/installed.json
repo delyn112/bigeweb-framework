@@ -1,6 +1,37 @@
 {
     "packages": [
         {
+            "name": "bigeweb/email",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "Webroot/Admin/Email",
+                "reference": "aca01e1817c35986bcb1f8c2cfed71f67c494fb9"
+            },
+            "type": "project",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Bigeweb\\Email\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "olabige michael",
+                    "email": "81871957+delyn112@users.noreply.github.com"
+                }
+            ],
+            "description": "This is the project email routing system",
+            "transport-options": {
+                "relative": true
+            },
+            "install-path": "../bigeweb/email"
+        },
+        {
             "name": "doctrine/lexer",
             "version": "3.1.x-dev",
             "version_normalized": "3.1.9999999.9999999-dev",

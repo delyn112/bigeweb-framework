@@ -5,6 +5,6 @@ use illuminate\Support\Http\Controllers\BaseController;
 
 class Controller extends BaseController
 {
-    public $viewFrom = "/resources/views/";
+    //public $viewFrom = "/resources/views/";
 }
 ?>

@@ -2,22 +2,79 @@
 
 namespace illuminate\Support\Http\Controllers;
 
-use illuminate\Support\Exceptions\httpPageNotFoundException;
-
 class BaseController
 {
-    public $viewFrom = '/resources/views/';
+
+    public $viewFrom;
+    protected $fileKey;
+    protected $filePath;
+    protected $fileName;
     public $pageContent = null;
     public $title = null;
     public $description = null;
 
+
+    public function __construct()
+    {
+        $getViewsPath = file_path('/vendor/bigeweb/viewsLocation/views.php');
+        if(file_exists($getViewsPath))
+        {
+            $this->viewFrom =  require_once $getViewsPath;
+        }
+    }
+
+    public function makeFilePath($viewFile)
+    {
+        if ($viewFile === null) {
+            log_Error("View file cannot be null.");
+            throw new \InvalidArgumentException("View file cannot be null.");
+        }
+
+            if(strpos($viewFile, "::") !== false)
+            {
+                $viewFileArray = explode("::", $viewFile);
+                $this->fileKey = $viewFileArray[0];
+                $this->fileName = $viewFileArray[1];
+            }else{
+                $this->fileName = $viewFile;
+            }
+
+
+        foreach($this->viewFrom as $viewFilePath)
+        {
+            $pathToArray = explode("::", $viewFilePath);
+
+            //check if the name of the key is present
+            if(isset($pathToArray[1]))
+            {
+                if($pathToArray[1] == $this->fileKey)
+                {
+                    $this->filePath = $pathToArray[0];
+                }
+            }else{
+                $this->filePath = $pathToArray[0];
+            }
+        }
+
+        return $this->filePath;
+    }
+
+
+
     public function view($file, $param = [])
     {
+        $file = $this->makeFilePath($file)."/".$this->fileName.".blade.php";
+        if(!file_exists($file))
+        {
+            log_Error("View file does not exist.");
+            throw new \InvalidArgumentException("View file does not exist.");
+        }
         if(!empty($param))
         {
             extract($param);
         }
         $pageDetails = $this->pageContent($file, $param);
+
         $rawPageTitle = $this->generatePageTitle($pageDetails);
 
         $pageLayout = $pageDetails;
@@ -25,12 +82,12 @@ class BaseController
         if($rawPageTitle) {
             $titlePartent = '';
             if (preg_match("/@section\('title', '([^']+?)'\)/", $rawPageTitle, $matches)
-            || preg_match("/@section\('title',\s*([^']+?)\s*\)/", $rawPageTitle, $matches)) {
+                || preg_match("/@section\('title',\s*([^']+?)\s*\)/", $rawPageTitle, $matches)) {
                 // Extracted text is in the first capturing group
                 $titlePartent =  preg_quote($rawPageTitle, '/');
                 $this->title = $matches[1];
             }
-          $pageLayout = preg_replace("/$titlePartent/", '', $pageLayout);
+            $pageLayout = preg_replace("/$titlePartent/", '', $pageLayout);
         }
 
         //trim the rawDescription and get only the text
@@ -38,7 +95,7 @@ class BaseController
         if($description) {
             $descriptionPattern = '';
             if (preg_match("/@section\('description', '([^']+?)'\)/", $description, $matches)
-            || preg_match("/@section\('description',\s*([^']+?)\s*\)/", $description, $matches)) {
+                || preg_match("/@section\('description',\s*([^']+?)\s*\)/", $description, $matches)) {
                 // Extracted text is in the first capturing group
                 $descriptionPattern =  preg_quote($description, '/');
                 $this->description = $matches[1];
@@ -55,10 +112,10 @@ class BaseController
                 $masterPageName = $matches[1];
                 $masterPageLayout =  $this->LoadMasterPage($masterPageName);
             }
-                //replace content with subpage
-                $this->pageContent = $masterPageLayout;
-                $this->pageContent = str_replace("@yield('content')", $pageLayout, $this->pageContent);
-                $this->pageContent = str_replace($rawMaster, '', $this->pageContent);
+            //replace content with subpage
+            $this->pageContent = $masterPageLayout;
+            $this->pageContent = str_replace("@yield('content')", $pageLayout, $this->pageContent);
+            $this->pageContent = str_replace($rawMaster, '', $this->pageContent);
 
         }else{
             $this->pageContent = $pageLayout;
@@ -72,7 +129,7 @@ class BaseController
         }
 
         if ($this->description !== null) {
-             $this->pageContent = preg_replace("/@yield\('description'\)/", $this->description, $this->pageContent);
+            $this->pageContent = preg_replace("/@yield\('description'\)/", $this->description, $this->pageContent);
         }else{
             $this->pageContent = preg_replace("/@yield\('description'\)/", '', $this->pageContent);
         }
@@ -105,7 +162,7 @@ class BaseController
         {
             if(strpos($param, "@section('title") !== false)
             {
-               $title = $param;
+                $title = $param;
             }
         }
         return $title;
@@ -133,19 +190,19 @@ class BaseController
     public function LoadMasterPage($masterFile)
     {
         ob_start();
-        require getPath().$this->viewFrom.$masterFile.'.blade.php';
+        require $this->filePath."/".$masterFile.".blade.php";
         return $page = ob_get_clean();
     }
 
 
-    public function pageContent(mixed $file, $param = [])
+    public function pageContent(string $file, $param = [])
     {
         if(!empty($param))
         {
             extract($param);
         }
         ob_start();
-        require getPath().$this->viewFrom.$file.'.blade.php';
+        require $file;
         return ob_get_clean();
     }
 }

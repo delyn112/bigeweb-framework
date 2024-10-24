@@ -44,5 +44,6 @@ return array(
     'Dompdf\\' => array($vendorDir . '/dompdf/dompdf/src'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/src'),
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
+    'Bigeweb\\Email\\' => array($vendorDir . '/bigeweb/email/src'),
     'Bigeweb\\App\\' => array($baseDir . '/app'),
 );
