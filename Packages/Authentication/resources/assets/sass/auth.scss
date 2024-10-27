@@ -1,0 +1,115 @@
+@use '../../../../../resources/assets/sass/constant';
+
+
+
+
+.auth-container{
+  width: 100%;
+  background-color: constant.$primary-body-color;
+  margin: 3rem 0;
+}
+
+.auth-container .row{
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container #data-form .card,
+.auth-container #data-form .card .card-header,
+.auth-container #data-form .card .card-body,
+.auth-container #data-form .card .card-footer{
+  background-color: inherit;
+  border: none;
+  border-radius: 0;
+}
+
+
+.auth-container #data-form .card .card-header .title,
+.auth-container #data-form .card .card-header .text{
+  margin: 4px 0 !important;
+}
+
+.auth-container #data-form .card .text,
+.auth-container #data-form .card .my-text-muted
+{
+  margin: 2px !important;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: constant.$normal-font-size;
+}
+
+.auth-container #data-form .card .my-text-muted
+{
+  margin: 2px !important;
+  text-align: left;
+  font-size: constant.$small-font-size;
+}
+
+.auth-container #data-form .card .card-footer .action-wrapper-btn
+{
+  text-align: center;
+}
+
+.auth-container #data-form .card .card-body .my-text-muted .link,
+.auth-container #data-form .card .card-footer .action-wrapper-btn .text .link{
+  text-decoration: none;
+  color: constant.$color-orange;
+  transition: all 0.5s ease;
+  font-weight: 500;
+}
+
+.auth-container #data-form .card .card-body .my-text-muted .link:hover,
+.auth-container #data-form .card .card-footer .action-wrapper-btn .text .link:hover
+{
+  text-decoration: underline;
+}
+
+.auth-container #data-form .card .card-footer .action-wrapper-btn.button .wrap-btn
+{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: transparent;
+}
+
+.auth-container #data-form .card .card-footer .action-wrapper-btn.button .wrap-btn .btn{
+  width: 100%;
+}
+
+
+.auth-container #data-form .card .card-footer .action-wrapper-btn.button .wrap-btn .btn:nth-child(1){
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.auth-container #data-form .card .card-footer .action-wrapper-btn.button .wrap-btn .btn:nth-last-child(1){
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.auth-container #data-form .card .card-footer .action-wrapper-btn.button .wrap-btn .btn:hover{
+  border-radius: 2px;
+}
+
+.auth-container #data-form .card .card-footer .action-wrapper-btn.button .wrap-btn .link
+{
+  text-decoration: none;
+  background-color: constant.$color-lightgray;
+  color: constant.$primary-text-color;
+}
+
+
+
+
+.auth-container .img-wrapper
+{
+  height: 350px !important;
+  width: 100% !important;
+}
+
+.auth-container .img-wrapper .img-fluid
+{
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}

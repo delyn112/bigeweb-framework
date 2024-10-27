@@ -2,11 +2,10 @@
 
 namespace illuminate\Support\Requests;
 
-use Base\Project\Configurations\Settings\src\Facades\SystemModePreferenceFacade;
 
 class ImageValidation
 {
-        public Request $request;
+    public Request $request;
     public Errorbags $errorBag;
 
 
@@ -14,14 +13,25 @@ class ImageValidation
 
     public function __construct()
     {
-        if(SystemModePreferenceFacade::getData() !== null)
-        {
-            $this->systemMemory = SystemModePreferenceFacade::getData()->max_file_upload_size;
+        $uploadlimit = ini_get('upload_max_filesize');
+        if ($uploadlimit !== null) {
+            $unit = strtoupper(substr($uploadlimit, -1));
+            $value = (int)$uploadlimit;
+
+            switch ($unit) {
+                case 'G':
+                    $sizeValue =  $value * 1024 * 1024 * 1024;
+                case 'M':
+                    $sizeValue =  $value * 1024 * 1024;
+                case 'K':
+                    $sizeValue =  $value * 1024;
+                default:
+                    $sizeValue =  $value; // bytes
+            }
+            $this->systemMemory = $sizeValue;
+            $this->request = new Request();
+            $this->errorBag = new Errorbags();
         }
-
-
-        $this->request = new Request();
-        $this->errorBag = new Errorbags();
     }
 
 

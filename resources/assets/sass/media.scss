@@ -1,4 +1,4 @@
-@import "main";
+@use "constant";
 
 @media screen and (min-width: 0px) and (max-width: 995px){
   #app #header .top-bar .top-bar-content{
@@ -8,7 +8,7 @@
   #app #header .top-bar .top-bar-content .nav-brand .btn.toggle-media-btn
   {
     display: block;
-    font-size: $xxlarge-font-size;
+    font-size: constant.$xxlarge-font-size;
     border: none;
   }
 
@@ -47,6 +47,29 @@
     padding: 5px;
   }
 
+  #app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-btn
+  {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content
+  {
+    position: static;
+    padding: 0;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content .dropdown-item .link
+  {
+    padding-left: 0;
+  }
+
+
+  #app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content .dropdown-item:nth-last-child(1)
+  {
+    border-top: none;
+  }
+
   #app #main .container .img-wrapper
   {
     height: 100px;
@@ -54,7 +77,7 @@
 
   #app #main .container .title
   {
-    font-size: $xlarge-font-size;
+    font-size: constant.$xlarge-font-size;
     margin: 1rem 0;
   }
 }
@@ -63,9 +86,9 @@
 @media screen and (min-width: 0px) and (max-width: 355px){
   #app #header .top-bar .top-bar-content .mybrand
   {
-    font-size: $medium-font-size;
+    font-size: constant.$medium-font-size;
     padding: 5px;
     background-color: transparent;
-    color: $secondary-text-color;
+    color: constant.$secondary-text-color;
   }
 }

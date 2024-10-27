@@ -10,10 +10,17 @@ trait InsertQuery
         $data = [];
         foreach($param as $key => $value)
         {
-            if($value != '')
-            {
-                $data[$key] = $value;
-            }
+
+                if($value != '')
+                {
+                    if(!empty($this->fillable))
+                    {
+                        isset($this->fillable[$key]) ?
+                            $data[$key] = $value : null;
+                    }else{
+                        $data[$key] = $value;
+                    }
+                }
         }
 
         $key = implode(",", array_keys($data));

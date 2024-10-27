@@ -85,14 +85,53 @@ function file_path($filepath)
  * @return void
  *
  */
-function makeView($file, $data = [], $viewFrom = '/resources/views/' )
-{
-    // Extract the variables from the data array
-    extract($data);
+//function makeView($file, $data = [], $viewFrom = '/resources/views/' )
+//{
+//    // Extract the variables from the data array
+//    //extract($data);
+//
+//    // Include the view file
+////    $path = file_path($viewFrom.$file.'.blade.php');
+////    include ($path);
+//    $controllerInstance = new Controller();
+//     dd($controllerInstance->view($file, $data));
+//}
 
-    // Include the view file
-    $path = file_path($viewFrom.$file.'.blade.php');
-    include ($path);
+function makeView($file, array $data = [])
+{
+    extract($data);
+    $controller = new Controller;
+    $controller->makeFilePath($file);
+    $viewFrom = $controller->viewFrom;
+
+    if(strpos($file, "::") !== false)
+    {
+        $FileArray = explode("::", $file);
+        $fileKey = $FileArray[0];
+        $fileName = $FileArray[1];
+    }else{
+        $fileName = $file;
+        $fileKey = null;
+    }
+
+
+    $masterFilePath = null;
+    foreach ($viewFrom as $masterFile)
+    {
+        $getPath = explode("::", $masterFile);
+        if(isset($getPath[1]))
+        {
+            if($getPath[1] == $fileKey)
+            {
+                $FilePath = $getPath[0];
+            }
+        }else{
+            $FilePath = file_path("resources/views");
+        }
+    }
+
+    $FilePath = $FilePath."/".$fileName.".blade.php";
+    include $FilePath;
 }
 
 /**
@@ -214,8 +253,8 @@ function error($key , $param)
  */
 function view($file, $param = [])
 {
-    $Controller = new Controller();
-    return $Controller->view($file, $param);
+    $controllerInstance = new Controller();
+    return $controllerInstance->view($file, $param);
 };
 
 /**

@@ -2,6 +2,7 @@
 
 namespace illuminate\Support\Database;
 
+use http\Exception\InvalidArgumentException;
 use illuminate\Support\Facades\Config;
 use illuminate\Support\Models\model;
 
@@ -9,6 +10,7 @@ class Migration{
    // use db;
 
     public $Model;
+    protected $className = [];
 
     public function __construct()
     {
@@ -45,58 +47,114 @@ public function migration_rollback()
 public function processMigration()
 {
     //run migration table first
-    $classname = 'app\database\migrations\migration_001';
-    $instance = new $classname();
-   $this->Model->getConnection()->exec($instance->up());
-
-
-   // $migration_file = scandir(asset('database/migrations'));
-    $migration_source = Config::get('database.migrations');
-    $migrationArray = [];
-    $directory = [];
-    foreach ($migration_source as $Directory)
-    {
-        $directory[] = $Directory;
-        if(is_dir($Directory)){
-        $migration_file = scandir($Directory);
-        foreach($migration_file as $fileContent)
+    $initialMigration ='app\database\migrations\migration_001';
+        if(!class_exists($initialMigration))
         {
-            if($fileContent == ' ' || $fileContent == '.' || $fileContent == '..')
-            {
-                continue;
-            }
-            $migrationArray[] = str_replace('.php', '' , $fileContent);
+           log_Error("Class $initialMigration does not exist");
+           throw new \Exception("Class $initialMigration does not exist");
         }
+        $fileClassInstance = new $initialMigration();
+        if(!method_exists($fileClassInstance, 'up'))
+        {
+            log_Error("Class $initialMigration does not have up");
+            throw new \Exception("Class $initialMigration does not have up");
         }
-    }
+            $this->Model->getConnection()->exec($fileClassInstance->up());
 
+
+
+        //get the providers migration files
+    $appMigration = Config::get('database.migrations');
+    //add base directory to the migration name
+    $migrationFiles = [];
+      if(count($appMigration) > 0)
+      {
+          foreach($appMigration as $file)
+          {
+              $migrationFiles[] = file_path($file);
+          }
+      }
+
+    $providerMigrationPath = file_path("vendor/bigeweb/migrationsLocation/migration.php");
+    if(!file_exists($providerMigrationPath))
+    {
+        log_Error("$providerMigrationPath file does not exist");
+        throw new \Exception("$providerMigrationPath file does not exist");
+    }
+    $providerMigrationPath = require $providerMigrationPath;
+
+   if(count($providerMigrationPath) > 0)
+   {
+       $migrationFiles = array_merge($migrationFiles, $providerMigrationPath);
+   }
+
+
+   $newMigrationFile = [];
+   $fullMigrationFilePath = [];
+   //get the file name and also the full path
+    //The file name will be used to seperate newmigration from applied migrations
+   if(count($migrationFiles) > 0)
+   {
+       foreach($migrationFiles as $migrationFile)
+       {
+           $getMigrationFile = scandir($migrationFile);
+           if(count($getMigrationFile) > 0)
+           {
+               foreach ($getMigrationFile as $file) {
+                   if($file == "." || $file == "..")
+                   {
+                       continue;
+                   }
+                   $newMigrationFile[] = str_replace(".php", "", $file);
+                   $fullMigrationFilePath[] = $migrationFile.'/'.$file;
+               }
+           }
+       }
+   }
+
+   //get the applied migration difference
     $applied_migration = $this->appliedMigration();
-    $toapply_migration = array_diff( $migrationArray,  $applied_migration);
+    $toapply_migration = array_diff( $newMigrationFile,  $applied_migration);
     sort($toapply_migration);
 
-    foreach($toapply_migration as $file)
-    {
-        foreach($directory as $dirHolder)
-        {
-            if(file_exists($dirHolder.DIRECTORY_SEPARATOR.$file.'.php'))
-            {
-                $class_code = file_get_contents($dirHolder . DIRECTORY_SEPARATOR . $file . '.php');
-                $namespace = '';
 
-                // Extract namespace
-                if (preg_match('/namespace\s+([^;]+);/i', $class_code, $matches)) {
-                    $namespace = trim($matches[1]);
+    foreach($fullMigrationFilePath as $fileToMigrate)
+    {
+        $getMigrationName = pathinfo($fileToMigrate, PATHINFO_FILENAME);
+        foreach ($toapply_migration as $migration)
+        {
+            if($migration == $getMigrationName)
+            {
+                if(!file_exists($fileToMigrate))
+                {
+                    log_Error("$fileToMigrate file does not exist");
+                    throw new \Exception("$fileToMigrate file does not exist");
+                }
+                $fileContents = file_get_contents($fileToMigrate);
+                // Use a regex pattern to find the namespace
+                if (preg_match('/^\s*namespace\s+([^;]+);/m', $fileContents, $matches)) {
+                    $namespace = trim($matches[1]); // Return the matched namespace
+                }
+                $className = $namespace.DIRECTORY_SEPARATOR.$migration;
+                $fileClassInstance = new $className();
+                $this->className[] = $fileClassInstance;
+
+                //check if method up exist
+                if(!method_exists($fileClassInstance, 'up'))
+                {
+                    log_Error("Class $className does not have up");
+                    throw new \Exception("Class $className does not have up");
+                }
+                if($fileClassInstance->up() != null || $fileClassInstance->up() != "")
+                {
+                    $table = $fileClassInstance->up();
+                    $this->Model->getConnection()->exec($table);
+                    $this->storeMigrationTable($getMigrationName);
                 }
 
-                $class = pathinfo($file, PATHINFO_FILENAME);
-                //            $classname = 'app\database\migrations\\'.$class;
-                $classname = $namespace . '\\' . $class;
-                $instance = new $classname();
-                $table = $instance->up();
-                $this->Model->getConnection()->exec($table);
-                $this->storeMigrationTable($class);
             }
         }
+
     }
 
 }

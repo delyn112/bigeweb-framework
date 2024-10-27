@@ -128,7 +128,8 @@ return [
 
     'providers' => [
         \Bigeweb\App\Providers\AppServiceProvider::class,
-        \Bigeweb\Email\Providers\EmailServiceProvider::class
+        \Bigeweb\Acl\Providers\AclServiceProvider::class,
+        \Bigeweb\Authentication\Providers\AuthenticationServiceProvider::class
     ]
 ];
 ?>

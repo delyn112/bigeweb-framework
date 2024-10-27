@@ -26,13 +26,14 @@ class Loader
 
         $provider = new ServiceProviderLoader($providerArray);
         $provider->loadServices();
+
+        // Load custom ini settings
+        require file_path("config/ini.php"); // Load ini settings first
         //load cors
         Cors::handle();
-        //change the application time zone
-        date_default_timezone_set(Config::get('app.timezone'));
         //load session
         (new SessionConfiguration());
-
+       $session = new Session();
         //Handle all the website url;
         $dispatcher = new Dispatcher();
         $dispatcher->dispatch();

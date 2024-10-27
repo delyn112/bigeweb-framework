@@ -9,6 +9,7 @@ class ServiceProvider
    public $loadUrlFrom;
    public $loadConfigFrom;
    public $viewDirectory;
+   public $migrationFrom;
 
 
    public function loadUrlFrom(mixed $fileDirectory)
@@ -78,4 +79,32 @@ class ServiceProvider
        {
           return $this->viewDirectory;
        }
+
+    public function loadMigrationFrom(mixed $fileDirectory)
+    {
+        if(is_array($fileDirectory))
+        {
+            $arrayFiles = $fileDirectory;
+        }else{
+            $arrayFiles = array($fileDirectory);
+        }
+
+        if(count($arrayFiles) > 0)
+        {
+            foreach($arrayFiles as $file)
+            {
+                if(file_exists($file)){
+                 $this->migrationFrom = $file;
+                }else{
+                    log_Error("Configuration file not found: $file");
+                    throw new \Exception("Configuration file not found: $file", 404);
+                }
+            }
+        }
+    }
+
+    public function migrationDir()
+    {
+        return $this->migrationFrom;
+    }
 }

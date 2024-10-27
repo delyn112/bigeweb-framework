@@ -19,7 +19,7 @@ class BaseController
         $getViewsPath = file_path('/vendor/bigeweb/viewsLocation/views.php');
         if(file_exists($getViewsPath))
         {
-            $this->viewFrom =  require_once $getViewsPath;
+            $this->viewFrom =  require $getViewsPath;
         }
     }
 
@@ -30,14 +30,14 @@ class BaseController
             throw new \InvalidArgumentException("View file cannot be null.");
         }
 
-            if(strpos($viewFile, "::") !== false)
-            {
-                $viewFileArray = explode("::", $viewFile);
-                $this->fileKey = $viewFileArray[0];
-                $this->fileName = $viewFileArray[1];
-            }else{
-                $this->fileName = $viewFile;
-            }
+        if(strpos($viewFile, "::") !== false)
+        {
+            $viewFileArray = explode("::", $viewFile);
+            $this->fileKey = $viewFileArray[0];
+            $this->fileName = $viewFileArray[1];
+        }else{
+            $this->fileName = $viewFile;
+        }
 
 
         foreach($this->viewFrom as $viewFilePath)
@@ -45,14 +45,11 @@ class BaseController
             $pathToArray = explode("::", $viewFilePath);
 
             //check if the name of the key is present
-            if(isset($pathToArray[1]))
+            if(count($pathToArray) > 1 && $pathToArray[1] == $this->fileKey)
             {
-                if($pathToArray[1] == $this->fileKey)
-                {
-                    $this->filePath = $pathToArray[0];
-                }
-            }else{
                 $this->filePath = $pathToArray[0];
+            }else{
+                $this->filePath = file_path("resources/views");
             }
         }
 
@@ -60,20 +57,20 @@ class BaseController
     }
 
 
-
     public function view($file, $param = [])
     {
         $file = $this->makeFilePath($file)."/".$this->fileName.".blade.php";
         if(!file_exists($file))
         {
-            log_Error("View file does not exist.");
-            throw new \InvalidArgumentException("View file does not exist.");
+            log_Error($this->fileName." View file does not exist in ".$this->makeFilePath($file));
+            throw new \InvalidArgumentException($this->fileName." View file does not exist in ".$this->makeFilePath($file));
         }
         if(!empty($param))
         {
             extract($param);
         }
         $pageDetails = $this->pageContent($file, $param);
+
 
         $rawPageTitle = $this->generatePageTitle($pageDetails);
 
@@ -189,9 +186,42 @@ class BaseController
 
     public function LoadMasterPage($masterFile)
     {
-        ob_start();
-        require $this->filePath."/".$masterFile.".blade.php";
-        return $page = ob_get_clean();
+        if(strpos($masterFile, "::") !== false)
+        {
+            $masterFileArray = explode("::", $masterFile);
+            $masterfileKey = $masterFileArray[0];
+            $masterfileName = $masterFileArray[1];
+        }else{
+            $masterfileName = $masterFile;
+            $masterfileKey = null;
+        }
+
+
+        $masterFilePath = null;
+        foreach ($this->viewFrom as $masterFile)
+        {
+            $getPath = explode("::", $masterFile);
+            if(isset($getPath[1]))
+            {
+                if($getPath[1] == $masterfileKey)
+                {
+                    $masterFilePath = $getPath[0];
+                }
+            }else{
+                $masterFilePath = file_path("resources/views");
+            }
+        }
+
+        $masterFilePath = $masterFilePath."/".$masterfileName.".blade.php";
+
+        if(file_exists($masterFilePath))
+        {
+            ob_start();
+            require $masterFilePath;
+            return $page = ob_get_clean();
+        }
+        log_Error("View file does not exist.: ".$masterFilePath);
+        throw new \InvalidArgumentException("View file does not exist.");
     }
 
 
@@ -201,8 +231,13 @@ class BaseController
         {
             extract($param);
         }
-        ob_start();
-        require $file;
-        return ob_get_clean();
+       if(file_exists($file))
+       {
+           ob_start();
+           require $file;
+           return ob_get_clean();
+       }
+       log_Error("View file does not exist.: $file");
+       throw new \InvalidArgumentException("View file does not exist. $file");
     }
 }

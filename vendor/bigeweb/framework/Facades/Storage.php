@@ -7,8 +7,8 @@ class Storage
     public static function makeStorage($path)
     {
         if ($path) {
-            if (!is_dir(asset('storage/public/' . $path))) {
-                mkdir(asset('storage/public/' . $path), 0755, true);
+            if (!is_dir(file_path('storage/public/' . $path))) {
+                mkdir(file_path('storage/public/' . $path), 0755, true);
             }
             $storagePath = 'storage/public/' . $path . '/';
         } else {
@@ -21,12 +21,12 @@ class Storage
 
     public static function storeAs($path, $file, $name, $item = null)
     {
-        $destination_path = asset('public' . DIRECTORY_SEPARATOR . $path) . $name;
+        $destination_path = file_path('public' . DIRECTORY_SEPARATOR . $path) . $name;
         //check if the images are in array format
         //Then loop through and store else store as single
 
-        if (!is_dir(asset('public' . DIRECTORY_SEPARATOR . $path))) {
-            mkdir(asset('public/' . $path), 0755, true);
+        if (!is_dir(file_path('public' . DIRECTORY_SEPARATOR . $path))) {
+            mkdir(file_path('public/' . $path), 0755, true);
         }
 
 

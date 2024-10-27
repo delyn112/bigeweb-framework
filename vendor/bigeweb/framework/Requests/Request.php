@@ -1,6 +1,7 @@
 <?php
 
 namespace illuminate\Support\Requests;
+use illuminate\Support\Facades\Config;
 use illuminate\Support\Routes\Router;
 
 
@@ -90,7 +91,7 @@ Class Request
 
     public function path()
     {
-        return APP_URL.$_SERVER['REQUEST_URI'];
+        return (Config::get('app.url').$_SERVER['REQUEST_URI']);
     }
 }
 

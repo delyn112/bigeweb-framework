@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+$primary-body-color : #ffffff;
+$primary-text-color : #1c1c1c;
+$secondary-text-color : #ffffff;
+$primary-bg-color : #252020;
+$primary-font :  "Montserrat", serif;
+$secondary-font :  "Lato", serif;
+$tertiary-font :  "public sans", sans-serif;
+$small-font-size : 12px;
+$normal-font-size : 14px;
+$medium-font-size : 15px;
+$large-font-size : 18px;
+$xlarge-font-size : 20px;
+$xxlarge-font-size : 22px;
+$first-box-shadow:rgba(149, 157, 165, 0.2) 0px 8px 24px;
+$second-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+$border-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+$color-blue: #007bff; // Bright Blue
+$color-green: #28a745; // Green
+$color-orange: #ff5722; // Orange
+$color-purple: #6f42c1; // Purple
+$color-teal: #20c997; // Teal
+$color-red: #dc3545; // Dark Red
+$color-lightgray: #cfcfcf;
+
+
+*{
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+body{
+  background: $primary-body-color;
+  color: $primary-text-color;
+  font-family: $primary-font;
+  font-size: $normal-font-size;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.form-control,
+.form-control:focus,
+.form-select,
+.form-select:focus,
+.form-check-input,
+.form-check-input:focus{
+  outline: none !important;
+  border: 1px solid rgb(218, 218, 218);
+  box-shadow: none !important;
+}
+
+
+.form-control,
+.form-control:focus,
+.form-select,
+.form-select:focus{
+  border-radius: 0 !important;
+  font-size: $normal-font-size ;
+}
+
+.form-select,
+.chosen-container span,
+.chosen-container .chosen-results .active-result,
+.form-select option{
+  text-transform: capitalize !important;
+}
+
+.input-group-text,
+.form-control,
+.form-select{
+  font-size: 14px !important;
+  padding: 6px 10px;
+}
+
+
+
+
+.col-form-label,
+.form-check-label,
+.form-label{
+  font-size: $normal-font-size;
+  text-transform: capitalize;
+  font-weight: 500;
+  margin-bottom: 2px !important;
+}
+
+.col-form-label.astar::after,
+.form-check-label.astar::after,
+.form-label.astar::after
+{
+  content: '\2a';
+  font-weight: 900;
+  color: red;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+.btn{
+  outline: none;
+  box-shadow: none;
+  padding: 6px;
+  font-size: $normal-font-size;
+  text-transform: capitalize;
+  font-weight: 700;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn:focus{
+  border: none;
+  outline: none;
+}
+
+.spinner{
+  animation: spinBtn 2s infinite;
+  -webkit-animation: spinBtn 2s infinite;
+  margin-right: 5px;
+  display: none;
+}
+
+.btn .loading-text{
+  text-transform: capitalize;
+  font-weight: normal;
+  font-size: $normal-font-size;
+  display: none;
+}
+
+
+.status{
+  font-size: 13px;
+  text-transform: capitalize;
+  padding: 5px 10px;
+  border-radius: 6px;
+  display: flex;
+  width: max-content;
+}
+
+.status-invoiced,
+.status-active,
+.status-public,
+.status-completed,
+.status-paid,
+.status-success{
+  background-color: #d9fbd0 !important;
+  color: #1c6c09 !important;
+  border: 1px solid #bee8b4 !important;
+}
+
+.status-invoiced::after,
+.status-public::after,
+.status-active::after,
+.status-paid::after,
+.status-completed::after,
+.status-success::after{
+  content: '\f00c';
+  font-family: 'font Awesome 6 free';
+  font-weight: 900;
+  margin-left: 5px;
+}
+
+.status-awaiting_payment,
+.status-partial_payment,
+.status-draft,
+.status-inactive,
+.status-inactive,
+.status-deactivated,
+.status-warning{
+  background-color: #ffefca !important;
+  color: #bc3803 !important;
+  border: 1px solid #ffcc85 !important;
+}
+
+.status-awaiting_payment::after,
+.status-partial_payment::after,
+.status-inactive::after,
+.status-draft::after,
+.status-deactivated::after,
+.status-warning::after{
+  content: '\f017';
+  font-family: 'font Awesome 6 free';
+  font-weight: 900;
+  margin-left: 5px;
+}
+
+.status-refunded,
+.status-closed,
+.status-private,
+.status-hold,
+.status-banned,
+.status-terminated,
+.status-danger{
+  background-color: #ce6969 !important;
+  color: #f0f0f0 !important;
+  border: 1px solid #7a000060 !important;
+}
+
+
+
+.status-refunded::after,
+.status-closed::after,
+.status-private::after,
+.status-banned::after,
+.status-hold::after,
+.status-terminated::after,
+.status-danger::after{
+  content: '\f017';
+  font-family: 'font Awesome 6 free';
+  font-weight: 900;
+  margin-left: 5px;
+}
+
+
+.status-awaiting_payment,
+.status-awaiting_acceptance,
+.status-pending{
+  background-color: #1041ab !important;
+  color: #f0f0f0 !important;
+  border: 1px solid rgba(0, 1, 82, 0.38) !important;
+}
+
+.status-awaiting_payment::after,
+.status-awaiting_acceptance::after,
+.status-pending::after{
+  content: '\f017';
+  font-family: 'font Awesome 6 free';
+  font-weight: 900;
+  margin-left: 5px;
+}
+
+
+.alert-container{
+  overflow: hidden;
+}
+
+.alert-container .alert{
+  position: fixed;
+  top: 25px;
+  right: 10px;
+  width: 300px;
+  z-index: 2000;
+  min-height: max-content;
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0 , 0 , 0 ,0.2);
+  transition: 0.2s ease;
+  display: none;
+}
+
+.alert-container .alert.show{
+  display: block;
+  animation: fromLeft 1s forwards;
+  -webkit-animation: fromLeft 1s forwards;
+}
+
+.alert-container .alert .btn.close.alert-btn{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 0px;
+}
+
+.alert-container .alert .inner-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.alert-container .alert .inner-content .fa-solid{
+  margin-right: 10px;
+  font-size: 22px;
+}
+
+.alert-container .alert .inner-content .right-content{
+  width: 100%;
+}
+
+.alert-container .alert.alert-success{
+  border-left: 7px solid green;
+}
+
+
+.alert-container .alert.alert-danger{
+  border-left: 7px solid rgb(179, 59, 59);
+}
+
+
+.alert-container .alert.alert-warning{
+  border-left: 7px solid rgb(179, 151, 59);
+}
+
+
+
+.alert-container .alert .inner-content .title{
+  text-transform: capitalize;
+  text-align: left;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 2px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.alert-container .alert .inner-content .text{
+  font-weight: normal;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 2px;
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+
+#data-form .button,
+#data-form .action-wrapper-btn
+{
+  text-align: center;
+  padding: 10px;
+}
+
+#data-form .btn{
+  padding: 6px 10px;
+  text-transform: capitalize;
+  font-weight: bold;
+  border-radius: 2px;
+  font-size: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  transition: all 0.8s ease;
+  font-family: $tertiary-font;
+}
+
+
+#data-form .btn.create-btn
+{
+  background-color: $color-orange;
+  color: $secondary-text-color;
+}
+
+
+#data-form .btn.update-btn
+{
+  background-color: $color-teal;
+  color: $secondary-text-color;
+}
+
+
+#data-form .btn.link:hover,
+#data-form .btn.create-btn:hover{
+  transform: scale(0.9);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+
+#data-form input::placeholder
+{
+  color: #c1c1c1;
+  font-size: $small-font-size;
+}
+
+
+@keyframes spinBtn{
+  0%{
+    transform: rotate(0deg);
+  }
+
+  100%{
+    transform: rotate(360deg);
+  }
+}

@@ -38,8 +38,8 @@ class Response
      */
     public static function redirect(?string $url, int $status = 302)
     {
-        if (empty($url)) {
-            throw new InvalidArgumentException("A valid URL must be provided for redirection.");
+        if (empty($url) && $url != "") {
+            throw new \InvalidArgumentException("A valid URL must be provided for redirection.");
             file_put_contents('error.log', "A valid URL must be provided for redirection.", FILE_APPEND);
         }
 
@@ -62,10 +62,11 @@ class Response
             file_put_contents('error.log', "A valid URL must be provided for redirection.", FILE_APPEND);
         }
 
-        if(strpos($route, Config::get('app.url')) === false){
-            throw new \InvalidArgumentException("route is invalid.Use redirect instead");
-            file_put_contents('error.log', "url is invalid.Use redirect instead", FILE_APPEND);
-        }
+        $route = Route($route);
+//        if(strpos($route, Config::get('app.url')) === false){
+//            throw new \InvalidArgumentException("route is invalid.Use redirect instead");
+//            file_put_contents('error.log', "url is invalid.Use redirect instead", FILE_APPEND);
+//        }
 
         header('Location: ' . $route, true, $status);
         exit();
@@ -77,6 +78,14 @@ class Response
         $previousUrl  = $_SERVER['HTTP_REFERER'] ?? '';
 
         Response::redirect($previousUrl);
+    }
+
+    public static function json(array $data, int $status = 200)
+    {
+        http_response_code($status);
+       // header('Content-Type: application/json');
+        return json_encode($data);
+
     }
 
 }

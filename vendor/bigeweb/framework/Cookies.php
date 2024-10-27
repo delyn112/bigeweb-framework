@@ -1,6 +1,6 @@
 <?php
 
-namespace bigeweb;
+namespace illuminate\Support;
 
 use illuminate\Support\Facades\Config;
 
@@ -39,6 +39,7 @@ class Cookies
         {
             return $_COOKIE[self::$key];
         }
+        return null;
     }
 
     public static function destroy(string $key, mixed $value)

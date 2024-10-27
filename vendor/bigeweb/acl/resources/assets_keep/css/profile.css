@@ -1,0 +1,177 @@
+.profile-body-container .article-content .page-title h1{
+    font-size: 19px;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin-top: 2rem;
+    color: var(--bigebody-color);
+}
+
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed var(--secondary-border-color);
+}
+
+
+.profile-body-container .article-content .custom-content-wrapper .row .card{
+    height: 100%;
+    border: none;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .img-fluid{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-right: 15px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .info-wrap
+{
+    flex-grow: 1;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .info-wrap .title
+{
+    text-transform: capitalize;
+    font-weight: 500;
+    font-family: Poppins, sans-serif;
+    margin-bottom: 3px;
+    font-size: 20px;
+    letter-spacing: 0.3px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .info-wrap .text{
+    margin-bottom: 3px;
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .compensation-wrapper .label{
+    font-weight: 500;
+    text-transform: capitalize;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .compensation-wrapper .value{
+    text-transform: capitalize;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list{
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed var(--secondary-border-color);
+    margin-bottom: 10px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item .text-label,
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item .text-value{
+    margin-bottom: 3px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: start;
+    text-transform: capitalize;
+    font-family: Poppins, sans-serif;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item .text-label{
+    font-weight: 500;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item .text-label::after{
+    content: ':';
+    padding: 0 5px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card{
+    margin-top: 3rem;
+    border: none;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-header{
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-header .title{
+    font-size: 19px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-family: Poppins, sans-serif;
+    margin-bottom: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .form-label.astar::after{
+    content: '*';
+    font-size: 14px;
+    color: #dc3545;
+    padding: 0;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .action{
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .action .btn{
+    font-weight: bold;
+    background-color: #198754;
+    color: #ffffff;
+    padding: 5px 10px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .password-content-wrapper
+.form-control{
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 0;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .password-content-wrapper
+.wrap .btn{
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #f43975;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .password-content-wrapper
+.wrap .btn:hover{
+    background-color: #c50043;
+}
+
+@media screen and (max-width: 400px) {
+    .profile-body-container .article-content .custom-content-wrapper .content-header-wrapper{
+        flex-direction: column;
+    }
+
+    .profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .img-fluid{
+        margin-bottom: 10px;
+        width: 150px;
+        height: 150px;
+    }
+}

@@ -43,7 +43,7 @@ class Dispatcher
                     if(!empty($routegroup->routes[$global_method]["middleware"]))
                     {
                         //loop thought the middleware file and combine the values
-                        $middlewareFiles = require asset('app/Http/Kennel.php');
+                        $middlewareFiles = require file_path('app/Http/Kennel.php');
                       $middlewareToArray = [];
                       foreach($middlewareFiles as $middlewareString)
                       {

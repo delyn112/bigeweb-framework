@@ -16,6 +16,7 @@ trait DbConnection
     protected $connection;
     protected $table;
     protected $defaultQueryString;
+    protected $fillable = [];
 
     public function __construct()
     {
@@ -70,7 +71,7 @@ trait DbConnection
 
     public function connect()
     {
-        if(DB_NAME == null)
+        if($this->db_name == null)
         {
             $sqlData = "mysql:host=$this->db_host";
             try{

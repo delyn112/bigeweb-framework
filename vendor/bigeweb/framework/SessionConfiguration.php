@@ -76,11 +76,11 @@ class SessionConfiguration
 
         ini_set('session.save_path', $saveSession);
         ini_set('imagick.skip_version_check', true);
+
 // Apply all the session cookie settings without ini_set() for maximum portability:
 //session_name($session_cookie_name);
 //session_set_cookie_params($session_cookie_options); // Since PHP 7.3 only
         session_start();
-
     }
 
 }

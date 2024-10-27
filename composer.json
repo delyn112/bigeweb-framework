@@ -14,14 +14,20 @@
         "ext-curl": "*",
         "ext-pdo": "*",
         "symfony/var-dumper": "6.4.x-dev",
-        "bigeweb/email" : "*"
+        "bigeweb/authentication" : "*",
+        "bigeweb/acl" : "*",
+        "nesbot/carbon": "^3.0@dev"
     },
     "repositories" : [
         {"type" :  "vcs",
         "url" :  "https://github.com/delyn112/bigeweb-framework"},
         {
             "type": "path",
-            "url": "Webroot/Admin/Email"
+            "url": "Packages/Authentication"
+        },
+        {
+            "type": "path",
+            "url": "Packages/Acl"
         }
     ],
     "license": "MIT",
@@ -49,7 +55,8 @@
         },
         "ignore-platform-reqs": true,
         "allow-plugins": {
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "bigeweb/authentication": true
         }
     }
 }

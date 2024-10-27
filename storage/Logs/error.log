@@ -1,1 +1,64 @@
 Wed, 23 Oct 2024 05:29:37 - Configuration file not found: Bigeweb\Email\Providers\EmailServiceProviders
+Thu, 24 Oct 2024 10:01:44 - View file does not exist.: C:/xampp/htdocs/Bigeweb-Projects/framework/app/Providers/../../resources/views/Layouts/master.blades.php
+Thu, 24 Oct 2024 06:58:27 - Configuration file not found: Bigeweb\Authentication\src\Providers\AuthenticationServiceProvider
+Thu, 24 Oct 2024 06:58:30 - Configuration file not found: Bigeweb\Authentication\src\Providers\AuthenticationServiceProvider
+Thu, 24 Oct 2024 06:58:33 - Configuration file not found: Bigeweb\Authentication\src\Providers\AuthenticationServiceProvider
+Thu, 24 Oct 2024 06:59:14 - Configuration file not found: Bigeweb\Authentication\src\Providers\AuthenticationServiceProvider
+Thu, 24 Oct 2024 07:00:36 - Configuration file not found: Bigeweb\Authentication\src\Providers\AuthenticationServiceProvider
+Thu, 24 Oct 2024 07:00:38 - Configuration file not found: Bigeweb\Authentication\src\Providers\AuthenticationServiceProvider
+Thu, 24 Oct 2024 07:01:38 - Configuration file not found: C:\xampp\htdocs\Bigeweb-Projects\framework\Packages\Authentication\src\Providers/../config/email.php
+Thu, 24 Oct 2024 17:39:30 - Request view is not found
+Thu, 24 Oct 2024 17:43:16 - View file does not exist.
+Thu, 24 Oct 2024 17:43:47 - View file does not exist.
+Thu, 24 Oct 2024 17:46:08 - View file does not exist.
+Thu, 24 Oct 2024 17:46:10 - View file does not exist.
+Thu, 24 Oct 2024 17:46:24 - View file does not exist.
+Thu, 24 Oct 2024 17:46:26 - View file does not exist.
+Thu, 24 Oct 2024 17:54:33 - View file does not exist.
+Thu, 24 Oct 2024 17:55:13 - View file does not exist.
+Thu, 24 Oct 2024 18:00:38 - View file does not exist.
+Thu, 24 Oct 2024 18:03:22 - View file does not exist.
+Thu, 24 Oct 2024 18:43:26 - Request view is not found
+Thu, 24 Oct 2024 19:20:45 - Request view is not found
+Thu, 24 Oct 2024 22:40:13 - Request view is not found
+Thu, 24 Oct 2024 22:50:07 - Function up does not exist in class app\database\migrations\migration_001
+Thu, 24 Oct 2024 22:52:27 - Function up does not exist in class app\database\migrations\migration_001
+Thu, 24 Oct 2024 22:52:29 - Function up does not exist in class app\database\migrations\migration_001
+Thu, 24 Oct 2024 23:22:37 - Method up return null value instead of string in: app\database\migrations\Activation
+Thu, 24 Oct 2024 23:23:06 - Method up return null value instead of string in: app\database\migrations\Activation
+Thu, 24 Oct 2024 23:24:26 - Method up return null value instead of string in: app\database\migrations\Activation
+Thu, 24 Oct 2024 23:24:27 - Method up return null value instead of string in: app\database\migrations\Activation
+Thu, 24 Oct 2024 23:58:57 - Class app\database\migrations\migration_0001 does not exist
+Fri, 25 Oct 2024 08:26:30 - Class Bigeweb\Authentication\database\migrations does not exist
+Fri, 25 Oct 2024 09:23:00 - Class Bigeweb\Authentication\database\migrations\TestMigration does not have up
+Fri, 25 Oct 2024 09:23:01 - Class Bigeweb\Authentication\database\migrations\TestMigration does not have up
+Fri, 25 Oct 2024 11:38:21 - View file does not exist.
+Fri, 25 Oct 2024 11:42:54 - View file does not exist.
+Fri, 25 Oct 2024 19:08:40 - View file does not exist.: C:/xampp/htdocs/Bigeweb-Projects/framework/Packages/Acl/src/Providers/../../resources/views/Layouts/master.blade.php
+Fri, 25 Oct 2024 19:09:17 - View file does not exist.
+Fri, 25 Oct 2024 19:13:39 - View file does not exist.
+Fri, 25 Oct 2024 19:20:16 - View file does not exist.: C:/xampp/htdocs/Bigeweb-Projects/framework/Packages/Acl/src/Providers/../../resources/views/Layouts/master.blade.php
+Fri, 25 Oct 2024 19:24:16 - View file does not exist.
+Fri, 25 Oct 2024 19:33:43 - View file does not exist.
+Fri, 25 Oct 2024 19:34:22 - View file does not exist.
+Fri, 25 Oct 2024 19:52:15 - View file does not exist.
+Fri, 25 Oct 2024 19:53:50 - View file does not exist.: C:/xampp/htdocs/Bigeweb-Projects/framework/Packages/Acl/src/Providers/../../resources/views/Layouts/master.blade.php
+Fri, 25 Oct 2024 19:54:21 - View file does not exist.: C:/xampp/htdocs/Bigeweb-Projects/framework/Packages/Acl/src/Providers/../../resources/views/Layouts/master.blade.php
+Fri, 25 Oct 2024 19:54:50 - View file does not exist.: C:/xampp/htdocs/Bigeweb-Projects/framework/Packages/Acl/src/Providers/../../resources/views/Layouts/master.blade.php
+Fri, 25 Oct 2024 19:55:47 - View file does not exist.: C:/xampp/htdocs/Bigeweb-Projects/framework/Packages/Acl/src/Providers/../../resources/views/Layouts/master.blade.php
+Fri, 25 Oct 2024 19:55:48 - View file does not exist.: C:/xampp/htdocs/Bigeweb-Projects/framework/Packages/Acl/src/Providers/../../resources/views/Layouts/master.blade.php
+Fri, 25 Oct 2024 20:11:17 - View file does not exist.: /Layouts/master.blade.php
+Fri, 25 Oct 2024 21:48:19 - View file does not exist.: C:\xampp\htdocs\Bigeweb-Projects\framework/resources\views/C:\xampp\htdocs\Bigeweb-Projects\framework/resources\views/Layouts/master.blade.php.blade.php
+Sat, 26 Oct 2024 00:43:47 - Request view is not found
+Sat, 26 Oct 2024 00:43:51 - Request view is not found
+Sat, 26 Oct 2024 00:59:50 - Request view is not found
+Sat, 26 Oct 2024 00:59:58 - Request view is not found
+Sat, 26 Oct 2024 08:42:28 - Request view is not found
+Sat, 26 Oct 2024 09:17:52 - Request view is not found
+Sat, 26 Oct 2024 18:08:44 - session_alert View file does not exist in C:\xampp\htdocs\Bigeweb-Projects\framework/resources\views
+Sat, 26 Oct 2024 18:08:53 - session_alert View file does not exist in C:\xampp\htdocs\Bigeweb-Projects\framework/resources\views
+Sat, 26 Oct 2024 18:29:30 - session_alert View file does not exist in C:\xampp\htdocs\Bigeweb-Projects\framework/resources\views
+Sat, 26 Oct 2024 19:01:24 - Request view is not found
+Sun, 27 Oct 2024 07:11:59 - Request view is not found
+Sun, 27 Oct 2024 07:29:41 - profile View file does not exist in C:/xampp/htdocs/Bigeweb-Projects/framework/Packages/Authentication/src/Providers/../../resources/views
+Mon, 28 Oct 2024 00:24:46 - verification_email View file does not exist in C:\xampp\htdocs\Bigeweb-Projects\framework/resources\views

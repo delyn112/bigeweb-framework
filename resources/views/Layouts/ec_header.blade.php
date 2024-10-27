@@ -13,5 +13,7 @@
     <meta name="canonical" content="<?= url('') ?>">
     <link rel="stylesheet" href="<?= assets('/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= assets('/css/app.css') ?>">
+    <link rel="stylesheet" href="<?= assets('/css/pkg.css') ?>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>

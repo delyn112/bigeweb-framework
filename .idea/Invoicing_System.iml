@@ -6,6 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/config" isTestSource="false" packagePrefix="config\" />
       <sourceFolder url="file://$MODULE_DIR$/database" isTestSource="false" packagePrefix="app\database\" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/bigeweb/framework" isTestSource="false" packagePrefix="illuminate\Support\" />
+      <sourceFolder url="file://$MODULE_DIR$/Packages/Authentication/database/migrations" isTestSource="false" packagePrefix="Bigeweb\Authentication\database\migrations\" />
+      <sourceFolder url="file://$MODULE_DIR$/Packages/Authentication/src" isTestSource="false" packagePrefix="Bigeweb\Authentication\" />
+      <sourceFolder url="file://$MODULE_DIR$/Webroot/Admin/Email/src" isTestSource="false" packagePrefix="Bigeweb\Email\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bigeweb/framework" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
@@ -46,8 +49,34 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bigeweb/email" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bigeweb/authentication" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bigeweb/viewsLocation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/justinrainbow/json-schema" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/seld/jsonlint" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/seld/phar-utils" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/seld/signal-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php73" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php81" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/Packages/Authentication/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/Webroot/Admin/Email/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bigeweb/acl" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bigeweb/migrationsLocation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/carbonphp/carbon-doctrine-types" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

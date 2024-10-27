@@ -22,3 +22,21 @@ function open_menu_header(event, btn)
         }
     }
 }
+
+
+function toggleMainDropdown()
+{
+    let dropDownbtn = document.querySelectorAll(".dropdown-btn");
+
+    if(dropDownbtn.length > 0)
+    {
+        dropDownbtn.forEach((btn) => {
+            btn.classList.remove("active");
+            btn.addEventListener("click", function (event)
+            {
+                event.currentTarget.closest(".item.dropdown").querySelector(".dropdown-content")
+                    .classList.toggle("active");
+            })
+        })
+    }
+}toggleMainDropdown();
