@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'bigeweb/bigeweb-framework',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'fac73c1df2c4f627a87f3e66236906534c72f60a',
+        'pretty_version' => '1.4.0',
+        'version' => '1.4.0.0',
+        'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'bigeweb/bigeweb-framework' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'fac73c1df2c4f627a87f3e66236906534c72f60a',
+            'pretty_version' => '1.4.0',
+            'version' => '1.4.0.0',
+            'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -60,7 +60,7 @@
         'composer/class-map-generator' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '98bbf6780e56e0fd2404fe4b82eb665a0f93b783',
+            'reference' => 'a269b12560196690596ac2c4df9b6440af88d9a4',
             'type' => 'library',
             'install_path' => __DIR__ . '/./class-map-generator',
             'aliases' => array(
@@ -71,7 +71,7 @@
         'composer/composer' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '186d78cde397a3f4adbd600d61e5d4b85dbf7832',
+            'reference' => 'fa5b361f34d9841d724772a4d67ce86b62c7fa26',
             'type' => 'library',
             'install_path' => __DIR__ . '/./composer',
             'aliases' => array(
@@ -466,7 +466,7 @@
         'sabberworm/php-css-parser' => array(
             'pretty_version' => 'v8.x-dev',
             'version' => '8.9999999.9999999.9999999-dev',
-            'reference' => '81582a72cc937beb986b5206e834314c00ddf388',
+            'reference' => 'f414ff953002a9b18e3a116f5e462c56f21237cf',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
             'aliases' => array(),
@@ -559,7 +559,7 @@
         'symfony/filesystem' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => 'd4524462b56a7d78f7aab2e6c0938691baba3522',
+            'reference' => '4856c9cf585d5a0313d8d35afd681a526f038dd3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/filesystem',
             'aliases' => array(),
@@ -612,7 +612,7 @@
         'symfony/mime' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '108ffe36b41cdf56717d2c3f07f4a61410e8ece0',
+            'reference' => '1de1cf14d99b12c7ebbb850491ec6ae3ed468855',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/mime',
             'aliases' => array(),

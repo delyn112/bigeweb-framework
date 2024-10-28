@@ -232,12 +232,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "98bbf6780e56e0fd2404fe4b82eb665a0f93b783"
+                "reference": "a269b12560196690596ac2c4df9b6440af88d9a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/98bbf6780e56e0fd2404fe4b82eb665a0f93b783",
-                "reference": "98bbf6780e56e0fd2404fe4b82eb665a0f93b783",
+                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/a269b12560196690596ac2c4df9b6440af88d9a4",
+                "reference": "a269b12560196690596ac2c4df9b6440af88d9a4",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +253,7 @@
                 "phpunit/phpunit": "^8",
                 "symfony/filesystem": "^5.4 || ^6"
             },
-            "time": "2024-10-03T18:14:00+00:00",
+            "time": "2024-10-27T21:14:57+00:00",
             "default-branch": true,
             "type": "library",
             "extra": {
@@ -284,7 +284,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/class-map-generator/issues",
-                "source": "https://github.com/composer/class-map-generator/tree/1.4.0"
+                "source": "https://github.com/composer/class-map-generator/tree/main"
             },
             "funding": [
                 {
@@ -309,12 +309,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "186d78cde397a3f4adbd600d61e5d4b85dbf7832"
+                "reference": "fa5b361f34d9841d724772a4d67ce86b62c7fa26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/186d78cde397a3f4adbd600d61e5d4b85dbf7832",
-                "reference": "186d78cde397a3f4adbd600d61e5d4b85dbf7832",
+                "url": "https://api.github.com/repos/composer/composer/zipball/fa5b361f34d9841d724772a4d67ce86b62c7fa26",
+                "reference": "fa5b361f34d9841d724772a4d67ce86b62c7fa26",
                 "shasum": ""
             },
             "require": {
@@ -353,7 +353,7 @@
                 "ext-zip": "Enabling the zip extension allows you to unzip archives",
                 "ext-zlib": "Allow gzip compression of HTTP requests"
             },
-            "time": "2024-10-24T09:38:45+00:00",
+            "time": "2024-10-28T12:32:20+00:00",
             "default-branch": true,
             "bin": [
                 "bin/composer"
@@ -2858,12 +2858,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MyIntervals/PHP-CSS-Parser.git",
-                "reference": "81582a72cc937beb986b5206e834314c00ddf388"
+                "reference": "f414ff953002a9b18e3a116f5e462c56f21237cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/81582a72cc937beb986b5206e834314c00ddf388",
-                "reference": "81582a72cc937beb986b5206e834314c00ddf388",
+                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/f414ff953002a9b18e3a116f5e462c56f21237cf",
+                "reference": "f414ff953002a9b18e3a116f5e462c56f21237cf",
                 "shasum": ""
             },
             "require": {
@@ -2876,7 +2876,7 @@
             "suggest": {
                 "ext-mbstring": "for parsing UTF-8 CSS"
             },
-            "time": "2024-10-24T16:10:52+00:00",
+            "time": "2024-10-27T17:38:32+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -3517,12 +3517,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "d4524462b56a7d78f7aab2e6c0938691baba3522"
+                "reference": "4856c9cf585d5a0313d8d35afd681a526f038dd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/d4524462b56a7d78f7aab2e6c0938691baba3522",
-                "reference": "d4524462b56a7d78f7aab2e6c0938691baba3522",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/4856c9cf585d5a0313d8d35afd681a526f038dd3",
+                "reference": "4856c9cf585d5a0313d8d35afd681a526f038dd3",
                 "shasum": ""
             },
             "require": {
@@ -3533,7 +3533,7 @@
             "require-dev": {
                 "symfony/process": "^5.4|^6.4|^7.0"
             },
-            "time": "2024-10-09T08:40:40+00:00",
+            "time": "2024-10-25T15:07:50+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3914,12 +3914,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "108ffe36b41cdf56717d2c3f07f4a61410e8ece0"
+                "reference": "1de1cf14d99b12c7ebbb850491ec6ae3ed468855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/108ffe36b41cdf56717d2c3f07f4a61410e8ece0",
-                "reference": "108ffe36b41cdf56717d2c3f07f4a61410e8ece0",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/1de1cf14d99b12c7ebbb850491ec6ae3ed468855",
+                "reference": "1de1cf14d99b12c7ebbb850491ec6ae3ed468855",
                 "shasum": ""
             },
             "require": {
@@ -3945,7 +3945,7 @@
                 "symfony/property-info": "^5.4|^6.0|^7.0",
                 "symfony/serializer": "^6.4.3|^7.0.3"
             },
-            "time": "2024-09-25T14:18:03+00:00",
+            "time": "2024-10-25T15:07:50+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
