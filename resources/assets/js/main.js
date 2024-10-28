@@ -40,3 +40,28 @@ function toggleMainDropdown()
         })
     }
 }toggleMainDropdown();
+
+
+document.addEventListener("click", function (event)
+{
+    let dropdownsElement = document.querySelectorAll(".dropdown-btn");
+    if(dropdownsElement.length > 0) {
+        let DropdownClicked = false;
+        dropdownsElement.forEach((dropdown) => {
+            if (dropdown.contains(event.target)) {
+                DropdownClicked = true;
+            }
+
+
+            if(!DropdownClicked)
+            {
+                dropdownsElement.forEach((dropdown) =>{
+                    if(dropdown.closest(".item.dropdown").querySelector(".dropdown-content").classList.contains("active"))
+                    {
+                        dropdown.closest(".item.dropdown").querySelector(".dropdown-content").classList.remove("active");
+                    }
+                });
+            }
+        });
+    }
+})

@@ -154,6 +154,66 @@ function videoUpload(event) {
 
 
 $(document).on("click", ".rm-button.remove-current-img", function (event) {
-    let files = $(this).closest(".thumbnail-element").find("input[type='file']");
-    console.log(files);
+    let self = this;
+    let fileInput = $(this).closest(".thumbnail-element").find("input[type='file']");
+    let fileArray = fileInput[0].files;
+
+
+    // Get the index of the clicked element
+    let clickedIndex = $(self).closest(".element").index();
+
+   let dataTransfer = new DataTransfer();
+
+       for(let i=0; i < fileArray.length; i++)
+       {
+            if(i !== clickedIndex)
+            {
+                dataTransfer.items.add(fileArray[i]);
+            }
+       }
+
+    fileInput[0].files = dataTransfer.files;
+       //get the elements
+       let Elements = self.closest(".thumbnail-preview-content.active").querySelectorAll(".element");
+
+       if(Elements.length > 1)
+       {
+           self.closest(".element").remove();
+           return;
+       }else{
+           self.closest(".element").remove();
+
+           let newElement = document.createElement("div");
+           newElement.classList.add("element");
+           newElement.setAttribute("id", "removeable");
+
+           let newSpan = document.createElement("span");
+           newSpan.classList.add("rm-button", "remove-current-img");
+
+           let newTag = document.createElement("i");
+           newTag.classList.add("fa-solid", "fa-xmark");
+
+           newSpan.appendChild(newTag);
+            newElement.appendChild(newSpan);
+
+           let newSpan2 = document.createElement("span");
+           newSpan2.classList.add("text");
+
+           newElement.appendChild(newSpan2);
+
+           let img = document.createElement("img");
+           img.classList.add("img-fluid");
+           newElement.appendChild(img);
+
+           self.closest(".thumbnail-preview-content.active").appendChild(newElement);
+
+           //remove old input from database
+           let oldElement = self.closest(".thumbnail-preview-content.active").querySelectorAll(".old_element");
+           let oldElementInput = oldElement.querySelectorAll("input[type='text']");
+           if(oldElementInput > 0)
+           {
+               oldElementInput[clickedIndex].setAttribute("name", "");
+               oldElementInput[clickedIndex].setAttribute("id", "");
+           }
+       }
 });

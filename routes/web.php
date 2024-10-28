@@ -8,5 +8,3 @@ Route::get('/', [
     DashboardController::class, 'index'
 ])->name('home');
 
-
-

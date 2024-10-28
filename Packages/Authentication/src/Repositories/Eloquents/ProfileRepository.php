@@ -29,7 +29,7 @@ class ProfileRepository implements ProfileRepositoryInterface
 
     public function update($request, $id)
     {
-        $image = null;
+        $image = $request->input("old_photo");
         if($request->file("photo"))
         {
             $image = (new ImageUploadFacade())->upload_image($request, $request->file("photo"), 'profile_pictures');

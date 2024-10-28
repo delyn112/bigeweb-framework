@@ -33,6 +33,11 @@ class VerifyEmailController extends Controller
     public function create()
     {
         $user = Auth::user();
+        if($user->email_verified_at !== null)
+        {
+            Session::flash("success", "Your email has been verified.");
+            return Response::redirectBack();
+        }
         (new VerifyEmailEvent())->Notification($user, route('confirm-verify-email', [
             "token" => $user->token,
             "id" => $user->id,

@@ -106,11 +106,12 @@
                                                   <div class="container-fluid p-0">
                                                       <label for="profile-photo" class="form-label">profile photo</label>
                                                       <div class="thumbnail-element">
-                                                          <div class="thumbnail-preview-content">
+                                                          <div class="thumbnail-preview-content <?= $user->avatar ? 'active' : null; ?>">
                                                               <div class="element" id="removeable">
                                                                   <span class="rm-button remove-current-img"><i class="fa-solid fa-xmark"></i></span>
                                                                   <span class="text">pics.jpg</span>
-                                                                   <img src="" alt="" class="img-fluid">
+                                                                  <input type="text" class="form-control" name="old_photo" id="old_photo" value="<?= $user->avatar ?>" hidden="">
+                                                                   <img src="<?= assets($user->avatar) ?>" alt="profile photo" class="img-fluid">
                                                               </div>
                                                           </div>
                                                           <div class="upload-wrapper">
