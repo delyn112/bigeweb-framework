@@ -3,6 +3,7 @@
 namespace illuminate\Support\Mail\Traits;
 
 
+use illuminate\Support\Facades\Config;
 use PHPMailer\PHPMailer\PHPMailer;
 
 trait EmailTrait
@@ -22,15 +23,15 @@ trait EmailTrait
 
     protected function initializeMail()
     {
-        $this->mailer = env('MAIL_MAILER', 'smtp');
-        $this->host = env('MAIL_HOST');
-        $this->port = env('MAIL_PORT');
-        $this->username = env('MAIL_USERNAME');
-        $this->password = env('MAIL_PASSWORD');
-        $this->senderName = env('MAIL_FROM_NAME');
-        $this->senderEmail = env('MAIL_FROM_ADDRESS');
-        $this->isSecure = env('MAIL_ENCRYPTION');
-        $this->replyTo = env('MAIL_REPLY_TO');
+        $this->mailer = Config::get('email.setup.mailer');
+        $this->host = Config::get('email.setup.host');
+        $this->port = Config::get('email.setup.port');
+        $this->username = Config::get('email.setup.username');
+        $this->password = Config::get('email.setup.password');
+        $this->senderName = Config::get('email.setup.from_name');
+        $this->senderEmail = Config::get('email.setup.from');
+        $this->isSecure = Config::get('email.setup.encryption');
+        $this->replyTo = Config::get('email.setup.reply_to');
         $this->mailSource = new PHPMailer(true);
     }
 }

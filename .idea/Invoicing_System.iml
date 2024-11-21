@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Packages/Authentication/database/migrations" isTestSource="false" packagePrefix="Bigeweb\Authentication\database\migrations\" />
       <sourceFolder url="file://$MODULE_DIR$/Packages/Authentication/src" isTestSource="false" packagePrefix="Bigeweb\Authentication\" />
       <sourceFolder url="file://$MODULE_DIR$/Webroot/Admin/Email/src" isTestSource="false" packagePrefix="Bigeweb\Email\" />
+      <sourceFolder url="file://$MODULE_DIR$/database/migrations" isTestSource="false" packagePrefix="database\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bigeweb/framework" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />

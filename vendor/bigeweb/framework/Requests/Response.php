@@ -13,7 +13,7 @@ class Response
         private int    $statusCode = 200,
         private array  $header = [
             'Content-Type: text/html',
-           'Cache-Control: no-cache',
+            'Cache-Control: no-cache',
             'Set-Cookie: sessionId=12345; Path=/',
             'Expires: Thu, 01 Dec 2022 16:00:00 GMT',
             'ETag: "abc123"',
@@ -77,13 +77,14 @@ class Response
     {
         $previousUrl  = $_SERVER['HTTP_REFERER'] ?? '';
 
-        Response::redirect($previousUrl);
+        header('Location: ' . $previousUrl, true, 302);
+        exit();
     }
 
     public static function json(array $data, int $status = 200)
     {
         http_response_code($status);
-       // header('Content-Type: application/json');
+        // header('Content-Type: application/json');
         return json_encode($data);
 
     }

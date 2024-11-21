@@ -7,8 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'illuminate\\Support\\' => array($vendorDir . '/bigeweb/framework'),
+    'database\\' => array($baseDir . '/database/migrations'),
     'config\\' => array($baseDir . '/config'),
-    'app\\database\\' => array($baseDir . '/database'),
     'ZipStream\\' => array($vendorDir . '/maennchen/zipstream-php/src'),
     'Symfony\\Polyfill\\Php83\\' => array($vendorDir . '/symfony/polyfill-php83'),
     'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),

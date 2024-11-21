@@ -39,21 +39,22 @@ class BaseController
             $this->fileName = $viewFile;
         }
 
-
+        $filePath = file_path("resources/views");
         foreach($this->viewFrom as $viewFilePath)
         {
-            $pathToArray = explode("::", $viewFilePath);
-
-            //check if the name of the key is present
-            if(count($pathToArray) > 1 && $pathToArray[1] == $this->fileKey)
+            if(strpos($viewFilePath, "::") !== false)
             {
-                $this->filePath = $pathToArray[0];
-            }else{
-                $this->filePath = file_path("resources/views");
+                $pathToArray = explode("::", $viewFilePath);
+                //check if the name of the key is present
+                if(count($pathToArray) > 1 && $pathToArray[1] == $this->fileKey)
+                {
+                    $filePath = $pathToArray[0];
+                }
+
             }
         }
 
-        return $this->filePath;
+        return($filePath);
     }
 
 
@@ -221,7 +222,7 @@ class BaseController
             return $page = ob_get_clean();
         }
         log_Error("View file does not exist.: ".$masterFilePath);
-        throw new \InvalidArgumentException("View file does not exist.");
+        throw new \InvalidArgumentException("View $masterFilePath file does not exist.");
     }
 
 
@@ -231,13 +232,13 @@ class BaseController
         {
             extract($param);
         }
-       if(file_exists($file))
-       {
-           ob_start();
-           require $file;
-           return ob_get_clean();
-       }
-       log_Error("View file does not exist.: $file");
-       throw new \InvalidArgumentException("View file does not exist. $file");
+        if(file_exists($file))
+        {
+            ob_start();
+            require $file;
+            return ob_get_clean();
+        }
+        log_Error("View file does not exist.: $file");
+        throw new \InvalidArgumentException("View file does not exist. $file");
     }
 }

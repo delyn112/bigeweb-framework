@@ -19,35 +19,51 @@ class Config
         }
     }
 
-     public static function get(string $key, $default = null)
-     {
-         $configSearchKey = explode('.', $key);
+    public static function get(string $key, $default = null)
+    {
+        $configSearchKey = explode('.', $key);
 
-         // Check if the key is properly formatted
-         if (count($configSearchKey) <= 1) {
-             file_put_contents('error.log', "Configuration key is required", FILE_APPEND);
-             throw new \Exception("Configuration key is required", http_response_code("404"));
-         }
+        // Check if the key is properly formatted
+        if (count($configSearchKey) < 2) {
+            file_put_contents('error.log', "Configuration key is required", FILE_APPEND);
+            throw new \Exception("Configuration key is required", http_response_code(404));
+        }
 
-         $filename = $configSearchKey[0] . '.php';
-         $configKey = $configSearchKey[1];
+        $filename = $configSearchKey[0] . '.php';
 
-            foreach (self::$config as $configFileKey => $configFileValue)
-             {
-                 // Extract the filename from the path
-                $getCurrentFile = explode('/', $configFileValue);
-                $CurrentFile = end($getCurrentFile);
+        // Loop through the configuration files
+        foreach (self::$config as $configFileKey => $configFileValue) {
+            // Extract the filename from the path
+            $getCurrentFile = explode('/', $configFileValue);
+            $currentFile = end($getCurrentFile);
 
-                if($CurrentFile == $filename)
-                {
-                    $config = require $configFileValue;
-                    // Check if the key exists in the loaded configuration
-                    if(isset($configKey))
-                    {
-                        return $config[$configKey];
+            // Check if the current file matches the desired filename
+            if ($currentFile == $filename) {
+                // Load the configuration
+                $config = require $configFileValue;
+
+                // Navigate through the nested configuration using the keys
+                foreach ($configSearchKey as $index => $k) {
+                    // Skip the first part since it's the filename
+                    if ($index === 0) {
+                        continue;
+                    }
+
+                    // If the key exists, update the config to be the next level down
+                    if (isset($config[$k])) {
+                        $config = $config[$k];
+                    } else {
+                        // If the key doesn't exist, return the default value
+                        return $default;
                     }
                 }
-             }
-             return $default;
-     }
+
+                // Return the final value found in the config
+                return $config;
+            }
+        }
+
+        // If the configuration file was not found, return the default value
+        return $default;
+    }
 }

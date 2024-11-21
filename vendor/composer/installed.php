@@ -49,7 +49,7 @@
         'composer/ca-bundle' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '66457b8698063a414b782c859b6d3bac3dc357b3',
+            'reference' => '3b1fc3f0be055baa7c6258b1467849c3e8204eb2',
             'type' => 'library',
             'install_path' => __DIR__ . '/./ca-bundle',
             'aliases' => array(
@@ -71,7 +71,7 @@
         'composer/composer' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'fa5b361f34d9841d724772a4d67ce86b62c7fa26',
+            'reference' => '9fb833f97e59b6af886fd5d5c3f0a81012a61bf5',
             'type' => 'library',
             'install_path' => __DIR__ . '/./composer',
             'aliases' => array(
@@ -93,7 +93,7 @@
         'composer/pcre' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '63aaeac21d7e775ff9bc9d45021e1745c97521c4',
+            'reference' => 'deb3871d20d5012eb5faa5a9caa71c44f151db49',
             'type' => 'library',
             'install_path' => __DIR__ . '/./pcre',
             'aliases' => array(
@@ -254,7 +254,7 @@
         'nesbot/carbon' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '5040f2911da70932682ea64895e0ca8e80c21078',
+            'reference' => '901a6988edbc6f469896b3fd991935ce2560ae2f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nesbot/carbon',
             'aliases' => array(
@@ -306,7 +306,7 @@
         'phpmailer/phpmailer' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '611235697c399a2f15137e994892c4126cab6948',
+            'reference' => '561609ac2ebae1b3ec1b636a38bf174d8de12955',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpmailer/phpmailer',
             'aliases' => array(
@@ -317,7 +317,7 @@
         'phpoffice/phpspreadsheet' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '8799a041a0008bac21acd9367655812aeded68af',
+            'reference' => 'c01b94b2421220c2a7dc2c1634823d739985efd4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(
@@ -457,7 +457,7 @@
         'react/promise' => array(
             'pretty_version' => '3.x-dev',
             'version' => '3.9999999.9999999.9999999-dev',
-            'reference' => '8a164643313c71354582dc850b42b33fa12a4b63',
+            'reference' => '5f80055cc21ba7bcd3989e4902061fc12e2bcc1d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../react/promise',
             'aliases' => array(),
@@ -466,7 +466,7 @@
         'sabberworm/php-css-parser' => array(
             'pretty_version' => 'v8.x-dev',
             'version' => '8.9999999.9999999.9999999-dev',
-            'reference' => 'f414ff953002a9b18e3a116f5e462c56f21237cf',
+            'reference' => '6098beefbd0501d708c478af51ccd0f1ce5e275a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
             'aliases' => array(),
@@ -513,7 +513,7 @@
         'symfony/console' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => 'f793dd5a7d9ae9923e35d0503d08ba734cec1d79',
+            'reference' => 'f1fc6f47283e27336e7cebb9e8946c8de7bff9bd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -577,7 +577,7 @@
         'symfony/http-client' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '509d0e8a798bf5e41e0b6317e9bce1140af47376',
+            'reference' => '13b1d5b46ac3375927012a861675e05821d9bef5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/http-client',
             'aliases' => array(),
@@ -586,7 +586,7 @@
         'symfony/http-client-contracts' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '075fadd18649068440dae4667a0ab98293535235',
+            'reference' => '7917bba9674e386bc2726c4bb9ad5440f7831d66',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/http-client-contracts',
             'aliases' => array(
@@ -702,7 +702,7 @@
         'symfony/process' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '1f9f59b46880201629df3bd950fc5ae8c55b960f',
+            'reference' => '3cb242f059c14ae08591c5c4087d1fe443564392',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
@@ -722,7 +722,7 @@
         'symfony/string' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '38371c60c71c72b3d64d8d76f6b1bb81a2cc3627',
+            'reference' => '73a5e66ea2e1677c98d4449177c5a9cf9d8b4c6f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/string',
             'aliases' => array(),
@@ -757,7 +757,7 @@
         'symfony/var-dumper' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '2acb151474ed8cb43624e3f41a0bf7c4c8ce4f41',
+            'reference' => '38254d5a5ac2e61f2b52f9caf54e7aa3c9d36b80',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),

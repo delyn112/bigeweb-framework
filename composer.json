@@ -37,7 +37,7 @@
             "Bigeweb\\App\\": "app/",
             "illuminate\\Support\\": "vendor/bigeweb/framework/",
             "config\\": "config",
-            "app\\database\\" : "database"
+            "database\\" : "database/migrations/"
         },
         "files" : [
             "config/Constant_Func.php"

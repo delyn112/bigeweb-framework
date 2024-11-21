@@ -70,6 +70,7 @@ class VerifyEmailController extends Controller
             "uuid" => null,
             "expiry_date" => null,
             "email_verified_at" => Carbon::now(),
+            "force_email_verify" => null,
         ]);
 
         (new EmailVerifiedConfirmationEvent())->Notification();

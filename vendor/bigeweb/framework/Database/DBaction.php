@@ -14,9 +14,10 @@ trait DBaction
             $this->statement = $this->getConnection()->prepare($this->statement);
                 $this->statement->execute();
             return $this->statement->fetchAll(\PDO::FETCH_OBJ);
-        }else{
-            return redirect(route('install-system'));
         }
+
+        log_Error("No connection to database");
+        throw new \Exception("No connection to database");
     }
 
     /**

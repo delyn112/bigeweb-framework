@@ -1,14 +1,14 @@
 $(document).on("change", ".photo-uploader, .video-uploader", function (event){
-   const self = $(this);
-   const fileInput = self[0];
+    const self = $(this);
+    const fileInput = self[0];
 
-   if(fileInput.classList.contains("photo-uploader"))
-   {
-       imageUpload(self);
-   }else if(fileInput.classList.contains("video-uploader"))
-   {
-       videoUpload(self);
-   }
+    if(fileInput.classList.contains("photo-uploader"))
+    {
+        imageUpload(self);
+    }else if(fileInput.classList.contains("video-uploader"))
+    {
+        videoUpload(self);
+    }
 });
 
 
@@ -122,10 +122,10 @@ function videoUpload(event) {
         }
 
         //remove img-fluid
-       if( newVideoElement.querySelector("img.img-fluid"))
-       {
-           newVideoElement.querySelector("img.img-fluid").remove();
-       }
+        if( newVideoElement.querySelector("img.img-fluid"))
+        {
+            newVideoElement.querySelector("img.img-fluid").remove();
+        }
 
         // Append the new videoElement
         uploadContainer.find(".thumbnail-preview-content").append(newVideoElement);
@@ -162,58 +162,43 @@ $(document).on("click", ".rm-button.remove-current-img", function (event) {
     // Get the index of the clicked element
     let clickedIndex = $(self).closest(".element").index();
 
-   let dataTransfer = new DataTransfer();
+    let dataTransfer = new DataTransfer();
 
-       for(let i=0; i < fileArray.length; i++)
-       {
-            if(i !== clickedIndex)
-            {
-                dataTransfer.items.add(fileArray[i]);
-            }
-       }
+    for(let i=0; i < fileArray.length; i++)
+    {
+        if(i !== clickedIndex)
+        {
+            dataTransfer.items.add(fileArray[i]);
+        }
+    }
 
     fileInput[0].files = dataTransfer.files;
-       //get the elements
-       let Elements = self.closest(".thumbnail-preview-content.active").querySelectorAll(".element");
+    //get the elements
+    let Elements = self.closest(".thumbnail-preview-content.active").querySelectorAll(".element");
 
-       if(Elements.length > 1)
-       {
-           self.closest(".element").remove();
-           return;
-       }else{
-           self.closest(".element").remove();
+    if(Elements.length > 1)
+    {
+        self.closest(".element").remove();
+        return;
+    }else{
+        self.closest(".thumbnail-preview-content").classList.remove("active");
+        self.closest(".thumbnail-preview-content").querySelector(".element .img-fluid").setAttribute("src", "");
+        self.closest(".thumbnail-preview-content").querySelector(".element .img-fluid").setAttribute("alt", "");
+        self.closest(".thumbnail-preview-content").querySelector(".element span.text").innerHTML("");
+        // self.closest(".element").remove();
 
-           let newElement = document.createElement("div");
-           newElement.classList.add("element");
-           newElement.setAttribute("id", "removeable");
-
-           let newSpan = document.createElement("span");
-           newSpan.classList.add("rm-button", "remove-current-img");
-
-           let newTag = document.createElement("i");
-           newTag.classList.add("fa-solid", "fa-xmark");
-
-           newSpan.appendChild(newTag);
-            newElement.appendChild(newSpan);
-
-           let newSpan2 = document.createElement("span");
-           newSpan2.classList.add("text");
-
-           newElement.appendChild(newSpan2);
-
-           let img = document.createElement("img");
-           img.classList.add("img-fluid");
-           newElement.appendChild(img);
-
-           self.closest(".thumbnail-preview-content.active").appendChild(newElement);
-
-           //remove old input from database
-           let oldElement = self.closest(".thumbnail-preview-content.active").querySelectorAll(".old_element");
-           let oldElementInput = oldElement.querySelectorAll("input[type='text']");
-           if(oldElementInput > 0)
-           {
-               oldElementInput[clickedIndex].setAttribute("name", "");
-               oldElementInput[clickedIndex].setAttribute("id", "");
-           }
-       }
+        if(self.closest(".thumbnail-preview-content.active"))
+        {
+            let oldElement = self.closest(".thumbnail-preview-content.active").querySelectorAll("input", ".form-control");
+            if(oldElement.length > 0)
+            {
+                //let oldElementInput = oldElement.querySelectorAll("input[type='text']");
+                // if(oldElementInput > 0)
+                // {
+                oldElement[clickedIndex].setAttribute("name", "");
+                oldElement[clickedIndex].setAttribute("id", "");
+                // }
+            }
+        }
+    }
 });

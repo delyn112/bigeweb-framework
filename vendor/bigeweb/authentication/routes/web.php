@@ -8,7 +8,8 @@ use Bigeweb\Authentication\Http\Controllers\LoginController;
 
 Route::get('/register', [
     AuthController::class, 'index'
-])->name('register');
+])->name('register')
+    ->middleware(['Auth']);
 
 
 Route::post('/register/store', [
@@ -19,7 +20,8 @@ Route::post('/register/store', [
 
 Route::get('/login', [
     LoginController::class, 'index'
-])->name('login');
+])->name('login')
+    ->middleware(['Auth']);
 
 
 

@@ -32,13 +32,13 @@ class ComposerStaticInitabbedcbe251cb1f0496090814e40ca18
         array (
             'illuminate\\Support\\' => 19,
         ),
+        'd' => 
+        array (
+            'database\\' => 9,
+        ),
         'c' => 
         array (
             'config\\' => 7,
-        ),
-        'a' => 
-        array (
-            'app\\database\\' => 13,
         ),
         'Z' => 
         array (
@@ -156,13 +156,13 @@ class ComposerStaticInitabbedcbe251cb1f0496090814e40ca18
         array (
             0 => __DIR__ . '/..' . '/bigeweb/framework',
         ),
+        'database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/database/migrations',
+        ),
         'config\\' => 
         array (
             0 => __DIR__ . '/../..' . '/config',
-        ),
-        'app\\database\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/database',
         ),
         'ZipStream\\' => 
         array (

@@ -20,14 +20,23 @@ class ImageValidation
 
             switch ($unit) {
                 case 'G':
-                    $sizeValue =  $value * 1024 * 1024 * 1024;
-                case 'M':
                     $sizeValue =  $value * 1024 * 1024;
+                    break;
+                case 'M':
+                    $sizeValue =  $value;
+                    break;
                 case 'K':
-                    $sizeValue =  $value * 1024;
+                    $sizeValue =  $value / 1024;
+                    break;
                 default:
-                    $sizeValue =  $value; // bytes
+                    $sizeValue = $value  / (1024 * 1024);
+                    break;
             }
+
+            //size value in mb
+            $sizeValue = ceil($sizeValue);
+            $sizeValue = $sizeValue > 0 ? $sizeValue :  1;
+
             $this->systemMemory = $sizeValue;
             $this->request = new Request();
             $this->errorBag = new Errorbags();
@@ -60,17 +69,17 @@ class ImageValidation
                         {
                             foreach ($inputName as $i => $inputValue)
                             {
-                                if($this->request->file(rtrim($key, '.*'))["size"][0] / 1000 > $this->systemMemory)
+                                if($this->request->file(rtrim($key, '.*'))["size"][0]  / (1024 * 1024) > $this->systemMemory)
                                 {
-                                    $upload_max = $this->systemMemory  / 1000;
+                                    $upload_max = $this->systemMemory;
                                     $error[str_replace('.*', '_'.$i+1, $key)] =
                                         str_replace('.*', ' '.$i+1, $key)." is too large for server to process. Maximum allowed upload size is $upload_max mb";
                                 }
                             }
                         }else{
-                            if($this->request->file(rtrim($key))["size"] / 1000 > $this->systemMemory)
+                            if($this->request->file(rtrim($key))["size"]  / (1024 * 1024)  > $this->systemMemory)
                             {
-                                $upload_max = $this->systemMemory  / 1000;
+                                $upload_max = $this->systemMemory;
                                 $error[$key] = "$key is too large for server to process. Maximum allowed upload size is $upload_max mb";
                             }
                         }
@@ -116,17 +125,17 @@ class ImageValidation
                             {
                                 foreach($inputName as $i => $inputValue)
                                 {
-                                    $size = $this->request->file(rtrim($key, '.*'))['size'][$i] / 1000;
-                                    if($size > $rule['size'])
+                                    $size = $this->request->file(rtrim($key, '.*'))['size'][$i];
+                                    if($size > $rule['size']  / (1024 * 1024))
                                     {
-                                        $error[str_replace('.*', '_'.$i+1, $key)] = str_replace('{size}', ($rule['size'] / 1000), $errorMessage);
+                                        $error[str_replace('.*', '_'.$i+1, $key)] = str_replace('{size}', ($rule['size']), $errorMessage);
                                     }
                                 }
                             }else{
-                                $size = $this->request->file($key)['size'] / 1000;
+                                $size = $this->request->file($key)['size']  / (1024 * 1024);
                                 if($size > $rule['size'])
                                 {
-                                    $error[$key] = str_replace('{size}', ($rule['size'] / 1000), $errorMessage);
+                                    $error[$key] = str_replace('{size}', ($rule['size']), $errorMessage);
                                 }
                             }
                         }
@@ -149,11 +158,11 @@ class ImageValidation
                             }else{
                                 $type = $this->request->file($key)['type'];
                                 $type = array_reverse(explode('/' , $type));
-                                    $type = end($type);
-                                    if($type !== $ruleName)
-                                    {
-                                        $error[$key] = $errorMessage;
-                                    }
+                                $type = end($type);
+                                if($type !== $ruleName)
+                                {
+                                    $error[$key] = $errorMessage;
+                                }
                             }
                         }
                     }

@@ -53,7 +53,7 @@ class Validation
                    //validate required
                    if($ruleName == 'required' || $ruleName == 'require')
                    {
-                       if(strlen($inputName ?? '') <= 0 && $inputName != '0')
+                       if(!is_array($inputName) && strlen($inputName ?? '') <= 0 && $inputName != '0')
                        {
                            $this->error[$key] = $errorMessage;
                        }elseif(is_array($inputName))
