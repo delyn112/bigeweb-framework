@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'bigeweb/bigeweb-framework',
-        'pretty_version' => '1.4.0',
-        'version' => '1.4.0.0',
+        'pretty_version' => '1.4.1',
+        'version' => '1.4.1.0',
         'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -29,8 +29,8 @@
             'dev_requirement' => false,
         ),
         'bigeweb/bigeweb-framework' => array(
-            'pretty_version' => '1.4.0',
-            'version' => '1.4.0.0',
+            'pretty_version' => '1.4.1',
+            'version' => '1.4.1.0',
             'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',

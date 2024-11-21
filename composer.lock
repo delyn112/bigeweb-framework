@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccff4c07e9250c21859f003449332bb3",
+    "content-hash": "0066223efc3c9b7704b6e5d8446839c2",
     "packages": [
         {
             "name": "bigeweb/acl",
