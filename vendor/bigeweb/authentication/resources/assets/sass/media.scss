@@ -1,0 +1,21 @@
+@use '../../../../../resources/assets/sass/constant';
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .auth-container .row{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    padding-left: 10px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 460px) {
+  .auth-container #data-form .card .card-footer .action-wrapper-btn.button .wrap-btn
+  {
+    flex-direction: column;
+  }
+
+  .auth-container #data-form .card .card-footer .action-wrapper-btn.button .wrap-btn .btn{
+    margin: 10px 0;
+  }
+}

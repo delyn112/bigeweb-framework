@@ -1,0 +1,38 @@
+#page-list-container.custom-pg .dt-layout-row .dt-layout-cell.dt-start,
+#page-list-container.custom-pg .div.dt-container div.dt-layout-cell.dt-end,
+#page-list-container.custom-pg .dt-paging.paging_full_numbers,
+#page-list-container.custom-pg div.dt-container div.dt-layout-cell.dt-end
+{
+    display: none !important;
+}
+
+#page-list-container.custom-pg .paginator-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    #page-list-container.custom-pg .paginator-wrapper .bg-w.paginator-info{
+        font-size: 13px;
+        text-transform: unset;
+    }
+
+    #page-list-container.custom-pg .paginator-wrapper .pagination.bgw-pagination{
+        margin-bottom: 0;
+    }
+
+    #page-list-container.custom-pg .paginator-wrapper .pagination.bgw-pagination .page-item{
+        margin: 0;
+    }
+
+#page-list-container.custom-pg .paginator-wrapper .pagination.bgw-pagination .page-item.active,
+#page-list-container.custom-pg .paginator-wrapper .pagination.bgw-pagination .page-item.active .page-link{
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--primary-border-color);
+}
+
+    #page-list-container.custom-pg .paginator-wrapper .pagination.bgw-pagination .page-item,
+    #page-list-container.custom-pg .paginator-wrapper .pagination.bgw-pagination .page-item .page-link{
+        background-color: var(--bigeweb-card-color);
+        color: var(--bigebody-color);
+    }
