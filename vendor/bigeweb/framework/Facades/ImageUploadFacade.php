@@ -5,44 +5,47 @@ use illuminate\Support\Facades\Storage;
 
 class ImageUploadFacade
 {
-    public function upload_image($request, $file, $path)
+    public static function multipleUpload($request, ?string $requestFileName, ?string $folder)
     {
-        $filename = $file['name'];
-        $destination = Storage::makeStorage($path);
-        Storage::storeAs($destination, $file, $filename);
-
-        return $destination.$filename;
-    }
-
-    public function upload_images($request, $file, $path, $item)
-    {
-        $filename = $file['name'][$item];
-        $destination = Storage::makeStorage($path);
-        Storage::storeAs($destination, $file, $filename, $item);
-        if($filename)
+        $completeFileName = [];
+        //loop throught the files
+        for($i = 0; $i < count($request->file($requestFileName)['name']); $i++)
         {
-            return $destination.$filename;
-        }else{
-            return null;
+            $name = $request->file($requestFileName)["name"][$i];
+            $size = $request->file($requestFileName)["size"][$i];
+            $type = $request->file($requestFileName)["type"][$i];
+            $tmpName = $request->file($requestFileName)["tmp_name"][$i];
+            $extension = explode(".", $name);
+            if(count($extension) > 0)
+            {
+                $extension = end($extension);
+            }
+
+            //make a new image name for the image
+            $newImageName = uniqid().'_'.time().'.'.$extension;
+            $completeFileName[] =  Storage::storeAs($tmpName, $folder, $newImageName);
         }
+
+        return $completeFileName;
     }
 
-
-    public function getFileSize($file)
+    public static function singleUpload($request, ?string $requestFileName, ?string $folder)
     {
-        return  $size = $file['size'];
-    }
+            $name = $request->file($requestFileName)["name"];
+            $size = $request->file($requestFileName)["size"];
+            $type = $request->file($requestFileName)["type"];
+            $tmpName = $request->file($requestFileName)["tmp_name"];
+            $extension = explode(".", $name);
+            if(count($extension) > 0)
+            {
+                $extension = end($extension);
+            }
 
+            //make a new image name for the image
+            $newImageName = uniqid().'_'.time().'.'.$extension;
+            $completeFileName =  Storage::storeAs($tmpName, $folder, $newImageName);
 
-    public function getOriginalName($file)
-    {
-        return  $size = $file['name'];
-    }
-
-    public function getFileExt($file)
-    {
-        $data = explode('.', $file['name']);
-        return (end($data));
+        return $completeFileName;
     }
 
 }

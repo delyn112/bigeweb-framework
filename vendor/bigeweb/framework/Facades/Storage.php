@@ -19,23 +19,19 @@ class Storage
     }
 
 
-    public static function storeAs($path, $file, $name, $item = null)
+    public static function storeAs($file, ?string $path, ?string $name)
     {
-        $destination_path = file_path('public' . DIRECTORY_SEPARATOR . $path) . $name;
+        $destination_path = file_path('public' . DIRECTORY_SEPARATOR . $path) .DIRECTORY_SEPARATOR. $name;
         //check if the images are in array format
         //Then loop through and store else store as single
 
         if (!is_dir(file_path('public' . DIRECTORY_SEPARATOR . $path))) {
             mkdir(file_path('public/' . $path), 0755, true);
         }
+        self::makeStorage($path);
 
+        move_uploaded_file($file, $destination_path);
 
-        if ($item !== null) {
-            move_uploaded_file($file['tmp_name'][$item], $destination_path);
-        } else {
-            move_uploaded_file($file['tmp_name'], $destination_path);
-        }
-
-
+        return $path.DIRECTORY_SEPARATOR.$name;
     }
 }
