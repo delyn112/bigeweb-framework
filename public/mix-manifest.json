@@ -1,0 +1,13 @@
+{
+    "/css/app.css": "/css/app.css",
+    "/js/app.js": "/js/app.js",
+    "/css/pkg.css": "/css/pkg.css",
+    "/css/index.css": "/css/index.css",
+    "/js/index.js": "/js/index.js",
+    "/css/adminauth.css": "/css/adminauth.css",
+    "/js/adminauth.js": "/js/adminauth.js",
+    "/css/admin_dashboard.css": "/css/admin_dashboard.css",
+    "/js/admin_dashboard.js": "/js/admin_dashboard.js",
+    "/css/webroot.css": "/css/webroot.css",
+    "/js/webroot.js": "/js/webroot.js"
+}

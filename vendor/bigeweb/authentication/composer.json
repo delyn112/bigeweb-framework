@@ -1,0 +1,29 @@
+{
+    "name": "bigeweb/authentication",
+    "description": "This is an authentication package to manage users and admin of an application.",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bigeweb\\Authentication\\": "src/",
+            "Bigeweb\\Authentication\\Database\\Migrations\\": "Database/Migrations/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Olabige Michael",
+            "email": "81871957+delyn112@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "composer/composer": "^2.0",
+        "composer-plugin-api": "^2.0"
+    },
+    "extra": {
+        "installer-name": "Bigeweb Authentication",
+        "class": "Bigeweb\\Authentication\\AuthenticationPlugin"
+    }
+}
