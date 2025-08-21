@@ -1,8 +1,8 @@
 <?php
 
-namespace illuminate\Support\Models;
+namespace illuminate\Support\Http\Middlewares;
 
-class GenerateModel
+class GenerateMiddleware
 {
 
     public  $filename;
@@ -12,13 +12,13 @@ class GenerateModel
     public function __construct()
     {
         //get the model name from the request uri
-        $getModelName = $_GET ?? '';
+        $getMiddlewareName = $_GET ?? '';
 
-        if(!empty($getModelName)){
-            $this->filename = array_keys($getModelName)[0];
+        if(!empty($getMiddlewareName)){
+            $this->filename = array_keys($getMiddlewareName)[0];
         }
 
-        $this->path = dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Models';
+        $this->path = dirname(__DIR__, 5).DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Http'.DIRECTORY_SEPARATOR.'Middlewares';
 
         if (!is_dir($this->path)) {
             mkdir($this->path, 0755, true);
@@ -26,7 +26,7 @@ class GenerateModel
     }
 
 
-    private function baseModelName(): string
+    private function baseMiddlewareName(): string
     {
         return  ucfirst($this->filename);
     }
@@ -55,12 +55,12 @@ class GenerateModel
     public function file()
     {
         if($this->filename){
-            $modelFile = $this->baseModelName().'.php';
+            $modelFile = $this->baseMiddlewareName().'.php';
 
             //save the migration file into the correct location
             if($this->checkExistence($modelFile) != false)
             {
-                file_put_contents($this->path.DIRECTORY_SEPARATOR.$modelFile, $this->modelData());
+                file_put_contents($this->path.DIRECTORY_SEPARATOR.$modelFile, $this->middlewareData());
             }
         }
     }
@@ -81,8 +81,8 @@ class GenerateModel
                     continue;
                 }
 
-                if($file === $this->baseModelName().'php'){
-                    log_Error('Model '.$this->filename.' already exists:'.$filename);
+                if($file === $this->baseMiddlewareName().'php'){
+                    log_Error('Middleware '.$this->filename.' already exists:'.$filename);
                     return false;
                 }
             }
@@ -96,27 +96,32 @@ class GenerateModel
      *
      */
 
-    public function modelData()
+    public function middlewareData()
     {
-        $tmpName = $this->baseModelName();
-        $tableName = strtolower($tmpName).'s';
+        $tmpName = $this->baseMiddlewareName();
 
         $params = <<<EOD
     <?php
-    namespace Bigeweb\App\Models;
-    use illuminate\Support\Models\Model;
-        
-        class $tmpName extends Model
+    namespace Bigeweb\App\Http\Middlewares;
+
+    use illuminate\Support\Requests\Request;
+    
+    class $tmpName
+    {
+    
+        /**
+        *
+        * Handle an incoming request.
+        * @param Request \$request
+        * @param Callable \$next
+        * @return mixed
+        *
+        */
+        public function handle(Request \$request, Callable \$next)
         {
-        
-            protected \$table = '$tableName';
-            
-            
-            public function getTableName()
-            {
-                return \$this->table;
-            }
+            return \$next(\$request);
         }
+    }
     EOD;
 
         return $params;

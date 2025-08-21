@@ -105,7 +105,7 @@ class MakeMigration
 
         $params = <<<EOD
     <?php
-        namespace app\database\migrations;
+    namespace Database\Migrations;
         
         class $tmpName
         {

@@ -101,9 +101,9 @@ class GenerateController
 
         $params = <<<EOD
     <?php
-        namespace Bigeweb\App\Http\Controllers;
-        use illuminate\Support\Requests\Response;
-        use illuminate\Support\Requests\Request;
+    namespace Bigeweb\App\Http\Controllers;
+    use illuminate\Support\Requests\Response;
+    use illuminate\Support\Requests\Request;
         
         class $tmpName extends Controller
         {

@@ -1,11 +1,30 @@
 <?php
-namespace Bigeweb\App\Http\Request;
+namespace Bigeweb\App\Http\Requests;
 use illuminate\Support\Requests\Validation;
 
 class BasicRequest extends Validation
 {
 
-    public function rules()
+        /**
+        *
+        *
+        *important validation keys
+        * @return array
+        *['required']
+        *['unique', 'unique:users']
+        *['email']
+        *['min', 'min' => '8']
+        *['max', 'max' => '20']
+        *['match', 'match' => 'password']
+        *['mimes', 'ext' =>'jpeg, png, jpg']
+        *['image']
+        *['size', 'size' => '2000']
+        *
+        *
+        */
+
+
+    public static function validate()
     {
         return Validation::attributes([
             'name' => ['required'],
