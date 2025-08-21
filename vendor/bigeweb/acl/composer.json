@@ -1,5 +1,6 @@
 {
     "name": "bigeweb/acl",
+    "version": "1.0.0",
     "description": "This is the base directory that holds all our external variable such as data transmission and so on",
     "type": "project",
     "license": "MIT",
