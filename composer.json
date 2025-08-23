@@ -1,6 +1,6 @@
 {
     "name": "bigeweb/bigeweb-framework",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "description": "This MVC framework provides a structured approach to developing web applications by separating the application's concerns into three distinct components: model, view, and controller. This separation of concerns promotes code organization, maintainability, and scalability, making it easier to manage and extend the application over time",
     "type": "project",
     "require": {

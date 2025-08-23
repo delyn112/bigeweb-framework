@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'bigeweb/bigeweb-framework',
-        'pretty_version' => '1.4.2',
-        'version' => '1.4.2.0',
+        'pretty_version' => '1.4.3',
+        'version' => '1.4.3.0',
         'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -29,8 +29,8 @@
             'dev_requirement' => false,
         ),
         'bigeweb/bigeweb-framework' => array(
-            'pretty_version' => '1.4.2',
-            'version' => '1.4.2.0',
+            'pretty_version' => '1.4.3',
+            'version' => '1.4.3.0',
             'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
@@ -114,9 +114,9 @@
             'dev_requirement' => false,
         ),
         'guzzlehttp/promises' => array(
-            'pretty_version' => '2.2.x-dev',
-            'version' => '2.2.9999999.9999999-dev',
-            'reference' => '7c69f28996b0a6920945dd20b3857e499d9ca96c',
+            'pretty_version' => '2.3.x-dev',
+            'version' => '2.3.9999999.9999999-dev',
+            'reference' => '481557b130ef3790cf82b713667b43030dc9c957',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/promises',
             'aliases' => array(),
@@ -125,7 +125,7 @@
         'guzzlehttp/psr7' => array(
             'pretty_version' => '2.8.x-dev',
             'version' => '2.8.9999999.9999999-dev',
-            'reference' => 'c2270caaabe631b3b44c85f99e5a04bbb8060d16',
+            'reference' => 'd54eefe3a4387837958077e3fc3f823a56131d72',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
@@ -222,7 +222,7 @@
         'phpmailer/phpmailer' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '800919c6a41d3bc4e87406725531ebe06b5546b4',
+            'reference' => 'd43654d4450710210beb13d936e9e614fd3cf669',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpmailer/phpmailer',
             'aliases' => array(
@@ -233,7 +233,7 @@
         'phpoffice/phpspreadsheet' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '2933bfd8e79eb630a9bdd07e6bf4ae2f6ece8507',
+            'reference' => '63d3960f3b6fdaf0f54d158fa52ade44e708093e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(
