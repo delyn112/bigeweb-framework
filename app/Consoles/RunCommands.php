@@ -10,7 +10,7 @@ class RunCommands extends  TaskScheduler
 
     public function schedule()
     {
-        $this->addSchedule((new TransferDBCommand()))->everyMinutes();
+        $this->addSchedule((new TransferDBCommand()))->everyFiveMinutes();
     }
 
 

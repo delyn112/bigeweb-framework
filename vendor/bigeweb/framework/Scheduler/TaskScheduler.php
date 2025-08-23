@@ -10,79 +10,97 @@ class TaskScheduler
 
     protected array $task = [];
 
+    /**
+     * @param $task
+     * @return void
+     *
+     * Load all the task and add them to the task array
+     */
     public function addSchedule($task)
     {
         $this->task[] = [
             "task" => $task,
             "interval" => null,
-            "runCompleted" => null
+            "currentTime" => null,
+            "lastRun" => null,
+            "nextRun" => null,
         ];
 
-        return $this;
+        return($this);
     }
 
 
     public function runTaskScheduler()
     {
-        if (count($this->task) > 0) {
+        if(count($this->task) > 0)
+        {
             foreach ($this->task as $key => $task) {
-                $taskInstance = $task["task"];
-                $taskInterval = $task["interval"];
-                $completedTask = $task["runCompleted"];
-                $currentTime = time();  // Current Unix timestamp
+               $now = time();
 
-                // If the task has not run before or the interval has passed
-                if ($completedTask === null || $currentTime - $completedTask >= $taskInterval) {
-                    if (isset($taskInstance) && class_exists(get_class($taskInstance))) {
-                        // Check if the method 'handle' exists and run it
-                        if (method_exists($taskInstance, 'handle')) {
-                            $taskInstance->handle();
-                        }
+                if ($task['lastRun'] === null || ($now - $task['lastRun']) >= $task['interval']) {
+
+                    if(isset($task['task']) && class_exists(get_class($task['task'])))
+                    {
+                       if(method_exists($task['task'], 'handle'))
+                       {
+                           $task['task']->handle();
+                       }
                     }
-
-                    // Update the time of the last completed task
-                    $this->task[$key]["runCompleted"] = $currentTime;
+                    $task['lastRun'] = $now;
+                    $task['nextRun'] = $now + $task['interval'];
                 }
             }
+            unset($task);
         }
+    }
+
+
+    protected function setInterval(int $seconds)
+    {
+        $key = array_key_last($this->task); // safer for append
+        $now = time();
+
+        $this->task[$key]["interval"] = $seconds;
+        $this->task[$key]["currentTime"] = $now;
+        $this->task[$key]["nextRun"] = $now + $seconds;
+
+        return $this;
     }
 
     public function everyMinutes()
     {
-        $this->task[count($this->task) - 1]["interval"] = 60;  // 1 minute in seconds
-        return $this;
+        return $this->setInterval(60);
     }
+
+    public function everyFiveMinutes()
+    {
+        return $this->setInterval(5 * 60);
+    }
+
 
     public function every30Minutes()
     {
-        $this->task[count($this->task) - 1]["interval"] = 30 * 60;  // 30 minutes in seconds
-        return $this;
+        return $this->setInterval(30 * 60);
     }
 
     public function everyHour()
     {
-        $this->task[count($this->task) - 1]["interval"] = 60 * 60;  // 1 hour in seconds
-        return $this;
+        return $this->setInterval(60 * 60);
     }
 
     public function everyDay()
     {
-        $this->task[count($this->task) - 1]["interval"] = 24 * 60 * 60;  // 1 day in seconds
-        return $this;
+       return $this->setInterval(24 * 60 * 60);
     }
 
     public function everyMonth()
     {
-        $this->task[count($this->task) - 1]["interval"] = 30 * 24 * 60 * 60;  // 1 month (approx 30 days) in seconds
-        return $this;
+        return $this->setInterval(30 * 24 * 60 * 60);
     }
 
     public function everyYear()
     {
-        $this->task[count($this->task) - 1]["interval"] = 365 * 24 * 60 * 60;  // 1 year in seconds (approx 365 days)
-        return $this;
+        return $this->setInterval(365 * 24 * 60 * 60);
     }
-
-
 
 }

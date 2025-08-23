@@ -8,8 +8,8 @@
               <form id="data-form">
                   <div class="card">
                       <div class="card-header">
-                          <h2 class="title">register your account</h2>
-                          <p class="text">Welcome! Enter your credentials to get started.</p>
+                          <h2 class="title"><?= trans('auth::register.register your account') ?></h2>
+                          <p class="text"><?= trans('auth::register.welcome! Enter your credentials to get started') ?></p>
                       </div>
                       <div class="card-body">
                           <div class="row g-3 mb-3">

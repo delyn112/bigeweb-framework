@@ -4,9 +4,9 @@
                 <div class="content-wrapper">
                     <img src="<?= assets("assets/404-error.png") ?>" alt="no-result" class="img-fluid">
                     <div class="text-wrapper">
-                        <h1 class="title">Method not found.</h1>
+                        <h1 class="title"><?= trans('error.method not found') ?></h1>
                         <p class="text"><?= $message ?>.
-                            go back to <a href="<?= route("home") ?>" style="text-decoration: none; color: #f1586b">homepage</a></p>
+                            <?= trans('error.go back to') ?> <a href="<?= route("home") ?>" style="text-decoration: none; color: #f1586b"><?= trans('error.homepage') ?></a></p>
                     </div>
                 </div>
             </div>

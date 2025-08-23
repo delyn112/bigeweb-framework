@@ -11,6 +11,7 @@ class ServiceProviderLoader
     public array $providers;
     public $viewPath = [];
     public $migrationPath = [];
+    public  $langPath = [];
 
     public function __construct(array $providers)
     {
@@ -36,11 +37,28 @@ class ServiceProviderLoader
                     $this->migrationPath[] = $providerInstance->migrationFrom;
                 }
 
+                if($providerInstance->langDirectory !== null)
+                {
+                   $this->langPath[] = $providerInstance->langDirectory;
+                }
             }else{
-                log_Error("Configuration file not found: $provider");
                 throw new \Exception("Provider class not found: $provider", 404);
             }
         }
+
+        /**
+         *
+         *
+         * Store the view path in a file
+         */
+
+        $this->storeViewPath();
+        $this->storeMigrationPath();
+        $this->storeLangPath();
+    }
+
+    public function storeViewPath()
+    {
         $storagePath = file_path('/vendor/bigeweb/viewsLocation');
         if(!is_dir($storagePath))
         {
@@ -55,14 +73,15 @@ class ServiceProviderLoader
         }, $this->viewPath));
         $text .= "\n];\n?>";
         file_put_contents($storagePath . '/views.php', $text, LOCK_EX);
+    }
 
+    public function storeMigrationPath()
+    {
         $storagePath = file_path('/vendor/bigeweb/migrationsLocation');
         if(!is_dir($storagePath))
         {
             mkdir($storagePath, 0777, true);
         }
-
-
         $text = "<?php\nreturn [\n";
         $text .= implode(",\n", array_map(function($path) {
             // Normalize the path to use forward slashes
@@ -71,6 +90,23 @@ class ServiceProviderLoader
         }, $this->migrationPath));
         $text .= "\n];\n?>";
         file_put_contents($storagePath . '/migration.php', $text, LOCK_EX);
+    }
 
+
+    public function storeLangPath()
+    {
+        $storagePath = file_path('/vendor/bigeweb/langLocation');
+        if(!is_dir($storagePath))
+        {
+            mkdir($storagePath, 0777, true);
+        }
+        $text = "<?php\nreturn [\n";
+        $text .= implode(",\n", array_map(function($path) {
+            // Normalize the path to use forward slashes
+            $normalizedPath = str_replace('\\', '/', $path);
+            return var_export($normalizedPath, true);
+        }, $this->langPath));
+        $text .= "\n];\n?>";
+        file_put_contents($storagePath . '/translation.php', $text, LOCK_EX);
     }
 }

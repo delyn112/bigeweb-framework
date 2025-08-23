@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
             }
         }
         $this->loadViewsFrom(__DIR__.'/../../resources/views');
+        $this->loadTranslationFrom( __DIR__.'/../../resources/lang');
     }
 
 

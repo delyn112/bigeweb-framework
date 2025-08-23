@@ -8,13 +8,12 @@ class Config
     protected static $config = [];
 
 
-    public static function load($file)
+    public static function load(string $file)
     {
         if(file_exists($file))
         {
             self::$config = array_merge(self::$config, array($file));
         }else{
-            file_put_contents('error.log', "Configuration file not found: $file");
             throw new \Exception("Configuration file not found: $file", http_response_code("404"));
         }
     }

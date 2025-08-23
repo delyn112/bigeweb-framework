@@ -23,9 +23,6 @@ if(count($configFiles) > 0){
 
 require __DIR__."/../config/ini.php";
 
-$provider->loadconfigFrom([__DIR__.'/../vendor/webroot/recovery/src/config/recovery.php',
-    __DIR__.'/../vendor/webroot/todo/src/config/todo.php'
-    ]);
 
 //run the commands
 $cronjobFile = RunCommands::class;

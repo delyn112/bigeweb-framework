@@ -15,7 +15,7 @@
                     <img src="<?= assets('images/mechanic.png') ?>" class="img-fluid" alt="no result">
                 </div>
                 <div class="title">
-                    <h1>This site is currently under maintenance.</h1>
+                    <h1><?= trans("error.this site is currently under maintenance") ?></h1>
                 </div>
                 <div class="lines">
                     <div class="line1"></div>

@@ -11,6 +11,6 @@ class TransferDBCommand
 
     public function handle()
     {
-        //Logic here
+        file_put_contents('cron.txt', 'current date time is '.date('Y-m-d H:i:s'), FILE_APPEND.PHP_EOL);
     }
 }

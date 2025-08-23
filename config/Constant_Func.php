@@ -13,6 +13,17 @@ function getPath()
     return  dirname(__DIR__);
 }
 
+/**
+ * @param string $text
+ * @return void
+ *
+ * Translate words
+ */
+function trans(string $text, array $replace = [])
+{
+    $translationInstance = new \illuminate\Support\Trans();
+    return $translationInstance->lang($text, $replace);
+}
 
 /**
  * @return string

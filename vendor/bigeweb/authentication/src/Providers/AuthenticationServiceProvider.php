@@ -13,5 +13,6 @@ class AuthenticationServiceProvider extends ServiceProvider
             __DIR__.'/../../routes/profile.php']);
         $this->loadMigrationFrom([__DIR__ . '/../../Database/Migrations']);
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'auth');
+        $this->loadTranslationFrom(__DIR__.'/../../resources/lang', 'auth');
     }
 }

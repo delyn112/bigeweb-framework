@@ -11,16 +11,16 @@
                 <div class="menu-container">
                     <ul class="menu-wrapper">
                         <li class="item">
-                            <a href="<?= route('home') ?>" class="link active">home</a>
+                            <a href="<?= route('home') ?>" class="link active"><?= trans('home.home') ?></a>
                         </li>
                         <li class="item">
-                            <a href="#" class="link">services</a>
+                            <a href="#" class="link"><?= trans('home.services') ?></a>
                         </li>
                         <li class="item">
-                            <a href="#" class="link">about</a>
+                            <a href="#" class="link"><?= trans('home.about') ?></a>
                         </li>
                         <li class="item">
-                            <a href="#" class="link">contact us</a>
+                            <a href="#" class="link"><?= trans('home.contact us') ?></a>
                         </li>
                     </ul>
                     <ul class="menu-wrapper">
@@ -28,16 +28,16 @@
                         <li class="item">
                             <a href="<?= route('register') ?>" class="link">
                                 <span class="icon"><i class="fa-solid fa-user"></i></span>
-                                sign up</a>
+                                    <?= trans('home.sign up') ?></a>
                         </li>
                         <li class="item">
-                            <a href="<?= route('login') ?>" class="link">login</a>
+                            <a href="<?= route('login') ?>" class="link"><?= trans('home.login') ?></a>
                         </li>
                         <?php else : ?>
                         <li class="item dropdown">
                             <button class="dropdown-btn">
                                 <span class="icon"><i class="fa-solid fa-circle-user"></i></span>
-                                my account
+                                    <?= trans('home.mu account') ?>
                             </button>
                             <ul class="dropdown-content">
                               <li class="dropdown-item">
@@ -45,11 +45,11 @@
                                             'userid' => \Bigeweb\Authentication\Facades\Auth::user()->id,
                                             'token' => \Bigeweb\Authentication\Facades\Auth::user()->token,
                                     ]) ?>" class="link">
-                                      <span class="icon"><i class="fa-solid fa-user"></i></span>profile</a>
+                                      <span class="icon"><i class="fa-solid fa-user"></i></span><?= trans('home.profile') ?></a>
                               </li>
                               <li class="dropdown-item">
                                   <a href="<?= route('logout') ?>" class="link">
-                                      <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>logout</a>
+                                      <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span><?= trans('home.logout') ?></a>
                               </li>
                             </ul>
                         </li>

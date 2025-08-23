@@ -6,19 +6,20 @@ use illuminate\Support\Facades\Config;
 
 class ServiceProvider
 {
-   public $loadUrlFrom;
-   public $loadConfigFrom;
-   public $viewDirectory;
-   public $migrationFrom;
+    public $loadUrlFrom;
+    public $loadConfigFrom;
+    public $viewDirectory;
+    public $migrationFrom;
+    public $langDirectory;
 
 
-   public function loadUrlFrom(mixed $fileDirectory)
+   public function loadUrlFrom(mixed $path)
    {
-       if(is_array($fileDirectory))
+       if(is_array($path))
        {
-           $arrayFiles = $fileDirectory;
+           $arrayFiles = $path;
        }else{
-           $arrayFiles = array($fileDirectory);
+           $arrayFiles = array($path);
        }
 
        if(count($arrayFiles) > 0)
@@ -36,13 +37,13 @@ class ServiceProvider
    }
 
 
-   public function loadconfigFrom(mixed $fileDirectory)
+   public function loadconfigFrom(mixed $path)
    {
-       if(is_array($fileDirectory))
+       if(is_array($path))
        {
-           $arrayFiles = $fileDirectory;
+           $arrayFiles = $path;
        }else{
-           $arrayFiles = array($fileDirectory);
+           $arrayFiles = array($path);
        }
 
        if(count($arrayFiles) > 0)
@@ -59,18 +60,18 @@ class ServiceProvider
        }
    }
 
-   public function loadViewsFrom(string $fileDirectory, ?string $viewName = null)
+   public function loadViewsFrom(string $path, ?string $packageName = null)
    {
-       if(!is_dir($fileDirectory))
+       if(!is_dir($path))
        {
-           error_log("Views folder does not exists: $fileDirectory");
+           error_log("Views folder does not exists: $path");
        }
 
-       if($viewName == null)
+       if($packageName == null)
        {
-           $this->viewDirectory = $fileDirectory;
+           $this->viewDirectory = $path;
        }else{
-           $this->viewDirectory = $fileDirectory.'::'.$viewName;
+           $this->viewDirectory = $path.'::'.$packageName;
        }
 
    }
@@ -80,13 +81,13 @@ class ServiceProvider
           return $this->viewDirectory;
        }
 
-    public function loadMigrationFrom(mixed $fileDirectory)
+    public function loadMigrationFrom(mixed $path)
     {
-        if(is_array($fileDirectory))
+        if(is_array($path))
         {
-            $arrayFiles = $fileDirectory;
+            $arrayFiles = $path;
         }else{
-            $arrayFiles = array($fileDirectory);
+            $arrayFiles = array($path);
         }
 
         if(count($arrayFiles) > 0)
@@ -106,5 +107,26 @@ class ServiceProvider
     public function migrationDir()
     {
         return $this->migrationFrom;
+    }
+
+
+    public function loadTranslationFrom(string $path, ?string $packageName = null)
+    {
+        if(!is_dir($path))
+        {
+            error_log("Views folder does not exists: $path");
+        }
+
+        if($packageName == null)
+        {
+            $this->langDirectory = $path;
+        }else{
+            $this->langDirectory = $path.'::'.$packageName;
+        }
+    }
+
+    public function langPath()
+    {
+       return $this->langDirectory;
     }
 }

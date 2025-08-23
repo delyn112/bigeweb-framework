@@ -7,5 +7,3 @@ use Bigeweb\App\Http\Controllers\DashboardController;
 Route::get('/', [
     DashboardController::class, 'index'
 ])->name('home');
-
-
