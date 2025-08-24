@@ -142,10 +142,12 @@ class Dispatcher
 
 
                    $firstMiddleware = array_pop($routeMiddleware);
-                   if (in_array($firstMiddleware, array_keys($middlewareArray))) {
+                   if (in_array($firstMiddleware, array_values($middlewareArray))) {
                        $firstMiddlewareClass = $middlewareArray[$firstMiddleware];
                        $firstMiddlewareInstance = new $firstMiddlewareClass();
                        return $firstMiddlewareInstance->handle(new Request(), $next);
+                   }else{
+                       $this->processCallBack($next);
                    }
 
                }elseif(stripos($routerPath, '?') === 1){

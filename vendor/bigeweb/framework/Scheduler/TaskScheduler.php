@@ -32,25 +32,21 @@ class TaskScheduler
 
     public function runTaskScheduler()
     {
-        if(count($this->task) > 0)
-        {
-            foreach ($this->task as $key => $task) {
-               $now = time();
-
+        if (count($this->task) > 0) {
+            foreach ($this->task as $key => &$task) {  // Note the & here
+                $now = time();
                 if ($task['lastRun'] === null || ($now - $task['lastRun']) >= $task['interval']) {
 
-                    if(isset($task['task']) && class_exists(get_class($task['task'])))
-                    {
-                       if(method_exists($task['task'], 'handle'))
-                       {
-                           $task['task']->handle();
-                       }
+                    if (isset($task['task']) && class_exists(get_class($task['task']))) {
+                        if (method_exists($task['task'], 'handle')) {
+                            $task['task']->handle();
+                        }
                     }
                     $task['lastRun'] = $now;
                     $task['nextRun'] = $now + $task['interval'];
                 }
             }
-            unset($task);
+            unset($task);  // Break reference
         }
     }
 
@@ -90,7 +86,7 @@ class TaskScheduler
 
     public function everyDay()
     {
-       return $this->setInterval(24 * 60 * 60);
+        return $this->setInterval(24 * 60 * 60);
     }
 
     public function everyMonth()

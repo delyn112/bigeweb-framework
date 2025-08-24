@@ -12,6 +12,7 @@ class BaseController
     private $masterFileName;
     private $masterFileKey;
     private $viewFileExtension = ".blade.php";
+    private $masterPageToRemove;
 
 
     public function __construct()
@@ -160,6 +161,7 @@ class BaseController
         $masterPageName = null;
         if(preg_match('/@extends\([\'"](.+?)[\'"]\)/', $fileContent, $matches)) {
            $masterPageName = end($matches);
+            $this->masterPageToRemove = $masterPageName;
            $this->masterFileName = reset($matches);
         }
 
@@ -230,11 +232,10 @@ class BaseController
          *
          */
 
-
-
         $pageTodisplay = preg_replace('/@yield\(["\']content["\']\)/', $mainPage, $pageTodisplay);
-        $escapedLayout = preg_quote($this->masterFileName, '/');
-        $pageTodisplay = $pageTodisplay = preg_replace('/@extends\(["\']' . $escapedLayout . '["\']\)/', '', $pageTodisplay);
+        $escapedLayout = $this->masterPageToRemove;
+        $escapedLayout = preg_quote($escapedLayout, '/');
+        $pageTodisplay = preg_replace('/@extends\s*\(\s*[\'"]' . $escapedLayout . '[\'"]\s*\)/', '', $pageTodisplay);
         $pageContent = $this->cleanPage($pageTodisplay);
         return $pageContent;
     }
@@ -260,6 +261,8 @@ class BaseController
             $pattern = reset($matches);
             $pageContent = preg_replace('/@yield\(["\']title["\']\)/', $titleText, $pageContent);
             $pageContent = str_replace($pattern, '', $pageContent);
+        }else{
+            $pageContent = preg_replace('/@yield\(["\']title["\']\)/', null, $pageContent);
         }
 
 
@@ -276,6 +279,8 @@ class BaseController
            $pattern = reset($matches);
             $pageContent = preg_replace('/@yield\(["\']description["\']\)/', $descriptionText, $pageContent);
             $pageContent = str_replace($pattern, '', $pageContent);
+        }else{
+            $pageContent = preg_replace('/@yield\(["\']description["\']\)/', null, $pageContent);
         }
 
 
@@ -292,6 +297,8 @@ class BaseController
            $pattern = reset($matches);
             $pageContent = preg_replace('/@yield\(["\']keywords["\']\)/', $keywords, $pageContent);
             $pageContent = str_replace($pattern, '', $pageContent);
+        }else{
+            $pageContent = preg_replace('/@yield\(["\']keywords["\']\)/', null, $pageContent);
         }
 
 
