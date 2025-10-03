@@ -64,14 +64,17 @@ trait Paginator
         $html .= '</li>';
 
 // Page Numbers
-        if ($paginatedData->total_pages >= 1) {
-            for ($page = 1; $page <= $paginatedData->total_pages; $page++) {
-                $activeClass = ($page == $paginatedData->current_page) ? ' active' : '';
-                $html .= '<li class="page-item' . $activeClass . '">';
-                $html .= '<a class="page-link" href="' . url(ltrim(buildPageLink($path, $query, $page), '/')) . '">' . $page . '</a>';
-                $html .= '</li>';
-            }
-        }
+       if($paginatedData->total_pages > 0 && $paginatedData->total_pages < 5)
+       {
+           if ($paginatedData->total_pages >= 1) {
+               for ($page = 1; $page <= $paginatedData->total_pages; $page++) {
+                   $activeClass = ($page == $paginatedData->current_page) ? ' active' : '';
+                   $html .= '<li class="page-item' . $activeClass . '">';
+                   $html .= '<a class="page-link" href="' . url(ltrim(buildPageLink($path, $query, $page), '/')) . '">' . $page . '</a>';
+                   $html .= '</li>';
+               }
+           }
+       }
 
 // Next Page Button
         $nextPage = ($paginatedData->current_page < $paginatedData->total_pages) ? $paginatedData->current_page + 1 : $paginatedData->total_pages;

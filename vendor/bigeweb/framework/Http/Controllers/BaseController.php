@@ -5,7 +5,7 @@ namespace illuminate\Support\Http\Controllers;
 class BaseController
 {
 
-    public $viewFrom;
+    public $viewFrom = [];
     private $fileKey;
     private $filePath;
     private $fileName;
@@ -76,7 +76,7 @@ class BaseController
          */
 
         $baseViewPath = file_path("resources/views");
-        if(count($this->viewFrom) > 0)
+        if($baseViewPath && count($this->viewFrom) > 0)
         {
             foreach($this->viewFrom as $viewPath)
             {

@@ -45,7 +45,7 @@ trait InsertQuery
 
     public function update(int $id, array $parameter) : ?object
     {
-                // Filter allowed fields (if $fillable is set)
+        // Filter allowed fields (if $fillable is set)
         foreach ($parameter as $key => $value) {
             if ($value !== '') {
                 if (!empty($this->fillable)) {
@@ -86,15 +86,27 @@ trait InsertQuery
     }
 
 
-    public function updateOrcreate(int $id, array $parameter) : ?object {
-        $query = $this->query("SELECT * from $this->table WHERE id='$id'");
-        $result = $query->first();
+    public function updateOrcreate(array $parameter, array $parameterValue) : ?object {
+        $cond = [];
+        $result = null;
+        foreach ($parameterValue as $key => $value) {
+            if(!is_null($value))
+            {
+                $cond[] = "$key ='".$value."'";
+            }
+        }
+
+        if(count($cond) > 0) {
+            $condition = implode(' AND ', $cond);
+            $query = $this->query("SELECT * from $this->table WHERE {$condition}");
+            $result = $query->first();
+        }
 
         if(!$result)
         {
             //Create new task if not found
-            $this->save($parameter);
+           return $this->save($parameter);
         }
-         return  $this->update($id, $parameter);
+        return  $this->update($result->id, $parameter);
     }
 }
