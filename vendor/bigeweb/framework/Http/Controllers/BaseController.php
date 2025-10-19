@@ -76,7 +76,7 @@ class BaseController
          */
 
         $baseViewPath = file_path("resources/views");
-        if($baseViewPath && count($this->viewFrom) > 0)
+        if($baseViewPath && is_array($this->viewFrom) && count($this->viewFrom) > 0)
         {
             foreach($this->viewFrom as $viewPath)
             {

@@ -34,16 +34,39 @@ class TaskScheduler
     {
         $cronJobFile = dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'cronjob'.DIRECTORY_SEPARATOR.'task.json';
         $now = time();
+        $contentArray = [];
         if(file_exists($cronJobFile))
         {
             $content = file_get_contents($cronJobFile);
             if($content)
             {
                 $contentArray = json_decode($content, true);
+                // check if the saved json is lesser than the original array
+                //then add the new commands to the array json
+                if(count($contentArray) < count($this->task))
+                {
+                    foreach ($this->task as $key => $task)
+                    {
+                        if(!isset($contentArray[$key]) || $contentArray[$key]['task'] != $this->normalizeTask($task['task']))
+                        {
+                            $contentArray[$key] = $task;
+                        }
+                    }
+                }elseif(count($contentArray) > count($this->task))
+                {
+                    if (count($contentArray) > count($this->task)) {
+                        if (!unlink($cronJobFile)) {
+                            // Handle error, e.g., log failure
+                            error_log("Failed to delete cron job file: $cronJobFile");
+                        }
+                        $contentArray = [];
+                    }
+                }
             }
         }else{
             $contentArray = $this->task;
         }
+
 
         if(is_array($contentArray) && !empty($contentArray))
         {
