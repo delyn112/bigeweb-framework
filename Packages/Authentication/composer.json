@@ -1,0 +1,23 @@
+{
+    "name": "bigeweb/authentication",
+    "version": "1.0.0",
+    "description": "This is an authentication package to manage users and admin of an application.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bigeweb\\Authentication\\": "src/",
+            "Bigeweb\\Authentication\\Database\\Migrations\\": "database/migrations/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Olabige Michael",
+            "email": "81871957+delyn112@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+    }
+}

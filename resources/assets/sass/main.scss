@@ -1,0 +1,222 @@
+@use "constant";
+#app{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app #header{
+  background-color: constant.$primary-bg-color;
+  color: constant.$secondary-text-color;
+}
+
+#app #header .top-bar .top-bar-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#app #header .top-bar .top-bar-content .nav-brand{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#app #header .top-bar .top-bar-content .nav-brand .btn.toggle-media-btn{
+  color: inherit;
+  display: none;
+}
+
+#app #header .top-bar .top-bar-content .mybrand{
+  font-weight: bolder;
+  text-decoration: none;
+  color: constant.$primary-text-color;
+  font-size: constant.$large-font-size;
+  text-transform: uppercase;
+  background-color: constant.$secondary-text-color;
+  padding: 15px 10px;
+}
+
+#app #header .top-bar .top-bar-content .menu-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+#app #header .top-bar .top-bar-content .menu-wrapper{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item{
+  display: inline-block;
+  padding: 5px;
+}
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown{
+  position: relative;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-btn
+{
+  background-color: transparent;
+  border: none;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-btn,
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link{
+  color: inherit;
+  text-transform: capitalize;
+  font-weight: normal;
+  font-size: constant.$medium-font-size;
+  text-decoration: none;
+  padding: 10px 5px;
+  position: relative;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-btn::after,
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  border-bottom: 3px solid constant.$secondary-text-color;
+  transition: all 1s ease;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-btn:hover::after,
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link:hover::after
+{
+  width: 100%;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-btn.active,
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link.active{
+  font-weight: bold;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-btn .icon,
+#app #header .top-bar .top-bar-content .menu-wrapper .item .link .icon{
+  margin-right: 5px;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper+.menu-wrapper .item+.item::before{
+  content: '|\00a0';
+  padding: 5px;
+  color: inherit;
+}
+
+
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content
+{
+  position: absolute;
+  left: -50%;
+  top: 55px;
+  z-index: 1;
+  background-color: constant.$primary-bg-color;
+  width: 250px;
+  padding: 10px;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content.active{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content::after{
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid constant.$primary-bg-color;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  position: absolute;
+  content: '';
+  left: 50%;
+  top: -15px;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content .dropdown-item
+{
+  padding: 1px 5px;
+}
+
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content .dropdown-item:nth-last-child(1)
+{
+  border-top: 1px solid constant.$color-lightgray;
+}
+
+#app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content .dropdown-item .link
+{
+  display: block;
+  width: 100%;
+  padding: 4px;
+}
+
+#app #main{
+  flex: 1;
+}
+
+#app #main .container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+#app #main .container .img-wrapper{
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+#app #main .container .img-wrapper .img-fluid{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#app #main .container .title{
+  font-size: constant.$xxlarge-font-size;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+
+#app #main .container .content .custom-title
+{
+  font-size: constant.$large-font-size;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  padding: 10px 5px;
+}
+
+#app #main .container .content .text{
+  font-size: constant.$medium-font-size;
+  margin-bottom: 5px;
+}
+
+#app #footer{
+background: constant.$primary-bg-color;
+  color: constant.$secondary-text-color;
+  padding: 10px;
+}
+
+#app #footer .container .text{
+  text-align: center;
+  font-size: constant.$small-font-size;
+  margin-bottom: 0;
+}
