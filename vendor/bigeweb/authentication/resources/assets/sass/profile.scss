@@ -1,0 +1,169 @@
+@use '../../../../../resources/assets/sass/constant';
+
+.profile-body-container .article-content .page-title{
+    font-size: constant.$xlarge-font-size;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-top: 2rem;
+    color: constant.$primary-text-color;
+    text-align: start;
+    width: 100%;
+}
+
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed constant.$color-lightgray;
+}
+
+
+.profile-body-container .article-content .custom-content-wrapper .row .card{
+    height: 100%;
+    border: none;
+    background-color: rgba(246, 246, 246, 0.44);
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .img-fluid{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-right: 15px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .info-wrap
+{
+    flex-grow: 1;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .info-wrap .title
+{
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: constant.$xxlarge-font-size;
+    letter-spacing: 0.3px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .info-wrap .text{
+    margin-bottom: 3px;
+    font-size: constant.$normal-font-size;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .compensation-wrapper .label{
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: constant.$medium-font-size;
+    margin-bottom: 5px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .compensation-wrapper .value{
+    text-transform: capitalize;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list{
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed constant.$color-lightgray;
+    margin-bottom: 10px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item .text-label,
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item .text-value{
+    margin-bottom: 3px;
+    font-size: constant.$normal-font-size;
+    font-weight: normal;
+    text-align: start;
+    text-transform: capitalize;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item .text-label{
+    font-weight: 500;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .content-list .flex-item .text-label::after{
+    content: ':';
+    padding: 0 5px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card{
+    margin-top: 3rem;
+    border: none;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-header{
+    background-color: constant.$primary-body-color;
+    padding: 10px;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-header .title{
+    font-size: constant.$xlarge-font-size;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .action{
+    margin: 3rem 0;
+    text-align: center;
+}
+
+
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .password-content-wrapper
+.wrap .btn{
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: constant.$color-orange;
+    color: constant.$secondary-text-color;
+    transition: all 0.3s ease;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body .password-content-wrapper
+.wrap .btn:hover{
+    transform: scale(0.9);
+}
+
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body
+.password-content-wrapper
+{
+    display: none;
+}
+
+.profile-body-container .article-content .custom-content-wrapper .card.profile-card .card-body
+.password-content-wrapper.show
+{
+    display: block;
+}
+
+@media screen and (max-width: 400px) {
+    .profile-body-container .article-content .custom-content-wrapper .content-header-wrapper{
+        flex-direction: column;
+    }
+
+    .profile-body-container .article-content .custom-content-wrapper .content-header-wrapper .img-fluid{
+        margin-bottom: 10px;
+        width: 150px;
+        height: 150px;
+    }
+}

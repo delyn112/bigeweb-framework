@@ -16,7 +16,6 @@
         "ext-pdo": "*",
         "symfony/var-dumper": "6.4.x-dev",
         "nesbot/carbon": "^3.0@dev",
-        "bigeweb/acl": "^1.0",
         "bigeweb/authentication": "^1.0"
     },
     "repositories" : [

@@ -1,5 +1,5 @@
-/vendor/
-/node_modules/
-.env
-.env.*
 composer.lock
+package-lock.json
+/cronjob/task.json
+/storage/framework/sessions/*
+/storage/Logs/*
