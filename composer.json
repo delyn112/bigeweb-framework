@@ -1,6 +1,6 @@
 {
     "name": "bigeweb/bigeweb-framework",
-    "version": "1.4.5",
+    "version": "1.4.6",
     "description": "This MVC framework provides a structured approach to developing web applications by separating the application's concerns into three distinct components: model, view, and controller. This separation of concerns promotes code organization, maintainability, and scalability, making it easier to manage and extend the application over time",
     "type": "project",
     "require": {
@@ -16,7 +16,8 @@
         "ext-pdo": "*",
         "symfony/var-dumper": "6.4.x-dev",
         "nesbot/carbon": "^3.0@dev",
-        "bigeweb/authentication": "^1.0"
+        "bigeweb/authentication": "^1.0",
+        "bigeweb/acl": "*"
     },
     "repositories" : [
         {"type" :  "vcs",
@@ -36,7 +37,8 @@
             "Bigeweb\\App\\": "app/",
             "illuminate\\Support\\": "vendor/bigeweb/framework/",
             "config\\": "config",
-            "Database\\Migrations\\" : "database/migrations/"
+            "Database\\Migrations\\" : "database/migrations/",
+            "Database\\Seeders\\" : "database/seeders/"
         },
         "files" : [
             "config/utils.php"

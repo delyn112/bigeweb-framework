@@ -115,16 +115,18 @@ class CSSFunction extends ValueList
     }
 
     /**
-     * @return array<string, bool|int|float|string|list<array<string, mixed>>>
+     * @return array<string, bool|int|float|string|array<mixed>|null>
      *
      * @internal
      */
     public function getArrayRepresentation(): array
     {
-        $result = parent::getArrayRepresentation();
-
-        $result['name'] = $this->name;
-
-        return $result;
+        return \array_merge(
+            [
+                'class' => 'placeholder',
+                'name' => $this->name,
+            ],
+            parent::getArrayRepresentation()
+        );
     }
 }

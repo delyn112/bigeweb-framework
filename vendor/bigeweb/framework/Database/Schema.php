@@ -11,7 +11,8 @@ class Schema
 
         $sql = $blueprint->toSql();
         $pdo = $blueprint->connect(); // or however you store PDO
-        $pdo->exec($sql);
+        //throw exception if can't
+           return  $pdo->exec($sql);
     }
 
 
@@ -21,6 +22,12 @@ class Schema
 
         $sql = $blueprint->down();
         $pdo = $blueprint->connect(); // or however you store PDO
-        $pdo->exec($sql);
+        //throw exception if can't
+        try{
+            $pdo->exec($sql);
+        }catch (\Exception $exception)
+        {
+            return $exception->getMessage();
+        }
     }
 }

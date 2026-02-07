@@ -16,6 +16,8 @@ class DBTableColumns
     public bool $unique = false;
     public bool $index = false;
     public ?array $foreign = null;
+    public ?string $onDelete = null;
+    public ?string $onUpdate = null;
 
     /* ========= Modifiers ========= */
 
@@ -40,6 +42,18 @@ class DBTableColumns
     public function index(): self
     {
         $this->index = true;
+        return $this;
+    }
+
+    public function onDelete(string $action)
+    {
+        $this->onDelete = strtoupper($action);
+        return $this;
+    }
+
+    public function onUpdate(string $action)
+    {
+        $this->onUpdate = strtoupper($action);
         return $this;
     }
 

@@ -28,9 +28,13 @@ Class Request
 
         if (stripos($content_type, 'application/json') !== false) {
             $rawData = file_get_contents('php://input');
-            $json = json_decode($rawData, true);
-            return $json;
+            if($rawData)
+            {
+                $json = json_decode($rawData, true);
+                return $json;
+            }
         }
+
 
         if($method == 'post')
         {

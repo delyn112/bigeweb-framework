@@ -1,6 +1,38 @@
 {
     "packages": [
         {
+            "name": "bigeweb/acl",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
+            "dist": {
+                "type": "path",
+                "url": "Packages/Acl",
+                "reference": "1cb3b2d08b36cdf203f92e39454a24b677f66e37"
+            },
+            "type": "project",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Bigeweb\\Acl\\": "src/",
+                    "Bigeweb\\Acl\\Database\\Migrations\\": "database/migrations/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "olabige michael",
+                    "email": "81871957+delyn112@users.noreply.github.com"
+                }
+            ],
+            "description": "This is the base directory that holds all our external variable such as data transmission and so on",
+            "transport-options": {
+                "relative": true
+            },
+            "install-path": "../bigeweb/acl"
+        },
+        {
             "name": "bigeweb/authentication",
             "version": "1.0.0",
             "version_normalized": "1.0.0.0",
@@ -191,12 +223,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "b59abad19b0c11ece9441ae8dc03d8d12f630795"
+                "reference": "200aa4fbd2df429ad49fcee637f05d44c32c2d17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/b59abad19b0c11ece9441ae8dc03d8d12f630795",
-                "reference": "b59abad19b0c11ece9441ae8dc03d8d12f630795",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/200aa4fbd2df429ad49fcee637f05d44c32c2d17",
+                "reference": "200aa4fbd2df429ad49fcee637f05d44c32c2d17",
                 "shasum": ""
             },
             "require": {
@@ -207,7 +239,7 @@
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^10.5.58"
             },
-            "time": "2026-01-04T22:31:52+00:00",
+            "time": "2026-01-24T20:53:36+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -269,12 +301,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "a098928a5a17ffffbf4be755dc7dfc7c0e4c83fc"
+                "reference": "77a7a1347d14eed275097b6e084433203857343c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/a098928a5a17ffffbf4be755dc7dfc7c0e4c83fc",
-                "reference": "a098928a5a17ffffbf4be755dc7dfc7c0e4c83fc",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/77a7a1347d14eed275097b6e084433203857343c",
+                "reference": "77a7a1347d14eed275097b6e084433203857343c",
                 "shasum": ""
             },
             "require": {
@@ -300,7 +332,7 @@
                 "ext-imagick": "Improves image processing performance",
                 "ext-zlib": "Needed for pdf stream compression"
             },
-            "time": "2026-01-01T21:41:34+00:00",
+            "time": "2026-01-20T14:29:18+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
@@ -332,17 +364,17 @@
         },
         {
             "name": "dompdf/php-font-lib",
-            "version": "1.0.1",
-            "version_normalized": "1.0.1.0",
+            "version": "1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/php-font-lib.git",
-                "reference": "6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d"
+                "reference": "a6e9a688a2a80016ac080b97be73d3e10c444c9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d",
-                "reference": "6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d",
+                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/a6e9a688a2a80016ac080b97be73d3e10c444c9a",
+                "reference": "a6e9a688a2a80016ac080b97be73d3e10c444c9a",
                 "shasum": ""
             },
             "require": {
@@ -350,9 +382,9 @@
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "symfony/phpunit-bridge": "^3 || ^4 || ^5 || ^6"
+                "phpunit/phpunit": "^7.5 || ^8 || ^9 || ^10 || ^11 || ^12"
             },
-            "time": "2024-12-02T14:37:59+00:00",
+            "time": "2026-01-20T14:10:26+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -374,7 +406,7 @@
             "homepage": "https://github.com/dompdf/php-font-lib",
             "support": {
                 "issues": "https://github.com/dompdf/php-font-lib/issues",
-                "source": "https://github.com/dompdf/php-font-lib/tree/1.0.1"
+                "source": "https://github.com/dompdf/php-font-lib/tree/1.0.2"
             },
             "install-path": "../dompdf/php-font-lib"
         },
@@ -1106,12 +1138,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "6e037cd6239a150d74a54c62e300b269e88a89e3"
+                "reference": "fe2328d4529a4ff0a65df2b21ab6d4c5035f10e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/6e037cd6239a150d74a54c62e300b269e88a89e3",
-                "reference": "6e037cd6239a150d74a54c62e300b269e88a89e3",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/fe2328d4529a4ff0a65df2b21ab6d4c5035f10e6",
+                "reference": "fe2328d4529a4ff0a65df2b21ab6d4c5035f10e6",
                 "shasum": ""
             },
             "require": {
@@ -1137,7 +1169,7 @@
                 "phpunit/phpunit": "^10.5.53",
                 "squizlabs/php_codesniffer": "^3.13.4 || ^4.0.0"
             },
-            "time": "2026-01-02T14:41:31+00:00",
+            "time": "2026-02-04T23:35:53+00:00",
             "default-branch": true,
             "bin": [
                 "bin/carbon"
@@ -1395,12 +1427,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "7e3f24386f8cb1261b165120134cd757d354b9d1"
+                "reference": "f90510c59adf0b22dc381416cb0414a42a5fd36e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/7e3f24386f8cb1261b165120134cd757d354b9d1",
-                "reference": "7e3f24386f8cb1261b165120134cd757d354b9d1",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/f90510c59adf0b22dc381416cb0414a42a5fd36e",
+                "reference": "f90510c59adf0b22dc381416cb0414a42a5fd36e",
                 "shasum": ""
             },
             "require": {
@@ -1431,7 +1463,7 @@
                 "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)",
                 "thenetworg/oauth2-azure": "Needed for Microsoft XOAUTH2 authentication"
             },
-            "time": "2025-12-22T14:31:02+00:00",
+            "time": "2026-02-05T22:19:33+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
@@ -1481,12 +1513,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "e33834b4ea2a02088becbb41fb8954d915b46b12"
+                "reference": "95b826a3c8032599ccae658db8286d111cbb4ab2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/e33834b4ea2a02088becbb41fb8954d915b46b12",
-                "reference": "e33834b4ea2a02088becbb41fb8954d915b46b12",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/95b826a3c8032599ccae658db8286d111cbb4ab2",
+                "reference": "95b826a3c8032599ccae658db8286d111cbb4ab2",
                 "shasum": ""
             },
             "require": {
@@ -1533,7 +1565,7 @@
                 "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
                 "tecnickcom/tcpdf": "Option for rendering PDF with PDF Writer"
             },
-            "time": "2026-01-04T02:58:58+00:00",
+            "time": "2026-02-06T02:32:00+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
@@ -2085,12 +2117,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MyIntervals/PHP-CSS-Parser.git",
-                "reference": "99217b8e99b7a971e4fe3a3437d6303ebe27d044"
+                "reference": "b67aac0a558f40e664f835f17ce35d5be4a8d9d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/99217b8e99b7a971e4fe3a3437d6303ebe27d044",
-                "reference": "99217b8e99b7a971e4fe3a3437d6303ebe27d044",
+                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/b67aac0a558f40e664f835f17ce35d5be4a8d9d6",
+                "reference": "b67aac0a558f40e664f835f17ce35d5be4a8d9d6",
                 "shasum": ""
             },
             "require": {
@@ -2104,7 +2136,7 @@
                 "phpstan/phpstan": "1.12.32 || 2.1.32",
                 "phpstan/phpstan-phpunit": "1.4.2 || 2.0.8",
                 "phpstan/phpstan-strict-rules": "1.6.2 || 2.0.7",
-                "phpunit/phpunit": "8.5.50",
+                "phpunit/phpunit": "8.5.52",
                 "rawr/phpunit-data-provider": "3.3.1",
                 "rector/rector": "1.2.10 || 2.2.8",
                 "rector/type-perfect": "1.0.0 || 2.1.0",
@@ -2114,7 +2146,7 @@
             "suggest": {
                 "ext-mbstring": "for parsing UTF-8 CSS"
             },
-            "time": "2026-01-04T23:49:05+00:00",
+            "time": "2026-02-06T09:13:08+00:00",
             "default-branch": true,
             "type": "library",
             "extra": {
@@ -2246,27 +2278,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "63afe740e99a13ba87ec199bb07bbdee937a5b62"
+                "reference": "bbd66f9d55454b9b7a66a9cebe77523806a3288a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/63afe740e99a13ba87ec199bb07bbdee937a5b62",
-                "reference": "63afe740e99a13ba87ec199bb07bbdee937a5b62",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/bbd66f9d55454b9b7a66a9cebe77523806a3288a",
+                "reference": "bbd66f9d55454b9b7a66a9cebe77523806a3288a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1"
             },
-            "time": "2024-09-25T14:21:43+00:00",
+            "time": "2026-01-05T13:30:16+00:00",
             "default-branch": true,
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "3.6-dev"
-                },
                 "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
+                    "url": "https://github.com/symfony/contracts",
+                    "name": "symfony/contracts"
+                },
+                "branch-alias": {
+                    "dev-main": "3.7-dev"
                 }
             },
             "installation-source": "dist",
@@ -2304,6 +2336,10 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
@@ -2317,12 +2353,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "b0cf3162020603587363f0551cd3be43958611ff"
+                "reference": "99d7e101826e6610606b9433248f80c1997cd20b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/b0cf3162020603587363f0551cd3be43958611ff",
-                "reference": "b0cf3162020603587363f0551cd3be43958611ff",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/99d7e101826e6610606b9433248f80c1997cd20b",
+                "reference": "99d7e101826e6610606b9433248f80c1997cd20b",
                 "shasum": ""
             },
             "require": {
@@ -2347,7 +2383,7 @@
                 "symfony/service-contracts": "^2.5|^3",
                 "symfony/stopwatch": "^5.4|^6.0|^7.0"
             },
-            "time": "2025-08-13T09:41:44+00:00",
+            "time": "2026-01-05T11:13:48+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2404,28 +2440,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-                "reference": "59eb412e93815df44f05f342958efa9f46b1e586"
+                "reference": "ccba7060602b7fed0b03c85bf025257f76d9ef32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/59eb412e93815df44f05f342958efa9f46b1e586",
-                "reference": "59eb412e93815df44f05f342958efa9f46b1e586",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/ccba7060602b7fed0b03c85bf025257f76d9ef32",
+                "reference": "ccba7060602b7fed0b03c85bf025257f76d9ef32",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
                 "psr/event-dispatcher": "^1"
             },
-            "time": "2024-09-25T14:21:43+00:00",
+            "time": "2026-01-05T13:30:16+00:00",
             "default-branch": true,
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "3.6-dev"
-                },
                 "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
+                    "url": "https://github.com/symfony/contracts",
+                    "name": "symfony/contracts"
+                },
+                "branch-alias": {
+                    "dev-main": "3.7-dev"
                 }
             },
             "installation-source": "dist",
@@ -2471,6 +2507,10 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
@@ -2484,12 +2524,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "f166fe476c996237666bcf7ec2cf827cd82ad573"
+                "reference": "2d0e9af27ad24edb2b0d2813ecfc18145253d14f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/f166fe476c996237666bcf7ec2cf827cd82ad573",
-                "reference": "f166fe476c996237666bcf7ec2cf827cd82ad573",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/2d0e9af27ad24edb2b0d2813ecfc18145253d14f",
+                "reference": "2d0e9af27ad24edb2b0d2813ecfc18145253d14f",
                 "shasum": ""
             },
             "require": {
@@ -2525,7 +2565,7 @@
                 "symfony/process": "^5.4|^6.0|^7.0",
                 "symfony/stopwatch": "^5.4|^6.0|^7.0"
             },
-            "time": "2025-12-23T14:19:38+00:00",
+            "time": "2026-02-03T14:25:34+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2585,18 +2625,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "8b9efcb4214185d057f054ab2205eef3b13665f2"
+                "reference": "402a972e29ca7f0596dcbe072b8d2c1ff9f2dd78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/8b9efcb4214185d057f054ab2205eef3b13665f2",
-                "reference": "8b9efcb4214185d057f054ab2205eef3b13665f2",
+                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/402a972e29ca7f0596dcbe072b8d2c1ff9f2dd78",
+                "reference": "402a972e29ca7f0596dcbe072b8d2c1ff9f2dd78",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1"
             },
-            "time": "2025-08-04T08:35:04+00:00",
+            "time": "2026-01-29T09:42:44+00:00",
             "default-branch": true,
             "type": "library",
             "extra": {
@@ -2605,7 +2645,7 @@
                     "name": "symfony/contracts"
                 },
                 "branch-alias": {
-                    "dev-main": "3.6-dev"
+                    "dev-main": "3.7-dev"
                 }
             },
             "installation-source": "dist",
@@ -2758,12 +2798,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "69aeef5d2692bb7c18ce133b09f67b27260b7acf"
+                "reference": "2b32fbbe10b36a8379efab6e702ad8b917151839"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/69aeef5d2692bb7c18ce133b09f67b27260b7acf",
-                "reference": "69aeef5d2692bb7c18ce133b09f67b27260b7acf",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/2b32fbbe10b36a8379efab6e702ad8b917151839",
+                "reference": "2b32fbbe10b36a8379efab6e702ad8b917151839",
                 "shasum": ""
             },
             "require": {
@@ -2789,7 +2829,7 @@
                 "symfony/property-info": "^5.4|^6.0|^7.0",
                 "symfony/serializer": "^6.4.3|^7.0.3"
             },
-            "time": "2025-11-16T09:57:53+00:00",
+            "time": "2026-02-02T17:01:23+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3191,12 +3231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "37f608af519f85042e9a38eded401d4d1fc54e95"
+                "reference": "09dd242537543ad34254b0e173ab287a7e39900b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/37f608af519f85042e9a38eded401d4d1fc54e95",
-                "reference": "37f608af519f85042e9a38eded401d4d1fc54e95",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/09dd242537543ad34254b0e173ab287a7e39900b",
+                "reference": "09dd242537543ad34254b0e173ab287a7e39900b",
                 "shasum": ""
             },
             "require": {
@@ -3207,7 +3247,7 @@
             "conflict": {
                 "ext-psr": "<1.1|>=2"
             },
-            "time": "2025-07-31T09:31:17+00:00",
+            "time": "2026-01-05T13:30:16+00:00",
             "default-branch": true,
             "type": "library",
             "extra": {
@@ -3216,7 +3256,7 @@
                     "name": "symfony/contracts"
                 },
                 "branch-alias": {
-                    "dev-main": "3.6-dev"
+                    "dev-main": "3.7-dev"
                 }
             },
             "installation-source": "dist",
@@ -3282,12 +3322,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "81579408ecf7dc5aa2d8462a6d5c3a430a80e6f2"
+                "reference": "d6cc8e2fdd484f2f41d25938b0e8e3915de3cfbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/81579408ecf7dc5aa2d8462a6d5c3a430a80e6f2",
-                "reference": "81579408ecf7dc5aa2d8462a6d5c3a430a80e6f2",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/d6cc8e2fdd484f2f41d25938b0e8e3915de3cfbc",
+                "reference": "d6cc8e2fdd484f2f41d25938b0e8e3915de3cfbc",
                 "shasum": ""
             },
             "require": {
@@ -3324,7 +3364,7 @@
                 "symfony/service-contracts": "^2.5|^3",
                 "symfony/yaml": "^5.4|^6.0|^7.0"
             },
-            "time": "2025-12-18T11:37:55+00:00",
+            "time": "2026-01-12T19:15:33+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3384,18 +3424,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "fc01d96846c98ec203048217b00a05dffbc84fce"
+                "reference": "0ab302977a952b42fd51475c4ebac81f8da0a95d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/fc01d96846c98ec203048217b00a05dffbc84fce",
-                "reference": "fc01d96846c98ec203048217b00a05dffbc84fce",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/0ab302977a952b42fd51475c4ebac81f8da0a95d",
+                "reference": "0ab302977a952b42fd51475c4ebac81f8da0a95d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1"
             },
-            "time": "2025-08-09T22:28:14+00:00",
+            "time": "2026-01-05T13:30:16+00:00",
             "default-branch": true,
             "type": "library",
             "extra": {
@@ -3404,7 +3444,7 @@
                     "name": "symfony/contracts"
                 },
                 "branch-alias": {
-                    "dev-main": "3.6-dev"
+                    "dev-main": "3.7-dev"
                 }
             },
             "installation-source": "dist",

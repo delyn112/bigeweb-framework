@@ -10,6 +10,12 @@ Route::get('migration', function () {
    return Response::redirect('/');
 })->name('migration');
 
+Route::get('seed', function () {
+    (new \Database\Seeders\DatabaseSeeder())->run();
+    return Response::redirect('/');
+})->name('seed');
+
+
 
 //Route::get('migration:rollback', function () {
 // (new Migration())->dropdatabase();

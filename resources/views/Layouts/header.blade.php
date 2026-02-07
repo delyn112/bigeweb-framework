@@ -3,7 +3,8 @@
         <div class="container">
             <div class="top-bar-content">
                 <div class="nav-brand">
-                    <a href="<?= route('home') ?>" class="link mybrand"><?= \illuminate\Support\Facades\Config::get('app.name') ?></a>
+                    <a href="<?= route('home') ?>"
+                       class="link mybrand"><?= \illuminate\Support\Facades\Config::get('app.name') ?></a>
                     <button class="btn toggle-media-btn" onclick="open_menu_header(event, this)">
                         <span class="icon"><i class="fa-solid fa-bars"></i></span>
                     </button>
@@ -24,7 +25,31 @@
                         </li>
                     </ul>
                     <ul class="menu-wrapper">
-                        <?php  if(!\Bigeweb\Authentication\Facades\Authcheck::user()) : ?>
+                        <?php if (class_exists(\Bigeweb\Authentication\Facades\Authcheck::class) &&
+                            \Bigeweb\Authentication\Facades\Authcheck::user()) : ?>
+                        <li class="item dropdown">
+                            <button class="dropdown-btn">
+                                <span class="icon"><i class="fa-solid fa-circle-user"></i></span>
+                                    <?= trans('home.my account') ?>
+                            </button>
+                            <ul class="dropdown-content">
+                                <li class="dropdown-item">
+                                    <a href="<?= route('profile-manager', [
+                                            'userid' => \Bigeweb\Authentication\Facades\Auth::user()->id,
+                                            'token' => \Bigeweb\Authentication\Facades\Auth::user()->token,
+                                    ]) ?>" class="link">
+                                        <span class="icon"><i
+                                                    class="fa-solid fa-user"></i></span><?= trans('home.profile') ?></a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="<?= route('logout') ?>" class="link">
+                                        <span class="icon"><i
+                                                    class="fa-solid fa-right-from-bracket"></i></span><?= trans('home.logout') ?>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php else : ?>
                         <li class="item">
                             <a href="<?= route('register') ?>" class="link">
                                 <span class="icon"><i class="fa-solid fa-user"></i></span>
@@ -32,26 +57,6 @@
                         </li>
                         <li class="item">
                             <a href="<?= route('login') ?>" class="link"><?= trans('home.login') ?></a>
-                        </li>
-                        <?php else : ?>
-                        <li class="item dropdown">
-                            <button class="dropdown-btn">
-                                <span class="icon"><i class="fa-solid fa-circle-user"></i></span>
-                                    <?= trans('home.my account') ?>
-                            </button>
-                            <ul class="dropdown-content">
-                              <li class="dropdown-item">
-                                  <a href="<?= route('profile-manager', [
-                                            'userid' => \Bigeweb\Authentication\Facades\Auth::user()->id,
-                                            'token' => \Bigeweb\Authentication\Facades\Auth::user()->token,
-                                    ]) ?>" class="link">
-                                      <span class="icon"><i class="fa-solid fa-user"></i></span><?= trans('home.profile') ?></a>
-                              </li>
-                              <li class="dropdown-item">
-                                  <a href="<?= route('logout') ?>" class="link">
-                                      <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span><?= trans('home.logout') ?></a>
-                              </li>
-                            </ul>
                         </li>
                         <?php endif; ?>
                     </ul>

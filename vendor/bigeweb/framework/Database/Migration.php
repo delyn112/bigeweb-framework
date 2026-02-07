@@ -97,6 +97,8 @@ class Migration{
          *
          */
         $applied_migration = $this->appliedMigration();
+
+
         if(count($migrationFileArray) > 0)
         {
             foreach ($migrationFileArray as $migrationFile)
@@ -135,7 +137,6 @@ class Migration{
         if (!method_exists($fileClassInstance, 'up')) {
             throw new \Exception("Class $fileClassName does not have up");
         }
-
         //run the migration
         $fileClassInstance->up();
     }

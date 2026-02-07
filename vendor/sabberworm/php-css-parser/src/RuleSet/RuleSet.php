@@ -59,7 +59,8 @@ class RuleSet implements CSSElement, CSSListItem, Positionable, RuleContainer
             $parserState->consume(';');
         }
         while (true) {
-            $commentsBeforeRule = $parserState->consumeWhiteSpace();
+            $commentsBeforeRule = [];
+            $parserState->consumeWhiteSpace($commentsBeforeRule);
             if ($parserState->comes('}')) {
                 break;
             }
@@ -332,7 +333,7 @@ class RuleSet implements CSSElement, CSSListItem, Positionable, RuleContainer
     }
 
     /**
-     * @return array<string, bool|int|float|string|list<array<string, mixed>>>
+     * @return array<string, bool|int|float|string|array<mixed>|null>
      *
      * @internal
      */

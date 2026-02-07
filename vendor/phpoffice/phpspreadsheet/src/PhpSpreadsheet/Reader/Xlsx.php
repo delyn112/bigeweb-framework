@@ -690,6 +690,16 @@ class Xlsx extends BaseReader
                             $objStyle = new Style();
                             $this->styleReader
                                 ->readStyle($objStyle, $style);
+                            if (isset($xfTag->extLst)) {
+                                foreach ($xfTag->extLst->ext as $extTag) {
+                                    $attributes = $extTag->attributes();
+                                    if (isset($attributes['uri'])) {
+                                        if ((string) $attributes['uri'] === Namespaces::STYLE_CHECKBOX_URI) {
+                                            $objStyle->setCheckBox(true);
+                                        }
+                                    }
+                                }
+                            }
                             foreach ($this->styleReader->getFontCharsets() as $fontName => $charset) {
                                 $excel->addFontCharset($fontName, $charset);
                             }
@@ -795,6 +805,19 @@ class Xlsx extends BaseReader
                     $mapSheetId = []; // mapping of sheet ids from old to new
 
                     $charts = $chartDetails = [];
+
+                    // Add richData (contains relation of in-cell images)
+                    $richData = [];
+                    $relationsFileName = $dir . '/richData/_rels/richValueRel.xml.rels';
+                    if ($zip->locateName($relationsFileName)) {
+                        $relsWorksheet = $this->loadZip($relationsFileName, Namespaces::RELATIONSHIPS);
+                        foreach ($relsWorksheet->Relationship as $elex) {
+                            $ele = self::getAttributes($elex);
+                            if ($ele['Type'] == Namespaces::IMAGE) {
+                                $richData['image'][(string) $ele['Id']] = (string) $ele['Target'];
+                            }
+                        }
+                    }
 
                     $sheetCreated = false;
                     if ($xmlWorkbookNS->sheets) {
@@ -952,6 +975,27 @@ class Xlsx extends BaseReader
 
                                                 break;
                                             case DataType::TYPE_ERROR:
+                                                if (isset($cAttr->vm, $richData['image']['rId' . $cAttr->vm]) && !$useFormula) {
+                                                    $imagePath = $dir . '/' . str_replace('../', '', $richData['image']['rId' . $cAttr->vm]);
+                                                    $objDrawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+                                                    $objDrawing->setPath(
+                                                        'zip://' . File::realpath($filename) . '#' . $imagePath,
+                                                        false,
+                                                        $zip
+                                                    );
+
+                                                    $objDrawing->setCoordinates($r);
+                                                    $objDrawing->setResizeProportional(false);
+                                                    $objDrawing->setInCell(true);
+                                                    $objDrawing->setWorksheet($docSheet);
+
+                                                    $value = $objDrawing;
+                                                    $cellDataType = DataType::TYPE_DRAWING_IN_CELL;
+                                                    $c->t = DataType::TYPE_ERROR;
+
+                                                    break;
+                                                }
+
                                                 if (!$useFormula) {
                                                     $value = self::castToError($c);
                                                 } else {

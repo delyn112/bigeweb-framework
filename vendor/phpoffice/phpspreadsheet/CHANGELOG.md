@@ -5,17 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com)
 and this project adheres to [Semantic Versioning](https://semver.org). Thia is always true of the master branch. Some earlier branches remain supported and security fixes are applied to them; if the security fix represents a breaking change, it may have to be applied as a minor or patch version.
 
-## TBD - 5.4.0
+## TBD - 5.5.0
 
 ### Added
 
-- Passthrough support (with some restrictions) for otherwise unsupported drawing elements. [Issue #4037](https://github.com/PHPOffice/PhpSpreadsheet/issues/4037) [Issue #4704](https://github.com/PHPOffice/PhpSpreadsheet/issues/4704) [PR #4712](https://github.com/PHPOffice/PhpSpreadsheet/pull/4712)
-- Set all locale variables at once in a threadsafe manner. [Issue #954](https://github.com/PHPOffice/PhpSpreadsheet/issues/954) [PR #4760](https://github.com/PHPOffice/PhpSpreadsheet/pull/4760)
-- Reader/Html add ability to suppress warning messages from loadhtml. [Issue #647](https://github.com/PHPOffice/PhpSpreadsheet/issues/647) [Issue #849](https://github.com/PHPOffice/PhpSpreadsheet/issues/849) [PR #4761](https://github.com/PHPOffice/PhpSpreadsheet/pull/4761)
+- Option to use OldCalculatedValue in ToArray and Relatives. [Issue #1810](https://github.com/PHPOffice/PhpSpreadsheet/issues/1810) [PR #4787](https://github.com/PHPOffice/PhpSpreadsheet/pull/4787)
+- Add checkbox style (Xlsx and Html). [PR #4781](https://github.com/PHPOffice/PhpSpreadsheet/pull/4781)
+- Writer/Html add ability to set line ending. [PR #4779](https://github.com/PHPOffice/PhpSpreadsheet/pull/4779)
+- Writer/Html optionally save formulas as data attributes. [PR #4783](https://github.com/PHPOffice/PhpSpreadsheet/pull/4783)
+- User-supplied headers and footers in PDF. [Issue #3159](https://github.com/PHPOffice/PhpSpreadsheet/issues/3159) [PR #4789](https://github.com/PHPOffice/PhpSpreadsheet/pull/4789)
 
 ### Removed
 
 - Nothing yet.
+
+### Changed
+
+- Nothing yet.
+
+### Moved
+
+- Nothing yet.
+
+### Deprecated
+
+- Writer/Html constant BODY_LINE no longer makes sense with a configurable line ending. No replacement.
+- Calculation classes FormulaParser and FormulaToken are unused. No replacement.
+
+### Fixed
+
+- Improve performance in value binders. [PR #4780](https://github.com/PHPOffice/PhpSpreadsheet/pull/4780)
+- Handle Unions as Function Arguments. [Issue #4656](https://github.com/PHPOffice/PhpSpreadsheet/issues/4656) [Issue #316](https://github.com/PHPOffice/PhpSpreadsheet/issues/316) [Issue #503](https://github.com/PHPOffice/PhpSpreadsheet/issues/503) [PR #4657](https://github.com/PHPOffice/PhpSpreadsheet/pull/4657)
+- Unexpected Behavior of CONCATENATE. [Issue #4061](https://github.com/PHPOffice/PhpSpreadsheet/issues/4061) [PR #4797](https://github.com/PHPOffice/PhpSpreadsheet/pull/4797)
+
+## 2026-01-10 - 5.4.0
+
+### Added
+
+- Store image in cell (Xlsx only). [Issue #4014](https://github.com/PHPOffice/PhpSpreadsheet/issues/4014) [Issue #4034](https://github.com/PHPOffice/PhpSpreadsheet/issues/4034) [Issue #913](https://github.com/PHPOffice/PhpSpreadsheet/issues/913) [PR #4677](https://github.com/PHPOffice/PhpSpreadsheet/pull/4677)
+- Passthrough support (with some restrictions) for otherwise unsupported drawing elements. [Issue #4037](https://github.com/PHPOffice/PhpSpreadsheet/issues/4037) [Issue #4704](https://github.com/PHPOffice/PhpSpreadsheet/issues/4704) [PR #4712](https://github.com/PHPOffice/PhpSpreadsheet/pull/4712)
+- Set all locale variables at once in a threadsafe manner. [Issue #954](https://github.com/PHPOffice/PhpSpreadsheet/issues/954) [PR #4760](https://github.com/PHPOffice/PhpSpreadsheet/pull/4760)
+- Reader/Html add ability to suppress warning messages from loadhtml. [Issue #647](https://github.com/PHPOffice/PhpSpreadsheet/issues/647) [Issue #849](https://github.com/PHPOffice/PhpSpreadsheet/issues/849) [PR #4761](https://github.com/PHPOffice/PhpSpreadsheet/pull/4761)
 
 ### Changed
 
@@ -43,10 +73,14 @@ and this project adheres to [Semantic Versioning](https://semver.org). Thia is a
 - Fix drawing hyperlinks. [Issue #993](https://github.com/PHPOffice/PhpSpreadsheet/issues/993) [PR #4764](https://github.com/PHPOffice/PhpSpreadsheet/pull/4764)
 - Fix clone spreadsheet with defined names. [PR #4753](https://github.com/PHPOffice/PhpSpreadsheet/pull/4753)
 - Changes to WEBSERVICE. [PR #4751](https://github.com/PHPOffice/PhpSpreadsheet/pull/4751)
+- More consistent handling of unsupported functions. [Issue #606](https://github.com/PHPOffice/PhpSpreadsheet/issues/606) [PR #4772](https://github.com/PHPOffice/PhpSpreadsheet/pull/4772)
+- Chart shadow `kx` and `ky`. [PR #4770](https://github.com/PHPOffice/PhpSpreadsheet/pull/4770)
 - SUBTOTAL and hidden rows. [Issue #820](https://github.com/PHPOffice/PhpSpreadsheet/issues/820) [PR #4765](https://github.com/PHPOffice/PhpSpreadsheet/pull/4765)
+- Fix some hyperlink problems. [Issue #3889](https://github.com/PHPOffice/PhpSpreadsheet/issues/3889) [Issue #2464](https://github.com/PHPOffice/PhpSpreadsheet/issues/2464) [PR #4771](https://github.com/PHPOffice/PhpSpreadsheet/pull/4771)
 - Xls Writer and empty RichText. [Issue #918](https://github.com/PHPOffice/PhpSpreadsheet/issues/918) [PR #4769](https://github.com/PHPOffice/PhpSpreadsheet/pull/4769)
 - Strings that look like huge floating-point numbers. [Issue #4766](https://github.com/PHPOffice/PhpSpreadsheet/issues/4766) [PR #4768](https://github.com/PHPOffice/PhpSpreadsheet/pull/4768)
 - Rowspan in Html. [Issue #1319](https://github.com/PHPOffice/PhpSpreadsheet/issues/1319) [PR #4767](https://github.com/PHPOffice/PhpSpreadsheet/pull/4767)
+- Mpdf styling of multi-line strings. [Issue #4773](https://github.com/PHPOffice/PhpSpreadsheet/issues/4773) [PR #4775](https://github.com/PHPOffice/PhpSpreadsheet/pull/4775)
 
 ## 2025-11-24 - 5.3.0
 

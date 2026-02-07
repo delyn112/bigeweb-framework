@@ -10,12 +10,15 @@ Please also have a look at our
 
 ### Added
 
+- Add support for escaped quotes in the selectors (#1485, #1489)
 - Provide line number in exception message for mismatched parentheses in
   selector (#1435)
 - Add support for CSS container queries (#1400)
 
 ### Changed
 
+- `Selector::setSelector()` and `Selector` constructor will now throw exception
+  upon provision of an invalid selectior (#1498)
 - Clean up extra whitespace in CSS selector (#1398)
 - The array keys passed to `DeclarationBlock::setSelectors()` are no longer
   preserved (#1407)
@@ -26,6 +29,7 @@ Please also have a look at our
 
 ### Fixed
 
+- Do not escape characters that do not need escaping in CSS string (#1444)
 - Reject selector comprising only whitespace (#1433)
 - Improve recovery parsing when a rogue `}` is encountered (#1425, #1426)
 - Parse comment(s) immediately preceding a selector (#1421, #1424)

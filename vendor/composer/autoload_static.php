@@ -174,6 +174,7 @@ class ComposerStaticInitabbedcbe251cb1f0496090814e40ca18
         array (
             'Dompdf\\' => 7,
             'Doctrine\\Common\\Lexer\\' => 22,
+            'Database\\Seeders\\' => 17,
             'Database\\Migrations\\' => 20,
         ),
         'C' => 
@@ -188,6 +189,8 @@ class ComposerStaticInitabbedcbe251cb1f0496090814e40ca18
             'Bigeweb\\Authentication\\Database\\Migrations\\' => 43,
             'Bigeweb\\Authentication\\' => 23,
             'Bigeweb\\App\\' => 12,
+            'Bigeweb\\Acl\\Database\\Migrations\\' => 32,
+            'Bigeweb\\Acl\\' => 12,
         ),
     );
 
@@ -357,6 +360,10 @@ class ComposerStaticInitabbedcbe251cb1f0496090814e40ca18
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/src',
         ),
+        'Database\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/database/seeders',
+        ),
         'Database\\Migrations\\' => 
         array (
             0 => __DIR__ . '/../..' . '/database/migrations',
@@ -388,6 +395,14 @@ class ComposerStaticInitabbedcbe251cb1f0496090814e40ca18
         'Bigeweb\\App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'Bigeweb\\Acl\\Database\\Migrations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bigeweb/acl/database/migrations',
+        ),
+        'Bigeweb\\Acl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bigeweb/acl/src',
         ),
     );
 

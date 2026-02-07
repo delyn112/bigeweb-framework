@@ -47,6 +47,7 @@ return array(
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
     'Dompdf\\' => array($vendorDir . '/dompdf/dompdf/src'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/src'),
+    'Database\\Seeders\\' => array($baseDir . '/database/seeders'),
     'Database\\Migrations\\' => array($baseDir . '/database/migrations'),
     'Composer\\Pcre\\' => array($vendorDir . '/composer/pcre/src'),
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
@@ -55,4 +56,6 @@ return array(
     'Bigeweb\\Authentication\\Database\\Migrations\\' => array($vendorDir . '/bigeweb/authentication/database/migrations'),
     'Bigeweb\\Authentication\\' => array($vendorDir . '/bigeweb/authentication/src'),
     'Bigeweb\\App\\' => array($baseDir . '/app'),
+    'Bigeweb\\Acl\\Database\\Migrations\\' => array($vendorDir . '/bigeweb/acl/database/migrations'),
+    'Bigeweb\\Acl\\' => array($vendorDir . '/bigeweb/acl/src'),
 );

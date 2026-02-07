@@ -90,4 +90,16 @@ class Response
 
     }
 
+
+    public static function pdf(string $content, string $filename, string $mime = 'application/pdf', int $status = 200)
+    {
+        http_response_code($status);
+        header('Content-Type: ' . $mime);
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Content-Length: ' . strlen($content));
+
+        echo $content;
+        exit;
+    }
+
 }

@@ -81,6 +81,20 @@ class TableBlueprint extends Model
         return $column;
     }
 
+    public function float(string $name, int $precision = 8, int $scale = 2)
+    {
+        $column = new DBTableColumns($name, 'float', compact('precision', 'scale'));
+        $this->columns[] = $column;
+        return $column;
+    }
+
+    public function double(string $name, int $precision = 8, int $scale = 2)
+    {
+        $column = new DBTableColumns($name, 'double', compact('precision', 'scale'));
+        $this->columns[] = $column;
+        return $column;
+    }
+
     public function boolean(string $name)
     {
         $column = new DBTableColumns($name, 'boolean');
@@ -98,6 +112,9 @@ class TableBlueprint extends Model
         $this->columns[] = $column;
         return $column;
     }
+
+
+
 
     public function timestamps()
     {
@@ -121,9 +138,24 @@ class TableBlueprint extends Model
                 $this->indexes[] = $column->name;
             }
 
+
             if ($column->foreign) {
-                $this->foreignKeys[] =
-                    "FOREIGN KEY ({$column->name}) REFERENCES {$column->foreign['table']}({$column->foreign['column']})";
+                $fk = "FOREIGN KEY ({$column->name}) 
+                REFERENCES {$column->foreign['table']}({$column->foreign['column']})";
+
+                if (!empty($column->onDelete)) {
+                    $fk .= " ON DELETE {$column->onDelete}";
+                } elseif (!empty($column->foreign['onDelete'])) {
+                    $fk .= " ON DELETE {$column->foreign['onDelete']}";
+                }
+
+                if (!empty($column->onUpdate)) {
+                    $fk .= " ON UPDATE {$column->onUpdate}";
+                } elseif (!empty($column->foreign['onUpdate'])) {
+                    $fk .= " ON UPDATE {$column->foreign['onUpdate']}";
+                }
+
+                $this->foreignKeys[] = $fk;
             }
         }
 
@@ -170,6 +202,8 @@ class TableBlueprint extends Model
                 : "{$column->name} JSON",
 
             'decimal' => "{$column->name} DECIMAL({$column->options['precision']}, {$column->options['scale']})",
+            'double' => "{$column->name} DOUBLE({$column->options['precision']}, {$column->options['scale']})",
+            'float' => "{$column->name} FLOAT({$column->options['precision']}, {$column->options['scale']})",
 
             'boolean' => $driver === 'sqlite'
                 ? "{$column->name} INTEGER"
@@ -188,7 +222,6 @@ class TableBlueprint extends Model
         if ($column->nullable) $sql .= ' NULL';
         if ($column->default !== null) $sql .= " DEFAULT '{$column->default}'";
         if ($column->unique) $sql .= ' UNIQUE';
-
         return $sql;
     }
 

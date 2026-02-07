@@ -413,6 +413,21 @@ class Spreadsheet implements JsonSerializable
     }
 
     /**
+     * This workbook has in cell images.
+     */
+    public function hasInCellDrawings(): bool
+    {
+        $sheetCount = $this->getSheetCount();
+        for ($i = 0; $i < $sheetCount; ++$i) {
+            if ($this->getSheet($i)->getInCellDrawingCollection()->count() > 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Check if a sheet with a specified code name already exists.
      *
      * @param string $codeName Name of the worksheet to check
@@ -1881,5 +1896,26 @@ class Spreadsheet implements JsonSerializable
     public function getDomainWhiteList(): array
     {
         return $this->domainWhiteList;
+    }
+
+    private bool $usesCheckBoxStyle = false;
+
+    public function getUsesCheckBoxStyle(): bool
+    {
+        return $this->usesCheckBoxStyle;
+    }
+
+    public function setUsesCheckBoxStyle(): bool
+    {
+        $this->usesCheckBoxStyle = false;
+        foreach ($this->getCellXfCollection() as $cellXf) {
+            if ($cellXf->getCheckBox()) {
+                $this->usesCheckBoxStyle = true;
+
+                break;
+            }
+        }
+
+        return $this->usesCheckBoxStyle;
     }
 }
