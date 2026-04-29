@@ -1,0 +1,21 @@
+{
+    "name": "bigeweb/acl",
+    "version": "1.0.0",
+    "description": "This is the base directory that holds all our external variable such as data transmission and so on",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bigeweb\\Acl\\": "src/",
+            "Bigeweb\\Acl\\Database\\Migrations\\": "database/migrations/"
+        }
+    },
+    "authors": [
+        {
+            "name": "olabige michael",
+            "email": "81871957+delyn112@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
