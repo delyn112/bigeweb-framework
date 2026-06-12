@@ -1,0 +1,9 @@
+RewriteEngine On
+
+#check existence of file and drive
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#redirect all pages and drive to indexpage
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]

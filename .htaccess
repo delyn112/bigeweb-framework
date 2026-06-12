@@ -1,0 +1,25 @@
+
+#RewriteOptions inherit
+# Enable Rewrite Engine
+#RewriteEngine On
+
+# Prevent redirecting if the request is already for the public directory
+#RewriteCond %{REQUEST_URI} !^/public/
+
+# Rewrite all other requests to the public directory
+#RewriteRule ^(.*)$ /public/$1 [L]
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+
+RewriteEngine On
+
+# Allow access to public and other specific folders (e.g. whmcs)
+RewriteCond %{REQUEST_URI} !^/public/
+#RewriteCond %{REQUEST_URI} !^/another-folder/ [NC]  # Add more as needed
+
+# Redirect everything else to public
+RewriteRule ^(.*)$ /public/$1 [L]
+

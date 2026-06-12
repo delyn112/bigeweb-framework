@@ -1,0 +1,51 @@
+@use "constant";
+
+
+.product-err-result .container,
+.product-err-result .container .content-wrapper{
+  min-height: 100vh;
+}
+
+.product-err-result .container .content-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.product-err-result .container .content-wrapper .img-fluid{
+  max-width: 200px;
+    height: auto;
+  object-fit: contain;
+}
+
+.product-err-result .container .content-wrapper .title
+{
+  text-align: center;
+  font-weight: 900;
+  font-size: constant.$xxlarge-font-size;
+  padding: 10px 5px;
+  text-transform: capitalize;
+}
+
+.product-err-result .container .content-wrapper .text
+{
+  text-align: center;
+  font-size: constant.$medium-font-size;
+  padding: 10px 5px;
+}
+
+.product-err-result .container .content-wrapper .text a{
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 550px) {
+  .product-err-result .container .content-wrapper .img-fluid{
+    max-width: 120px;
+    height: auto;
+    object-fit: contain;
+  }
+}

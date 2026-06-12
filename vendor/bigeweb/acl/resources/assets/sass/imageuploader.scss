@@ -1,0 +1,124 @@
+@use '../../../../../resources/assets/sass/constant';
+
+
+.fl-wrapper .upload-wrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.fl-wrapper .thumbnail-wrapper{
+    width: 150px;
+    height: 60px;
+    border: 2px solid constant.$color-lightgray;
+    overflow: hidden;
+    margin: 5px 10px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fl-wrapper .thumbnail-wrapper .form-control{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.fl-wrapper .thumbnail-wrapper .icon{
+    color: black;
+}
+
+.fl-wrapper .thumbnail-wrapper .text{
+    margin-bottom: 1px;
+    text-transform: capitalize;
+    font-size: constant.$normal-font-size;
+    font-weight: normal;
+}
+
+.fl-wrapper .thumbnail-element .thumbnail-preview-content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.fl-wrapper .thumbnail-element .thumbnail-preview-content .element{
+    width: 80px;
+    height: 80px;
+    border-radius: 0;
+    position: relative;
+    border: 1px solid constant.$color-lightgray;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.fl-wrapper .thumbnail-element .thumbnail-preview-content .element .form-control{
+    position: absolute;
+    display: none;
+}
+
+.fl-wrapper .thumbnail-element .thumbnail-preview-content .element .rm-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: constant.$color-red;
+    color: constant.$secondary-text-color;
+    padding: 5px;
+    height: 20px;
+    font-size: constant.$normal-font-size;
+    line-height: 10px;
+    text-align: center;
+    z-index: 1;
+}
+
+.fl-wrapper .thumbnail-element .thumbnail-preview-content .element .text{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.31);
+    font-size: constant.$normal-font-size;
+    font-weight: normal;
+    padding: 3px;
+    text-align: center;
+    margin-bottom: 0;
+    color: constant.$secondary-text-color;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    z-index: 1;
+}
+
+.fl-wrapper .thumbnail-element .thumbnail-preview-content{
+    display: none;
+}
+
+.fl-wrapper .thumbnail-element .thumbnail-preview-content.active{
+    display: flex;
+}
+
+.fl-wrapper .thumbnail-element .thumbnail-preview-content .element .img-fluid{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.fl-wrapper .thumbnail-element .error-text{
+    font-size: constant.$normal-font-size;
+    color: constant.$color-red;
+    display: none;
+}
+
+.fl-wrapper .thumbnail-element .error-text.image-error,
+.fl-wrapper .thumbnail-element .error-text.video-error{
+    display: block;
+}
+

@@ -1,0 +1,8 @@
+composer.lock
+package-lock.json
+/cronjob/task.json
+/storage/framework/sessions/*
+/storage/Logs/*
+*.log
+.DS_Store
+/node_modules/*

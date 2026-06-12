@@ -1,0 +1,94 @@
+@use "constant";
+
+@media screen and (min-width: 0px) and (max-width: 995px){
+  #app #header .top-bar .top-bar-content{
+    display: block;
+    width: 100%;
+  }
+  #app #header .top-bar .top-bar-content .nav-brand .btn.toggle-media-btn
+  {
+    display: block;
+    font-size: constant.$xxlarge-font-size;
+    border: none;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-container,
+  #app #header .top-bar .top-bar-content .menu-wrapper{
+    display: block;
+    width: 100%;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-container{
+    transition: max-height 1s ease;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+
+  #app #header .top-bar .top-bar-content .menu-container.show{
+    //display: block;
+    max-height: 500px;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-wrapper .item{
+    display: block;
+    width: 100%;
+    padding: 5px;
+  }
+  #app #header .top-bar .top-bar-content .menu-wrapper + .menu-wrapper .item .icon,
+  #app #header .top-bar .top-bar-content .menu-wrapper + .menu-wrapper .item + .item::before
+  {
+    display: none;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-wrapper + .menu-wrapper .item .link{
+    display: block;
+    width: 100%;
+    padding: 5px;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-btn
+  {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content
+  {
+    position: static;
+    padding: 0;
+  }
+
+  #app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content .dropdown-item .link
+  {
+    padding-left: 0;
+  }
+
+
+  #app #header .top-bar .top-bar-content .menu-wrapper .item.dropdown .dropdown-content .dropdown-item:nth-last-child(1)
+  {
+    border-top: none;
+  }
+
+  #app #main .container .img-wrapper
+  {
+    height: 100px;
+  }
+
+  #app #main .container .title
+  {
+    font-size: constant.$xlarge-font-size;
+    margin: 1rem 0;
+  }
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 355px){
+  #app #header .top-bar .top-bar-content .mybrand
+  {
+    font-size: constant.$medium-font-size;
+    padding: 5px;
+    background-color: transparent;
+    color: constant.$secondary-text-color;
+  }
+}
