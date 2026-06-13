@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'bigeweb/bigeweb-framework',
-        'pretty_version' => '1.4.8',
-        'version' => '1.4.8.0',
+        'pretty_version' => '1.4.9',
+        'version' => '1.4.9.0',
         'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -29,8 +29,8 @@
             'dev_requirement' => false,
         ),
         'bigeweb/bigeweb-framework' => array(
-            'pretty_version' => '1.4.8',
-            'version' => '1.4.8.0',
+            'pretty_version' => '1.4.9',
+            'version' => '1.4.9.0',
             'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
@@ -125,9 +125,9 @@
             'dev_requirement' => false,
         ),
         'guzzlehttp/psr7' => array(
-            'pretty_version' => '2.11.x-dev',
-            'version' => '2.11.9999999.9999999-dev',
-            'reference' => 'bbb5e61349fa5cb822b3e87842b951088b76b81f',
+            'pretty_version' => '2.12.x-dev',
+            'version' => '2.12.9999999.9999999-dev',
+            'reference' => 'fffbe3dc55d45853e45ea06ff0fcafee691fa73e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
@@ -172,7 +172,7 @@
         'nesbot/carbon' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'def4d14cce13aace76295af01857bd5baab5c0bd',
+            'reference' => '72d6ae0435d3d86338d9122a14faa288a3561fba',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nesbot/carbon',
             'aliases' => array(
@@ -235,7 +235,7 @@
         'phpoffice/phpspreadsheet' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'fd5f72edd76d0cfea2a8790c252f9f6b65268aa4',
+            'reference' => '96fbeaac0a272c691a4c98a77221bc11fb590652',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(

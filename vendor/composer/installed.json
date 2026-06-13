@@ -755,17 +755,17 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.11.x-dev",
-            "version_normalized": "2.11.9999999.9999999-dev",
+            "version": "2.12.x-dev",
+            "version_normalized": "2.12.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "bbb5e61349fa5cb822b3e87842b951088b76b81f"
+                "reference": "fffbe3dc55d45853e45ea06ff0fcafee691fa73e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/bbb5e61349fa5cb822b3e87842b951088b76b81f",
-                "reference": "bbb5e61349fa5cb822b3e87842b951088b76b81f",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/fffbe3dc55d45853e45ea06ff0fcafee691fa73e",
+                "reference": "fffbe3dc55d45853e45ea06ff0fcafee691fa73e",
                 "shasum": ""
             },
             "require": {
@@ -789,8 +789,7 @@
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
-            "time": "2026-06-02T12:30:48+00:00",
-            "default-branch": true,
+            "time": "2026-06-13T19:49:13+00:00",
             "type": "library",
             "extra": {
                 "bamarni-bin": {
@@ -858,7 +857,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.11"
+                "source": "https://github.com/guzzle/psr7/tree/2.12"
             },
             "funding": [
                 {
@@ -1148,12 +1147,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "def4d14cce13aace76295af01857bd5baab5c0bd"
+                "reference": "72d6ae0435d3d86338d9122a14faa288a3561fba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/def4d14cce13aace76295af01857bd5baab5c0bd",
-                "reference": "def4d14cce13aace76295af01857bd5baab5c0bd",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/72d6ae0435d3d86338d9122a14faa288a3561fba",
+                "reference": "72d6ae0435d3d86338d9122a14faa288a3561fba",
                 "shasum": ""
             },
             "require": {
@@ -1179,7 +1178,7 @@
                 "phpunit/phpunit": "^10.5.53",
                 "squizlabs/php_codesniffer": "^3.13.4 || ^4.0.0"
             },
-            "time": "2026-06-12T10:59:17+00:00",
+            "time": "2026-06-13T16:58:39+00:00",
             "default-branch": true,
             "bin": [
                 "bin/carbon"
@@ -1523,12 +1522,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "fd5f72edd76d0cfea2a8790c252f9f6b65268aa4"
+                "reference": "96fbeaac0a272c691a4c98a77221bc11fb590652"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/fd5f72edd76d0cfea2a8790c252f9f6b65268aa4",
-                "reference": "fd5f72edd76d0cfea2a8790c252f9f6b65268aa4",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/96fbeaac0a272c691a4c98a77221bc11fb590652",
+                "reference": "96fbeaac0a272c691a4c98a77221bc11fb590652",
                 "shasum": ""
             },
             "require": {
@@ -1575,7 +1574,7 @@
                 "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
                 "tecnickcom/tcpdf": "Option for rendering PDF with PDF Writer"
             },
-            "time": "2026-06-08T03:21:59+00:00",
+            "time": "2026-06-13T03:54:40+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
