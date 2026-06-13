@@ -5,4 +5,3 @@ package-lock.json
 /storage/Logs/*
 *.log
 .DS_Store
-/node_modules/*
