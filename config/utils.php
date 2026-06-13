@@ -165,13 +165,19 @@ function route(string $param, $option = [])
             $url = url($route->routes[$method]['uri']);
             if( count($option) > 0)
             {
-                $urlArray = [];
                 foreach ($option as $opt => $value)
                 {
-                    $urlArray[] = $opt.'='.$value;
+                    //replace the place holder for our pretty url
+                    $url = str_replace('{'.$opt.'}',  $value, $url);
                 }
-                $urlString = implode("&", $urlArray);
-                $url = strstr($url , '?', true) . '?' . $urlString;
+
+
+                if(strpos($url, '?') !== false)
+                {
+                    $query = http_build_query($option, '', '&');
+                    $getUri = explode('?', $url)[0];
+                    $url = $getUri.'?'.$query;
+                }
             }
         }
     }

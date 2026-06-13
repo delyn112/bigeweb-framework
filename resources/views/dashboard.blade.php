@@ -18,3 +18,4 @@
         <p class="text"><?= trans('home.enjoy coding') ?></p>
     </div>
 </div>
+
