@@ -69,6 +69,18 @@ class Session
     }
 
 
+    /**
+     * @param string $key
+     * @return bool
+     *
+     */
+    public static function session_has(string $key) : bool
+    {
+        return Session::session_get($key) !== null;
+    }
+
+
+
     public function __destruct()
     {
         $messages = $_SESSION[self::KEY] ?? [];

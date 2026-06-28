@@ -29,6 +29,13 @@ class Route{
          */
         $uri = trim($uri, '/');
 
+        $prefix = self::getPrefix();
+
+        if (!empty($prefix)) {
+            $uri = trim($prefix . '/' . $uri, '/');
+        }
+
+
         $hasQuery = strpos($uri, '?');
         $body = new self();
         if($hasQuery){
@@ -50,11 +57,6 @@ class Route{
          *
          */
 
-        $prefix = self::getPrefix();
-
-        if (!empty($prefix)) {
-            $uri = trim($prefix . '/' . $uri, '/');
-        }
 
         $body->routes['get'] = [
             'uri' => $uri,

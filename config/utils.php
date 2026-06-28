@@ -39,7 +39,7 @@ function storage_path(?string $path = 'storage')
     $storagePath = getPath().'/'.$path;
     if(!is_dir($storagePath))
     {
-        mkdir($storagePath, '0755', true);
+        mkdir($storagePath, 0755, true);
     }
     return $storagePath;
 }
@@ -68,7 +68,7 @@ function log_Error(?string $errorMessage): void
     $logPath = getPath().'/'.env('LOG_FOLDER').'/Logs';
     if(!is_dir($logPath))
     {
-        mkdir($logPath, '0755', true);
+        mkdir($logPath, 0755, true);
     }
     $path = $logPath.'/error.log';
     $errorMessage = date('D, d M Y H:i:s').' - '.$errorMessage;

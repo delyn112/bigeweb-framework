@@ -13,12 +13,12 @@ class Storage
     public static function makeStorage($path) : ?string
     {
         if ($path) {
-            if (!is_dir(file_path('storage/public/attachments/' . $path))) {
-                mkdir(file_path('storage/public/attachments/' . $path), 0755, true);
+            if (!is_dir(file_path('public/attachments/' . $path))) {
+                mkdir(file_path('public/attachments/' . $path), 0777, true);
             }
-            $storagePath = 'storage/public/attachments/' . $path . '/';
+            $storagePath = 'public/attachments/' . $path . '/';
         } else {
-            $storagePath = 'storage/public/attachments/' . $path . '/';
+            $storagePath = 'public/attachments/' . $path . '/';
         }
 
         return $storagePath;
